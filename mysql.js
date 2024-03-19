@@ -3,8 +3,8 @@ const mysql = require('mysql');
 const conection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'GBM_CT'
+    password: 'Stanlyv_00363',
+    database: 'GBMCT_DB'
 })
 
 conection.connect((err)=>{
@@ -16,19 +16,13 @@ conection.connect((err)=>{
     }
 })
 
-/*const insert = "INSERT INTO UserDB (IdUser,Usuario, Contraseña) VALUES (NULL, 'admin', 'passw0rd*')"
-conection.query(insert, (err, rows)=>{
-    if(err) throw err
-})*/
-
-conection.query('SELECT * FROM UserDB', (err, rows)=>{
-    if(err){
-        throw err
+connection.connect((err) => {
+    if (err) {
+      console.error('Error al conectar a la base de datos: ' + err.stack);
+      return;
     }
-    else{
-        console.log('Datos: ')
-        console.log(rows)
-    }
-})
+    console.log('Conexión exitosa a la base de datos con el ID ' + connection.threadId);
+  });
+  
 
 conection.end();
