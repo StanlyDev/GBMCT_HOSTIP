@@ -11,6 +11,7 @@
   <script defer src="/JavaScript/BuscadorClient.js"></script>
   <script defer src="/JavaScript/windowsDoc.js"></script>
   <script defer src="/JavaScript/HistoAlert.js"></script>
+  <script defer src="/JavaScript/InvetContent.js"></script>
   <title>GBM | CT</title>
 </head>
 <body>
@@ -73,182 +74,19 @@
     <!--Inicio tabla Inventario-->
       <div class="tabla_invent">
         <table>
-          <tr>
-            <th scope="row">#</th>
-            <th scope="col">Cliente</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Codigo</th>
-            <th scope="col">En Cintoteca Y/N</th>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND07L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND08L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND01L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND09L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND10L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND11L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND12L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND13L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND14L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND15L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND16L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND17L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND18L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND19L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND20L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND21L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND22L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND23L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>GILDAN</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND24L8</td>
-            <td>Y</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BAC</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND25L8</td>
-            <td>N</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>BASA</td>
-            <td>LTO</td>
-            <td>CINTA LTO 8</td>
-            <td>HOND26L8</td>
-            <td>Y</td>
-          </tr>
+          <thead>
+            <tr>
+              <th scope="row">#</th>
+              <th scope="col">Cliente</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">En Cintoteca Y/N</th>
+            </tr>
+          </thead>
+          <tbody id="tablaBody">
+            <tr></tr>
+          </tbody>
         </table>
       </div>
     </div>

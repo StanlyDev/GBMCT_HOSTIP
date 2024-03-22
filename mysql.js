@@ -1,6 +1,10 @@
+const express = require('express');
 const mysql = require('mysql');
 
-// Crear conexión
+const app = express();
+const port = 3000;
+
+// Configuración de la conexión a la base de datos
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -8,14 +12,18 @@ const connection = mysql.createConnection({
     database: 'gbmct_db'
 });
 
-// Conectar a la base de datos
-connection.connect((err) => {
-    if (err) {
-        console.error('Error al conectar a la base de datos: ' + err.stack);
-        return;
-    }
-    console.log('Conexión exitosa a la base de datos con el ID ' + connection.threadId);
+// Ruta para obtener los datos del inventario
+app.get('/datosInventario', (req, res) => {
+    connection.query('SELECT * FROM InventarioCintas', (error, results, fields) => {
+        if (error) {
+            console.error('Error al ejecutar la consulta:', error);
+            res.status(500).json({ error: 'Error al obtener los datos del inventario' });
+            return;
+        }
+        res.json(results);
+    });
 });
 
-// Cerrar la conexión después de la conexión exitosa
-connection.end();
+app.listen(port, () => {
+    console.log(`Servidor escuchando en http://localhost:${port}`);
+});
