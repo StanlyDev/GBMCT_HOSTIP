@@ -61,5 +61,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Asignar automáticamente el número de cliente a las filas existentes
     asignarNumerosSecuenciales();
 
-    // Aquí puedes agregar el código HTML de la tabla si lo deseas
+    // Realizar una solicitud al servidor para obtener los datos
+    fetch('http://localhost:3000/data') // Cambia la URL según sea necesario
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('tablaBody');
+            data.forEach((row, index) => {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${row.NombreCliente}</td>
+                <td>${row.TipoCinta}</td>
+                <td>${row.Descripcion}</td>
+                <td>${row.CodigoCinta}</td>
+                <td>${row.EnCintoteca}</td>
+                `;
+                tableBody.appendChild(newRow);
+            });
+        })
+        .catch(error => console.error('Error al obtener los datos:', error));
 });
