@@ -2,11 +2,10 @@ const http = require('http');
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
-  host: '10.4.27.88',
-  user: 'bventura',
+  host: 'localhost',
+  user: 'root',
   password: 'Stanlyv_00363',
-  database: 'gbmct_db',
-  authPlugin: 'mysql_native_password'
+  database: 'gbmct_db'
 });
 
 connection.connect((err) => {
