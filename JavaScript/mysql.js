@@ -1,12 +1,14 @@
-const http = require('http');
+// Importa el módulo MySQL
 const mysql = require('mysql');
+// Importa el módulo http
+const http = require('http');
 
+// Configura la conexión a la base de datos
 const connection = mysql.createConnection({
-  host: '10.4.27.88',
-  user: 'stanvsdev',
-  password: 'Stanlyv00363',
-  database: 'gbmct_db',
-  authPlugin: 'mysql_native_password'
+  host: '10.4.27.79', // La dirección del servidor de la base de datos
+  user: 'stanvsdev', // Tu nombre de usuario
+  password: 'Stanlyvs_00363', // Tu contraseña
+  database: 'gbmct_db' // Nombre de tu base de datos
 });
 
 connection.connect((err) => {
