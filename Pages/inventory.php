@@ -84,6 +84,31 @@
             </tr>
           </thead>
           <tbody id="tablaBody">
+          <?php
+            // Incluimos la conexión a la base de datos
+            include 'JavaScript/app.php';
+            
+            // Realizamos la consulta SQL para obtener los datos
+            $sql = "SELECT * FROM nombre_de_la_tabla"; // Reemplaza 'nombre_de_la_tabla' con el nombre real de tu tabla
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $index = 1;
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>".$index."</td>";
+                    echo "<td>".$row["NombreCliente"]."</td>";
+                    echo "<td>".$row["TipoCinta"]."</td>";
+                    echo "<td>".$row["Descripcion"]."</td>";
+                    echo "<td>".$row["CodigoCinta"]."</td>";
+                    echo "<td>".$row["EnCintoteca"]."</td>";
+                    echo "</tr>";
+                    $index++;
+                }
+            } else {
+                echo "<tr><td colspan='6'>No se encontraron resultados</td></tr>";
+            }
+            ?>
           </tbody>
         </table>
       </div>
@@ -108,5 +133,5 @@
     </div>
   </footer>
 </body>
-<!--Devoloped by Brandon Ventura-->
+<!--Desarrollado por Brandon Ventura-->
 </html>

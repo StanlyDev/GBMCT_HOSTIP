@@ -1,13 +1,13 @@
 {
   "name": "gbm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web para testing de proyecto GBM_CT previo a su lanzamiento a producción.",
   "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "stanvsdev",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,5 +17,13 @@
     "mssql": "^10.0.2",
     "mysql": "^2.18.1",
     "mysql2": "^3.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StanlyDev/GBMCT_HOSTIP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/StanlyDev/GBMCT_HOSTIP/issues"
+  },
+  "homepage": "https://github.com/StanlyDev/GBMCT_HOSTIP#readme"
 }
