@@ -1,8 +1,9 @@
 const express = require('express');
+const cors = require('cors'); // Importa el paquete cors
 const mysql = require('mysql');
 
 const app = express();
-const PORT = 3001;
+app.use(cors());
 
 // Configurar conexión a la base de datos
 const connection = mysql.createConnection({
@@ -45,7 +46,6 @@ app.get('/data', (req, res) => {
   });
 });
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor en ejecución en http://localhost:${PORT}/`);
+app.listen(3002, () => {
+  console.log('Servidor escuchando en el puerto 3001');
 });
