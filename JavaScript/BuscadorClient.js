@@ -60,6 +60,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Asignar automáticamente el número de cliente a las filas existentes
     asignarNumerosSecuenciales();
-
-    // Aquí puedes agregar el código HTML de la tabla si lo deseas
 });
