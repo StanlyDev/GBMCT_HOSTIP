@@ -75,14 +75,14 @@
         <table>
           <thead>
             <tr>
-              <th scope="row">#</th>
-              <th scope="col">Cliente</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Descripcion</th>
-              <th scope="col">Codigo</th>
-              <th scope="col">En Cintoteca Y/N</th>
+                <th scope="row">#</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Código</th>
+                <th scope="col">En Cintoteca Y/N</th>
             </tr>
-          </thead>
+        </thead>        
           <tbody id="tablaBody">
             
           </tbody>
@@ -130,11 +130,11 @@
         
         row.innerHTML = `
           <td>${index + 1}</td>
-          <td>${item.cliente}</td>
-          <td>${item.tipo}</td>
-          <td>${item.descripcion}</td>
-          <td>${item.codigo}</td>
-          <td>${item.en_cintoteca ? 'Si' : 'No'}</td>
+          <td>${item.NombreCliente}</td>
+          <td>${item.TipoCinta}</td>
+          <td>${item.Descripcion}</td>
+          <td>${item.CodigoCinta}</td>
+          <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
         `;
         
         tablaBody.appendChild(row);

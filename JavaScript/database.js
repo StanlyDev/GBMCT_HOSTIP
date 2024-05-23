@@ -10,10 +10,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    host: '185.27.134.145',
-    user: 'if0_36338233',
-    password: 'StanlyVS00363',
-    database: 'if0_36338233_cintotecdb'
+    host: '10.4.27.111',
+    user: 'stanvsdev',
+    password: 'Stanlyvs_00363',
+    database: 'dbmedios_gbm'
 });
 
 // Conectar a la base de datos
@@ -27,7 +27,7 @@ db.connect(err => {
 
 // Ruta para obtener datos
 app.get('/data', (req, res) => {
-    const query = 'SELECT id, cliente, tipo, descripcion, codigo, en_cintoteca FROM yourtable';
+    const query = 'SELECT NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca FROM TableInventory';
     db.query(query, (err, results) => {
         if (err) {
             console.error('Error fetching data:', err);
