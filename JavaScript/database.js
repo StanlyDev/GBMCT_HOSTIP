@@ -6,7 +6,9 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
+// Configurar CORS
 app.use(cors());
+
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({

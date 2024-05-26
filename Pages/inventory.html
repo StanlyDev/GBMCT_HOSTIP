@@ -113,7 +113,7 @@
 
     async function fetchData() {
       try {
-        const response = await fetch('http://localhost:3000/data'); // Asegúrate de que esta URL es correcta
+        const response = await fetch('http://10.4.27.112:3000/data'); // Cambia la URL si es necesario
         const data = await response.json();
         displayData(data);
       } catch (error) {
@@ -140,6 +140,6 @@
         tablaBody.appendChild(row);
       });
     }
-  </script>
+</script>
 </body>
 </html>
