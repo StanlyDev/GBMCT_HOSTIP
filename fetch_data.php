@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-$sql = "SELECT NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca FROM TableInventory";
+$sql = "SELECT NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca FROM TableInventory";
 $result = $conn->query($sql);
 
 $data = array();
