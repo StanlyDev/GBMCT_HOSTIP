@@ -113,7 +113,7 @@
   
     async function fetchData() {
       try {
-        const response = await fetch('/fetch_data.php'); // Cambiado a la ruta relativa del archivo PHP
+        const response = await fetch('/fetch_data.php');
         const data = await response.json();
         displayData(data);
       } catch (error) {
