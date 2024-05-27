@@ -113,7 +113,7 @@
   
     async function fetchData() {
       try {
-        const response = await fetch('http://10.4.27.113/php/fetch_data.php'); // Cambia esta URL a la ruta correcta de tu archivo PHP
+        const response = await fetch('/fetch_data.php'); // Cambiado a la ruta relativa del archivo PHP
         const data = await response.json();
         displayData(data);
       } catch (error) {
@@ -140,6 +140,6 @@
         tablaBody.appendChild(row);
       });
     }
-  </script>  
+  </script>    
 </body>
 </html>
