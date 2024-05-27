@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var nombreClienteValue = getParameterByName('nombreCliente');
   var solicitadoPorValue = getParameterByName('soliX');
   var numeroTicketValue = getParameterByName('sr');
+  var nombre1Value = sessionStorage.getItem("nombre1");
+  var dni1Value = sessionStorage.getItem("dni1");
+  var nombre2Value = sessionStorage.getItem("nombre2");
+  var dni2Value = sessionStorage.getItem("dni2");
 
   // ... (añadir más variables según sea necesario)
 
@@ -25,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("solicitadoPor").textContent = solicitadoPorValue;
   document.getElementById("numeroTicket").textContent = numeroTicketValue;
   document.getElementById("nombreCliente").textContent = origenDocumentoValue;
+  document.getElementById("delivered_by").textContent = nombre1Value + " con DNI " + dni1Value;
+  document.getElementById("received_by").textContent = nombre2Value + " con DNI " + dni2Value;
+
   // ... (actualizar más elementos según sea necesario)
 
   // Obtener la tabla en DocVisor.html
@@ -56,4 +63,4 @@ function getParameterByName(name) {
   var urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
-/*Devoloped by Brandon Ventura*/
+/*Developed by Brandon Ventura*/

@@ -8,8 +8,17 @@ function imprimirValores() {
   var hrEstiValue = formulario.querySelector("#hrEsti").value;
   var fechaIOValue = formulario.querySelector("#FechaIO").value;
   var soliXValue = formulario.querySelector("#SoliX").value;
+  var nombre1Value = document.getElementById("Nombre1").value;
+  var dni1Value = document.getElementById("DNI1").value;
+  var nombre2Value = document.getElementById("Nombre2").value;
+  var dni2Value = document.getElementById("DNI2").value;  
 
   // ... (obtener más valores según sea necesario)
+
+  sessionStorage.setItem("nombre1", nombre1Value);
+  sessionStorage.setItem("dni1", dni1Value);
+  sessionStorage.setItem("nombre2", nombre2Value);
+  sessionStorage.setItem("dni2", dni2Value);
 
   // Obtener los datos para compartir
   var datosParaCompartir = {
