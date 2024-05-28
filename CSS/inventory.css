@@ -209,12 +209,12 @@
   }
 
   .tabla_Cont table th{
-    width: 200px;
+    width: auto;
     border: 2px solid black;
   }
 
   .tabla_Cont table td{
-    width: 200px;
+    width: auto;
     border: 1px solid black;
   }
 
@@ -311,7 +311,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
   }
 
   .navbar {
@@ -319,63 +321,95 @@
     height: 100vh;
   }
 
-  .Info_Cinta p
-  .Info_Cinta input{
-    margin-top: 20px;
-  }
-
-  .modal-content{
-    width: 50%;
-  }
-
-  .tabla_Cont{
-    justify-content: center;
+  .tabla_Cont {
+    position: relative;
+    margin-top: 120px;
     display: flex;
-    text-align: center;
-    margin: auto 0;
-  }
-
-  .tabla_Cont table{
-    margin: auto 0;
     justify-content: center;
-    justify-items: center;
-    margin-top: 150px;
-    border-collapse: collapse;
+    width: auto;
+    overflow-x: auto;
+    z-index: auto;
   }
 
-  .tabla_Cont table th{
-    width: 20px;
-    border: 2px solid black;
-  }
-
-  .tabla_Cont table td{
-    width: 20px;
-    border: 1px solid black;
-  }
-  
-  .tabla_Cont .tabla_invent{
-    height: 0;
-  }
-
-  .botones-container{
+  .botones-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
     display: flex;
     justify-content: flex-end;
-    margin-top: -150px;
-    margin-right: -2px;
-    float: right;
-  }
-
-  .botones-container button{
-    width: 50px;
-  }
-
-  .botones-container p{
-    opacity: 0.0;
-  }
-
-  .botones-container img{
-    padding-top: 5px;
+    z-index: 1000;
   }
 }
+
+@media (max-width: 800px) and (min-width: 360px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .tabla_Cont {
+    position: relative;
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    overflow-x: auto;
+    z-index: auto;
+  }
+
+  .botones-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+  }
+}
+
+@media (max-width: 428px) and (min-width: 414px), (max-width: 926px) and (min-width: 896px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 10px;
+    z-index: 1;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .tabla_Cont {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: auto;
+    overflow-x: auto;
+    z-index: auto;
+  }
+
+  .botones-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1000;
+  }
+}
+
 
   /*Devoloped by Brandon Ventura*/

@@ -65,7 +65,19 @@ button:hover {
     }
 
     .container {
-        margin-right: 20px; /* Ajustar el margen derecho para un mejor aspecto en pantallas pequeñas */
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    body {
+        justify-content: center;
+        background: #02092b !important; /* Agregar !important para asegurar la prioridad */
+        background-image: none; /* Quitar la imagen de fondo */
+    }
+
+    .container {
+        margin: 0 auto;
     }
 }
 

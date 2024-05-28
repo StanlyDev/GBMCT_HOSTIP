@@ -137,7 +137,7 @@ hr {
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto;
   order: 1;
   position: relative; /* Añade esta propiedad */
 }
@@ -154,31 +154,6 @@ hr {
   margin: 0 auto;
   margin-top: 0px; /* Espaciado entre h1 y p */
   margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-  .VMV {
-    flex-direction: row;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 350px; /* Ancho específico para cada caja */
-    height: 200px;
-    margin-right: -100px;
-    margin-left: -100px;
-    margin-top: 150px;
-  }
-
-  .VMV p {
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 0;
-    margin-right: 0px; /* No hay separación entre cajas en pantalla más grande */
-  }
-
-  main {
-    justify-content: center; /* Centra las cajas en pantallas más grandes */
-  }
 }
 
 .overlay {
@@ -263,6 +238,7 @@ main {
   }
 
   .VMV {
+    margin: 0 auto;
     margin-top: 20px;
     justify-content: center;
     font-size: 10px;
@@ -277,6 +253,213 @@ main {
   .VMV li {
     font-size: 10px;
     width: 200px;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .VMV {
+    margin: 0 auto;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px; /* Ancho específico para cada caja */
+    height: 200px;
+    margin-top: 100px;
+  }
+
+  .VMV p {
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 0;
+    margin-right: 0px; /* No hay separación entre cajas en pantalla más grande */
+  }
+
+  main {
+    justify-content: center; /* Centra las cajas en pantallas más grandes */
+  }
+}
+
+@media (max-width: 767px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 50%;
+  }
+
+  .VMV {
+    margin: 0 auto;
+    margin-top: 20px;
+    justify-content: center;
+    font-size: 10px;
+    width: 250px;
+  }
+
+  .VMV h1 {
+    font-size: 15px;
+  }
+
+  .VMV p,
+  .VMV li {
+    font-size: 10px;
+    width: 200px;
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* Estilos para resoluciones de 768x1024 */
+@media (max-width: 1024px) and (min-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 70%; /* Ajuste del ancho para pantallas de 768x1024 */
+  }
+
+  .VMV {
+    margin: 0 auto;
+    margin-top: 30px; /* Ajuste del margen superior */
+    justify-content: center;
+    font-size: 12px;
+    width: 300px; /* Ajuste del ancho */
+  }
+
+  .VMV h1 {
+    font-size: 18px; /* Ajuste del tamaño de fuente */
+  }
+
+  .VMV p,
+  .VMV li {
+    font-size: 12px;
+    width: 250px; /* Ajuste del ancho */
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 1114px) and (min-width: 705px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 60%; /* Ajuste del ancho para pantallas de 1114x705 */
+  }
+
+  .VMV {
+    margin: 0 auto;
+    margin-top: 50px;
+    justify-content: center;
+    font-size: 14px;
+    width: 250px; /* Ajuste del ancho */
+  }
+
+  .VMV h1 {
+    font-size: 20px; /* Ajuste del tamaño de fuente */
+  }
+
+  .VMV p,
+  .VMV li {
+    font-size: 14px;
+    width: 280px; /* Ajuste del ancho */
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* Estilos para resoluciones de 884x1104 */
+@media (max-width: 1104px) and (min-width: 884px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 65%; /* Ajuste del ancho para pantallas de 884x1104 */
+  }
+
+  .VMV {
+    margin: 0 auto;
+    margin-top: 28px; /* Ajuste del margen superior */
+    justify-content: center;
+    font-size: 13px;
+    width: 290px; /* Ajuste del ancho */
+  }
+
+  .VMV h1 {
+    font-size: 19px; /* Ajuste del tamaño de fuente */
+  }
+
+  .VMV p,
+  .VMV li {
+    font-size: 13px;
+    width: 240px; /* Ajuste del ancho */
+  }
+
+  .navbar {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* Estilos para resoluciones de 1280x800 */
+@media (max-width: 1280px) and (min-width: 800px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    width: 70%; /* Ajuste del ancho para pantallas de 1280x800 */
+  }
+
+  .VMV {
+    margin: 0 auto;
+    margin-top: 100px; /* Ajuste del margen superior */
+    justify-content: center;
+    font-size: 14px;
+    width: 320px; /* Ajuste del ancho */
+  }
+
+  .VMV h1 {
+    font-size: 20px; /* Ajuste del tamaño de fuente */
+  }
+
+  .VMV p,
+  .VMV li {
+    font-size: 14px;
+    width: 280px; /* Ajuste del ancho */
   }
 
   .navbar {
