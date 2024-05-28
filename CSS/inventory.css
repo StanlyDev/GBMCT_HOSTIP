@@ -58,6 +58,15 @@
     width: 25px;
   }
 
+  .Add_Invent{
+    float: right;
+    padding: 25px;
+  }
+
+  .Add_Invent img{
+    width: 25px;
+  }
+
   .navbar {
     display: none;
     position: absolute;
