@@ -12,7 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    host: '10.4.27.113',
+    host: '10.4.27.112',
     user: 'stanvsdev',
     password: 'Stanlyvs_00363',
     database: 'dbmedios_gbm'
