@@ -4,6 +4,10 @@ function showOptions() {
         toggleMenu(); // Aquí deberías tener una función que cierra el menú, ajusta según tu implementación
     }
 
+    if (window.innerWidth <= 1280) {
+        toggleMenu(); // Aquí deberías tener una función que cierra el menú, ajusta según tu implementación
+    }
+
     // Mostrar el modal
     document.getElementById('myModal').style.display = 'block';
 }
