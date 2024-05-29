@@ -1,41 +1,47 @@
 <?php
-session_start(); // Iniciar sesión
+$servername = "10.4.27.113";
+$username = "stanvsdev";
+$password = "Stanlyv_00363";
+$dbname = "dbmedios_gbm";
 
-// Comprobar si el formulario se envió
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Verificar si se enviaron datos de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recibir los datos del formulario
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-    // Conexión a la base de datos
-    $servername = "10.4.27.113";
-    $username = "stanvsdev";
-    $password = "Stanlyv_00363";
-    $dbname = "dbmedios_gbm";
+    // Escapar caracteres especiales para evitar inyección SQL
+    $username = $conn->real_escape_string($username);
+    $password = $conn->real_escape_string($password);
 
-    // Crear conexión
-    $conn = new mysqli($servername, $username_db, $password_db, $dbname);
-
-    // Verificar la conexión
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-    }
-
-    // Consulta SQL para verificar las credenciales del usuario
-    $sql = "SELECT * FROM usuarios WHERE username='$username' AND password='$password'";
+    // Consulta para buscar el usuario en la tabla 'usuarios'
+    $sql = "SELECT id, username, role FROM usuarios WHERE username='$username' AND password='$password'";
     $result = $conn->query($sql);
 
-    // Verificar si se encontró un usuario con las credenciales proporcionadas
-    if ($result->num_rows > 0) {
-        // Iniciar sesión y redirigir al usuario a la página de inicio
-        $_SESSION['username'] = $username;
-        header("Location: /Pages/HomePage.html"); // Cambia 'inicio.php' por la página a la que deseas redirigir al usuario
-    } else {
-        // Mostrar mensaje de error si las credenciales son incorrectas
-        echo "<p style='color:red;'>Usuario o contraseña incorrectos.</p>";
-    }
+    if ($result->num_rows == 1) {
+        // Usuario encontrado, iniciar sesión
+        session_start();
+        $row = $result->fetch_assoc();
+        $_SESSION["id"] = $row["id"];
+        $_SESSION["username"] = $row["username"];
+        $_SESSION["role"] = $row["role"];
 
-    // Cerrar conexión a la base de datos
-    $conn->close();
+        // Redireccionar a la página de inicio o a donde sea necesario
+        header("Location: welcome.php");
+        exit();
+    } else {
+        // Usuario no encontrado, mostrar mensaje de error
+        echo "Usuario o contraseña incorrectos";
+    }
 }
+
+// Cerrar conexión MySQL
+$conn->close();
 ?>

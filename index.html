@@ -6,11 +6,10 @@
     <title>Login</title>
     <link rel="stylesheet" href="/Index.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
-    <script src="/Index.js" defer></script>
 </head>
 <body style="background: url('/IMG/Back/IdxBack.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="container">
-        <form id="loginForm" action="/login.php" method="POST" onsubmit="event.preventDefault(); login();">
+        <form id="loginForm" method="POST" action="login.php">
             <h2>GBM | CT</h2>
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required style="color: white;">
