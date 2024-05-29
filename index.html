@@ -19,7 +19,13 @@
             <br>
             <button type="submit">Iniciar sesión</button>
         </form>        
-        <p id="message" style="color: red;"><?php echo isset($_SESSION["errorMsg"]) ? $_SESSION["errorMsg"] : ""; ?></p>
+        <?php
+        session_start();
+        if (isset($_SESSION["errorMsg"])) {
+            echo '<p id="message" style="color: red;">' . $_SESSION["errorMsg"] . '</p>';
+            unset($_SESSION["errorMsg"]);
+        }
+        ?>
     </div>
 </body>
 <!-- Developed by Brandon Ventura -->
