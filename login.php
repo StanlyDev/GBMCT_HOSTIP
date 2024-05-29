@@ -12,6 +12,9 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
+// Inicializar mensaje de error vacío
+$errorMsg = "";
+
 // Verificar si se enviaron datos de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -37,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: welcome.php");
         exit();
     } else {
-        // Usuario no encontrado, mostrar mensaje de error
-        echo "Usuario o contraseña incorrectos";
+        // Usuario no encontrado, establecer mensaje de error
+        $errorMsg = "Usuario o contraseña incorrectos";
     }
 }
 
