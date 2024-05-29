@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = "10.4.27.113";
 $username = "stanvsdev";
 $password = "Stanlyv_00363";
@@ -25,10 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($hashedPassword, $role);
         $stmt->fetch();
-        
+
         // Verificar la contraseña
         if (password_verify($inputPassword, $hashedPassword)) {
-            session_start();
             $_SESSION['username'] = $inputUsername;
             $_SESSION['role'] = $role;
             echo json_encode(["success" => true, "message" => "Inicio de sesión exitoso", "role" => $role]);

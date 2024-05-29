@@ -10,7 +10,7 @@
 </head>
 <body style="background: url('/IMG/Back/IdxBack.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="container">
-        <form id="loginForm">
+        <form id="loginForm" onsubmit="event.preventDefault(); login();">
             <h2>GBM | CT</h2>
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required style="color: white;">
@@ -18,7 +18,7 @@
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required style="color: white;">
             <br>
-            <button type="button" onclick="login()">Iniciar sesión</button>
+            <button type="submit">Iniciar sesión</button>
         </form>
         <p id="message" style="color: red;"></p>
     </div>

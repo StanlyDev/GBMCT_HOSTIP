@@ -19,7 +19,7 @@ function login() {
             messageElement.style.color = 'green';
             messageElement.textContent = 'Inicio de sesión exitoso';
             setTimeout(() => {
-                window.location.href = '/Pages/HomePage.html';
+                window.location.href = '/Pages/HomePage.html'; // Cambia a la ruta de tu página de destino
             }, 2000);
         } else {
             messageElement.style.color = 'red';
