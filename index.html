@@ -10,7 +10,7 @@
 </head>
 <body style="background: url('/IMG/Back/IdxBack.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="container">
-        <form id="loginForm" onsubmit="event.preventDefault(); login();">
+        <form id="loginForm" action="/login.php" method="POST" onsubmit="event.preventDefault(); login();">
             <h2>GBM | CT</h2>
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required style="color: white;">
@@ -19,7 +19,7 @@
             <input type="password" id="password" name="password" required style="color: white;">
             <br>
             <button type="submit">Iniciar sesión</button>
-        </form>
+        </form>        
         <p id="message" style="color: red;"></p>
     </div>
 </body>
