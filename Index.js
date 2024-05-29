@@ -3,7 +3,7 @@ function login() {
     var password = document.getElementById("password").value;
     var messageElement = document.getElementById("message");
 
-    fetch('/php/login.php', {
+    fetch('/login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
