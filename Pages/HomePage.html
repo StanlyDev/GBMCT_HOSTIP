@@ -1,13 +1,3 @@
-<?php
-session_start();
-
-// Verificar si la sesión del usuario está activa y si es administrador o root
-if (!isset($_SESSION["username"]) || ($_SESSION["role"] !== "admin" && $_SESSION["role"] !== "root")) {
-    // Si no ha iniciado sesión como administrador o root, redirigir al formulario de inicio de sesión
-    header("Location: /index.html");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,9 +40,6 @@ if (!isset($_SESSION["username"]) || ($_SESSION["role"] !== "admin" && $_SESSION
                 <a href="/Pages/inventory.html"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
-                <?php if($_SESSION["role"] === "admin" || $_SESSION["role"] === "root"): ?>
-                    <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/user-plus-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Crear usuario</li></a>
-                <?php endif; ?>
             </ul>
         </nav>
         <!--Fin Menu-->
