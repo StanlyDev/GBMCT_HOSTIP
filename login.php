@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Usuario no encontrado, establecer mensaje de error
         $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
-        header("Location: index.html"); // Redireccionar al formulario de inicio de sesión
         exit();
     }
 }
