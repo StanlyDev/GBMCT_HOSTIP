@@ -1,48 +1,41 @@
 <?php
-session_start();
-$servername = "10.4.27.113";
-$username = "stanvsdev";
-$password = "Stanlyv_00363";
-$dbname = "dbmedios_gbm";
+session_start(); // Iniciar sesión
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Comprobar si el formulario se envió
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recibir los datos del formulario
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+    // Conexión a la base de datos
+    $servername = "10.4.27.113";
+    $username = "stanvsdev";
+    $password = "Stanlyv_00363";
+    $dbname = "dbmedios_gbm";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $inputUsername = $_POST['username'];
-    $inputPassword = $_POST['password'];
+    // Crear conexión
+    $conn = new mysqli($servername, $username_db, $password_db, $dbname);
 
-    // Preparar la consulta SQL para prevenir inyecciones SQL
-    $stmt = $conn->prepare("SELECT password, role FROM usuarios WHERE username = ?");
-    $stmt->bind_param("s", $inputUsername);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($hashedPassword, $role);
-        $stmt->fetch();
-
-        // Verificar la contraseña
-        if (password_verify($inputPassword, $hashedPassword)) {
-            $_SESSION['username'] = $inputUsername;
-            $_SESSION['role'] = $role;
-            echo json_encode(["success" => true, "message" => "Inicio de sesión exitoso", "role" => $role]);
-        } else {
-            echo json_encode(["success" => false, "message" => "Credenciales incorrectas"]);
-        }
-    } else {
-        echo json_encode(["success" => false, "message" => "Credenciales incorrectas"]);
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
     }
 
-    $stmt->close();
-} else {
-    echo json_encode(["success" => false, "message" => "Método no permitido"]);
-}
+    // Consulta SQL para verificar las credenciales del usuario
+    $sql = "SELECT * FROM usuarios WHERE username='$username' AND password='$password'";
+    $result = $conn->query($sql);
 
-$conn->close();
+    // Verificar si se encontró un usuario con las credenciales proporcionadas
+    if ($result->num_rows > 0) {
+        // Iniciar sesión y redirigir al usuario a la página de inicio
+        $_SESSION['username'] = $username;
+        header("Location: /Pages/HomePage.html"); // Cambia 'inicio.php' por la página a la que deseas redirigir al usuario
+    } else {
+        // Mostrar mensaje de error si las credenciales son incorrectas
+        echo "<p style='color:red;'>Usuario o contraseña incorrectos.</p>";
+    }
+
+    // Cerrar conexión a la base de datos
+    $conn->close();
+}
 ?>

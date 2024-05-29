@@ -1,34 +1,15 @@
 function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var messageElement = document.getElementById("message");
+    // Obtener los valores de los campos de usuario y contraseña
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
 
-    fetch('/login.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-            username: username,
-            password: password
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            messageElement.style.color = 'green';
-            messageElement.textContent = 'Inicio de sesión exitoso';
-            setTimeout(() => {
-                window.location.href = '/Pages/HomePage.html'; // Cambia a la ruta de tu página de destino
-            }, 2000);
-        } else {
-            messageElement.style.color = 'red';
-            messageElement.textContent = data.message;
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        messageElement.style.color = 'red';
-        messageElement.textContent = 'Hubo un error al iniciar sesión';
-    });
+    // Validar que los campos no estén vacíos
+    if (username === '' || password === '') {
+        // Mostrar un mensaje de error si algún campo está vacío
+        document.getElementById('message').innerText = 'Por favor, completa todos los campos.';
+        return false; // Evitar el envío del formulario
+    }
+
+    // Si la validación pasa, permitir que el formulario se envíe
+    return true;
 }
