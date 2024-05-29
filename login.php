@@ -37,13 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["username"] = $row["username"];
         $_SESSION["role"] = $row["role"];
 
-        // Redireccionar a la página de inicio o a donde sea necesario
-        header("Location: /Pages/HomePage.html");
+        // Enviar respuesta de éxito al cliente
+        echo json_encode(array("success" => true));
         exit();
     } else {
         // Usuario no encontrado, establecer mensaje de error
-        $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
-        header("Location: index.html"); // Redireccionar al formulario de inicio de sesión
+        $errorMsg = "Usuario o contraseña incorrectos";
+        echo json_encode(array("success" => false, "errorMsg" => $errorMsg));
         exit();
     }
 }
