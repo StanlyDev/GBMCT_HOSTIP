@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "10.4.27.113";
 $username = "stanvsdev";
 $password = "Stanlyv_00363";
@@ -30,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         // Usuario encontrado, iniciar sesión
-        session_start();
         $row = $result->fetch_assoc();
         $_SESSION["id"] = $row["id"];
         $_SESSION["username"] = $row["username"];
@@ -41,7 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     } else {
         // Usuario no encontrado, establecer mensaje de error
-        $errorMsg = "Usuario o contraseña incorrectos";
+        $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
+        header("Location: index.html"); // Redireccionar al formulario de inicio de sesión
+        exit();
     }
 }
 
