@@ -19,14 +19,14 @@ $errorMsg = "";
 
 // Verificar si se enviaron datos de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
+    $email = $_POST["email"]; // Cambiado de username a email
     $password = $_POST["password"];
 
     // Escapar caracteres especiales para evitar inyección SQL
     $email = $conn->real_escape_string($email);
     $password = $conn->real_escape_string($password);
 
-    // Consulta para buscar el usuario en la tabla 'usuarios' por email
+    // Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
     $sql = "SELECT id, username, role FROM usuarios WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
