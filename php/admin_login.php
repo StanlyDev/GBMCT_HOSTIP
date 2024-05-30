@@ -15,20 +15,20 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
+    $email = $_POST["email"]; // Cambiado de username a email
     $password = $_POST["password"];
 
     // Escapar caracteres especiales para evitar inyección SQL
-    $username = $conn->real_escape_string($username);
+    $email = $conn->real_escape_string($email);
     $password = $conn->real_escape_string($password);
 
-    // Consulta para buscar el administrador
-    $sql = "SELECT id, username, role FROM usuarios WHERE username='$username' AND password='$password' AND (role='admin' OR role='root')";
+    // Consulta para buscar al administrador por email y permitir que tanto los administradores como los usuarios root inicien sesión
+    $sql = "SELECT id, username, role FROM usuarios WHERE email='$email' AND password='$password' AND (role='admin' OR role='root')";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         // Admin encontrado, permitir creación de usuario
-        $_SESSION["admin"] = $username;
+        $_SESSION["admin"] = $email; // Cambiado de username a email
         header("Location: /Pages/create_user.html");
         exit();
     } else {
