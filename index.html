@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/Index.css">
-    <script defer src="/script.js"></script>
+    <link rel="stylesheet" href="/CSS/Index.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
+    <script defer src="/JavaScript/displayscript.js"></script> <!-- Agregar script.js -->
 </head>
 <body style="background: url('/IMG/Back/IdxBack.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
     <div class="container">
-        <form id="loginForm" method="POST" action="/login.php">
+        <form id="loginForm" method="POST" action="/php/login.php">
             <h2>GBM | CT</h2>
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required style="color: white;">
@@ -21,46 +21,21 @@
             <button type="submit">Iniciar sesión</button>
         </form>        
         <p id="message" style="color: red;"><?php echo isset($_SESSION["errorMsg"]) ? $_SESSION["errorMsg"] : ""; ?></p>
-        <button id="createUserBtn" class="modal-button">Crear Usuario</button>
+        <button id="createUserBtn" onclick="showAdminLogin()">Crear Usuario</button>
     </div>
-    <!-- Ventana emergente para admin login -->
+    <!-- Ventana emergente para login de admin -->
     <div id="adminLoginModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeAdminLoginModal()">&times;</span>
-            <h2>Iniciar sesión como Administrador - Root</h2>
-            <form id="adminLoginForm">
-                <label for="adminUsername">Usuario Admin:</label>
-                <input type="text" id="adminUsername" name="adminUsername" required>
+            <span class="close" onclick="closeAdminLogin()">&times;</span>
+            <form id="adminLoginForm" method="POST" action="/php/admin_login.php">
+                <h2>Login de Administrador</h2>
+                <label for="adminUsername">Usuario:</label>
+                <input type="text" id="adminUsername" name="username" required>
                 <br>
-                <label for="adminPassword">Contraseña Admin:</label>
-                <input type="password" id="adminPassword" name="adminPassword" required>
+                <label for="adminPassword">Contraseña:</label>
+                <input type="password" id="adminPassword" name="password" required>
                 <br>
-                <button type="button" onclick="adminLogin()">Iniciar sesión</button>
-            </form>
-        </div>
-    </div>
-    <!-- Ventana emergente para crear usuario -->
-    <div id="createUserModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeCreateUserModal()">&times;</span>
-            <h2>Crear Usuario</h2>
-            <form id="createUserForm" method="POST" action="/create_user.php">
-                <label for="newUsername">Nombre de Usuario:</label>
-                <input type="text" id="newUsername" name="newUsername" required>
-                <br>
-                <label for="newEmail">Correo:</label>
-                <input type="email" id="newEmail" name="newEmail" required>
-                <br>
-                <label for="newPassword">Contraseña:</label>
-                <input type="password" id="newPassword" name="newPassword" required>
-                <br>
-                <label for="newRole">Rol:</label>
-                <select id="newRole" name="newRole" required>
-                    <option value="operator">Operador</option>
-                    <option value="admin">Administrador</option>
-                </select>
-                <br>
-                <button type="submit">Crear Usuario</button>
+                <button type="submit">Iniciar sesión</button>
             </form>
         </div>
     </div>
