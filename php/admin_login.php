@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // Admin encontrado, permitir creación de usuario
         $_SESSION["email"] = $email; // Cambiado de username a email
-        header("Location: /Pages/create_user.html");
+        header("Location: /Pages/create_user.php");
         exit();
     } else {
         // Credenciales incorrectas

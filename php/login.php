@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["role"] = $row["role"];
     
         // Redireccionar a la página de inicio o a donde sea necesario
-        header("Location: /Pages/HomePage.html");
+        header("Location: /Pages/HomePage.php");
         exit();    
     } else {
         // Usuario no encontrado, establecer mensaje de error
