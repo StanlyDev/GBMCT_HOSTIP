@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         // Admin encontrado, permitir creación de usuario
-        $_SESSION["admin"] = $email; // Cambiado de username a email
+        $_SESSION["email"] = $email; // Cambiado de username a email
         header("Location: /Pages/create_user.html");
         exit();
     } else {
