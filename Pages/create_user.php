@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
-if (!isset($_SESSION["id"])) {
+// Verificar si el usuario ha iniciado sesión y tiene el rol de "root" o "admin", de lo contrario, redirigirlo a la página de inicio de sesión
+if (!isset($_SESSION["id"]) || ($_SESSION["role"] !== "root" && $_SESSION["role"] !== "admin")) {
     header("Location: /index.html");
     exit();
 }
