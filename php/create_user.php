@@ -9,7 +9,7 @@ if (!isset($_SESSION["admin"])) {
 
 $servername = "10.4.27.113";
 $username = "stanvsdev";
-$password = "Stanlyv_00363";
+$password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
 
 // Crear conexión
