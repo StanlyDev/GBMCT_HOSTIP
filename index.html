@@ -44,7 +44,7 @@
             <span class="close" onclick="closeCreateUserModal()">&times;</span>
             <h2>Crear Usuario</h2>
             <form id="createUserForm" method="POST" action="/create_user.php">
-                <label for="newUsername">Nuevo Usuario:</label>
+                <label for="newUsername">Nombre de Usuario:</label>
                 <input type="text" id="newUsername" name="newUsername" required>
                 <br>
                 <label for="newEmail">Correo:</label>
@@ -55,9 +55,8 @@
                 <br>
                 <label for="newRole">Rol:</label>
                 <select id="newRole" name="newRole" required>
-                    <option value="user">Usuario</option>
-                    <option value="admin">Admin</option>
-                    <option value="root">Root</option>
+                    <option value="operator">Operador</option>
+                    <option value="admin">Administrador</option>
                 </select>
                 <br>
                 <button type="submit">Crear Usuario</button>
