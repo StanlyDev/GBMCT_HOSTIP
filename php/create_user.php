@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-// Verificar si el administrador ha iniciado sesión
-if (!isset($_SESSION["admin"])) {
-    header("Location: /index.html");
-    exit();
-}
-
 $servername = "10.4.27.113";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
