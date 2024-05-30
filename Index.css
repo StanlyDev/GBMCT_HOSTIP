@@ -81,5 +81,68 @@ button:hover {
     }
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    color: white;
+    background-color: transparent;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid white;
+    width: 80%;
+    max-width: 500px; /* Ancho máximo para la ventana emergente */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.modal-content input{
+    color: white;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0px;
+}
+
+button.modal-button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button.modal-button:hover {
+    background-color: #02092b;
+    color: white;
+    border: #02092b solid 2px;
+}
+
 
 /*Devoloped by Brandon Ventura*/

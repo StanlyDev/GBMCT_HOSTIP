@@ -20,7 +20,52 @@
             <button type="submit">Iniciar sesión</button>
         </form>        
         <p id="message" style="color: red;"><?php echo isset($_SESSION["errorMsg"]) ? $_SESSION["errorMsg"] : ""; ?></p>
+        <button id="createUserBtn" class="modal-button">Crear Usuario</button>
     </div>
+    <!-- Ventana emergente para admin login -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdminLoginModal()">&times;</span>
+            <h2>Iniciar sesión como Administrador - Root</h2>
+            <form id="adminLoginForm">
+                <label for="adminUsername">Usuario Admin:</label>
+                <input type="text" id="adminUsername" name="adminUsername" required>
+                <br>
+                <label for="adminPassword">Contraseña Admin:</label>
+                <input type="password" id="adminPassword" name="adminPassword" required>
+                <br>
+                <button type="button" onclick="adminLogin()">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
+    <!-- Ventana emergente para crear usuario -->
+    <div id="createUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCreateUserModal()">&times;</span>
+            <h2>Crear Usuario</h2>
+            <form id="createUserForm" method="POST" action="/create_user.php">
+                <label for="newUsername">Nuevo Usuario:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+                <br>
+                <label for="newEmail">Correo:</label>
+                <input type="email" id="newEmail" name="newEmail" required>
+                <br>
+                <label for="newPassword">Contraseña:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+                <br>
+                <label for="newRole">Rol:</label>
+                <select id="newRole" name="newRole" required>
+                    <option value="user">Usuario</option>
+                    <option value="admin">Admin</option>
+                    <option value="root">Root</option>
+                </select>
+                <br>
+                <button type="submit">Crear Usuario</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
 </body>
 <!-- Developed by Brandon Ventura -->
 </html>
