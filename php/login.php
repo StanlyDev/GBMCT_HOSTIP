@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 $errorMsg = "";
 
 // Verificar si se enviaron datos de inicio de sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["password"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"]; // Cambiado de username a email
     $password = $_POST["password"];
 
