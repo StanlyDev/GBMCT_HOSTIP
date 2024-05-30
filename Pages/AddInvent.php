@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+if (!isset($_SESSION["id"])) {
+    header("Location: /index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,7 +33,7 @@
                 colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
                 style="width:30px;height:30px">
             </lord-icon></a></div>
-        <div class="home"><a href="/Pages/HomePage.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <div class="home"><a href="/Pages/HomePage.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
             <lord-icon
                 src="https://cdn.lordicon.com/wmwqvixz.json"
                 trigger="morph"
@@ -37,7 +46,7 @@
         <nav class="navbar">
             <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
             <ul>
-                <a href="/Pages/inventory.html"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
+                <a href="/Pages/inventory.php"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
             </ul>
@@ -132,8 +141,8 @@
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
             <p>Elige una opción:</p><hr>
-            <a href="/Pages/IngresoDeMedios.html">Ingreso de Medios</a>
-            <a href="/Pages/SalidaDeMedios.html">Salida de Medios</a>
+            <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+            <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
         </div>
     </div>
     <footer>
