@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Usuario encontrado, iniciar sesión
         $row = $result->fetch_assoc();
         $_SESSION["id"] = $row["id"];
-        $_SESSION["username"] = $row["email"]; // Cambiar "username" por "email"
+        $_SESSION["email"] = $row["email"]; // Cambiar "username" por "email"
         $_SESSION["role"] = $row["role"];
     
         // Redireccionar a la página de inicio o a donde sea necesario
