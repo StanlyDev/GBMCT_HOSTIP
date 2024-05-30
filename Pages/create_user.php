@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Verificar si el usuario ha iniciado sesión y tiene el rol de "root" o "admin", de lo contrario, redirigirlo al formulario de inicio de sesión
+if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "root" && $_SESSION["role"] !== "admin")) {
+    header("Location: /index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,6 +15,7 @@
     <title>Crear Usuario</title>
     <link rel="stylesheet" href="/CSS/Index.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
+    <script defer src="/JavaScript/logout.js"></script>
 </head>
 <body>
     <div class="container">

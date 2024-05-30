@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+if (!isset($_SESSION["id"])) {
+    header("Location: /index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +17,7 @@
     <script defer src="/JavaScript/script.js"></script>
     <script defer src="/JavaScript/windowsDoc.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
+    <script defer src="/JavaScript/logout.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
