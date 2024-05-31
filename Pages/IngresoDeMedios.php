@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
-if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,6 +16,7 @@ if (!isset($_SESSION["id"])) {
 </head>
 <body>
     <div class="overlay"></div>
+    <!--Inicio Cabecera-->
     <header>
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
@@ -42,19 +34,21 @@ if (!isset($_SESSION["id"])) {
                     src="https://cdn.lordicon.com/eoacwhtz.json"
                     trigger="hover"
                     stroke="bold"
-                    colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
+                    colors="primary:#ffffff,secondary:#02092b"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
         </div>
-        <nav class="navbar"><br>
-            <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
+        <!--Inicio Menu-->
+        <nav class="navbar">
+            <button class="close-btn" onclick="toggleMenu()">✕</button>
             <ul>
-                <a href="/Pages/inventory.php"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
-                <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
-                <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
-                <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
+                <li><a href="/Pages/inventory.php"><img src="/IMG/Icon/box2-fill.svg" class="icon">Inventario en Cintoteca</a></li>
+                <li><a href="#" class="histo" onclick="histoAlert()"><img src="/IMG/Icon/arrow-counterclockwise.svg" class="icon">Historial I/O</a></li>
+                <li><a href="#" class="generate-doc" onclick="showOptions()"><img src="/IMG/Icon/file-earmark-text-fill.svg" class="icon">Generar Documento</a></li>
+                <li><a href="/Pages/create_user.php"><img src="/IMG/Icon/person-circle.svg" class="icon">Crear Usuario</a></li>
             </ul>
         </nav>
+        <!--Fin Menu-->
     </header>
     <main>
         <div class="title_dcgenenator">
@@ -63,52 +57,52 @@ if (!isset($_SESSION["id"])) {
         </div>
         <div class="doc_info">
             <form action="" id="FrmCinta">
-                <div class="input_container_1">
-                    <div class="SR">
+                <div class="input_container">
+                    <div class="form-group">
                         <label for="SR">Ticket (SR):</label>
                         <input type="text" id="SR" name="SR">
                     </div>
-                    <div class="Ori">
+                    <div class="form-group">
                         <label for="Origen">Origen:</label>
-                        <input type="text" placeholder="Nombre del Cliente" id="Origen" class="inp" name="Origen">
+                        <input type="text" placeholder="Nombre del Cliente" id="Origen" name="Origen">
                     </div>
-                    <div class="Dest">
+                    <div class="form-group">
                         <label for="Destino">Destino:</label>
                         <input type="text" placeholder="GBM" id="Destino" name="Destino">
                     </div>
                 </div>
-                <div class="input_container_2">
-                    <div class="HRest">
+                <div class="input_container">
+                    <div class="form-group">
                         <label for="hrEsti">Hora estimada:</label>
                         <input type="time" id="hrEsti" name="hrEsti">
                     </div>
-                    <div class="FechaS">
+                    <div class="form-group">
                         <label for="FechaIO">Fecha:</label>
                         <input type="date" id="FechaIO" name="FechaIO">
                     </div>
-                    <div class="SolX">
+                    <div class="form-group">
                         <label for="SoliX">Solicitado por:</label>
                         <input type="text" id="SoliX" name="SoliX">
                     </div>
                 </div>
                 <hr>
                 <div class="Info_cinta">
-                    <div class="input_container_3">
-                        <div class="TCinta">
+                    <div class="input_container">
+                        <div class="form-group">
                             <label for="TypeCinta">Tipo:</label>
-                            <input type="text" class="TipoCint" id="TypeCinta" name="TypeCinta">
+                            <input type="text" id="TypeCinta" name="TypeCinta">
                         </div>
-                        <div class="Desc">
+                        <div class="form-group">
                             <label for="DesCin">Descripcion:</label>
                             <input type="text" id="DesCin" name="DesCin">
                         </div>
-                        <div class="Code">
+                        <div class="form-group">
                             <label for="CCinta">Codigo:</label>
                             <input type="text" id="CCinta" name="CCinta">
                         </div>
-                    </div><br>
+                    </div>
                     <div class="AgreBtn">
-                        <button style="margin-right: 20px;" type="submit" onclick="agregarCinta()">
+                        <button type="submit" onclick="agregarCinta()">
                             <img src="/IMG/Icon/plus-lg.svg"> Agregar
                         </button>
                     </div>
@@ -116,8 +110,8 @@ if (!isset($_SESSION["id"])) {
             </form>
             <div class="List_Preview">
                 <div class="tabla_Cont">
-                    <div class="tabla_preview">
-                        <table id="tablaCintas">
+                    <table id="tablaCintas">
+                        <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Cliente</th>
@@ -125,54 +119,56 @@ if (!isset($_SESSION["id"])) {
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <!-- ... Contenido de la tabla ... -->
-                        </table>
-                    </div>
-                </div><br>
+                        </tbody>
+                    </table>
+                </div>
                 <div id="checkboxFirmas">
-                  <label for="mostrarFirmas"><b>Agregar firma</b></label>
-                  <input type="checkbox" id="mostrarFirmas">
-              </div>
+                    <label for="mostrarFirmas"><b>Agregar firma</b></label>
+                    <input type="checkbox" id="mostrarFirmas">
+                </div>
                 <div id="firmaContainer1" class="oculto">
-                <center><p style="font-size: 15px; color: red;"><em>En caso de no poder realizar la firma dejar solo Nombre y DNI (Opcion de firma en desarrollo)</em></p></center><br>
-                  <center><h3>Entregado por:</h3></center>
-                  <div class="input_container_4">
-                      <div class="TCinta">
-                          <label for="Nombre1">Nombre:</label>
-                          <input type="text" class="TipoCint" id="Nombre1" name="Nombre1">
-                      </div>
-                      <div class="Desc">
-                          <label for="DNI1">DNI:</label>
-                          <input type="text" id="DNI1" name="DNI1">
-                      </div>
-                  </div>
-                  <canvas id="lienzoFirma1" width="300" height="150"></canvas>
-                  <br>
-                  <center><button onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
-              </div><br>
-              <div id="firmaContainer2" class="oculto">
-                  <center><h3>Recibido por:</h3></center>
-                  <div class="input_container_4">
-                      <div class="TCinta">
-                          <label for="Nombre2">Nombre:</label>
-                          <input type="text" class="TipoCint" id="Nombre2" name="Nombre2">
-                      </div>
-                      <div class="Desc">
-                          <label for="DNI2">DNI:</label>
-                          <input type="text" id="DNI2" name="DNI2">
-                      </div>
-                  </div>
-                  <canvas id="lienzoFirma2" width="300" height="150"></canvas>
-                  <br>
-                  <center><button onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
-              </div>
-          </div>
+                    <center><p style="font-size: 15px; color: red;"><em>En caso de no poder realizar la firma dejar solo Nombre y DNI (Opcion de firma en desarrollo)</em></p></center>
+                    <h3>Entregado por:</h3>
+                    <div class="input_container">
+                        <div class="form-group">
+                            <label for="Nombre1">Nombre:</label>
+                            <input type="text" id="Nombre1" name="Nombre1">
+                        </div>
+                        <div class="form-group">
+                            <label for="DNI1">DNI:</label>
+                            <input type="text" id="DNI1" name="DNI1">
+                        </div>
+                    </div>
+                    <canvas id="lienzoFirma1" width="300" height="150"></canvas>
+                    <center><button onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
+                </div>
+                <div id="firmaContainer2" class="oculto">
+                    <h3>Recibido por:</h3>
+                    <div class="input_container">
+                        <div class="form-group">
+                            <label for="Nombre2">Nombre:</label>
+                            <input type="text" id="Nombre2" name="Nombre2">
+                        </div>
+                        <div class="form-group">
+                            <label for="DNI2">DNI:</label>
+                            <input type="text" id="DNI2" name="DNI2">
+                        </div>
+                    </div>
+                    <canvas id="lienzoFirma2" width="300" height="150"></canvas>
+                    <center><button onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
+                </div>
+            </div>
         </div>
     </main>
+    <!-- Ventana emergente -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
-            <p>Elige una opción:</p><hr>
+            <p>Elige una opción:</p>
+            <hr>
             <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
             <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
         </div>
@@ -182,10 +178,11 @@ if (!isset($_SESSION["id"])) {
             <a href="/Pages/DocVisor.html" target="_blank">
                 <button onclick="imprimirValores()">
                     <img src="/IMG/Icon/file-earmark-pdf-fill.svg">
-                    <img src="/IMG/Icon/file-earmark-pdf.svg">Descargar PDF
-                </button>                
+                    Descargar PDF
+                </button>
             </a>
         </div>
     </footer>
 </body>
+<!--Devoloped by Brandon Ventura-->
 </html>

@@ -1,31 +1,22 @@
-/* Reinicio de estilos básicos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background-color: #02092b;
-    color: #fff;
-    padding: 20px;
+    color: #ffffff;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
 }
 
 .menu-btn {
-    font-size: 24px;
     cursor: pointer;
+    padding: 10px;
 }
 
 .logo img {
@@ -34,188 +25,213 @@ header {
 
 .icon-container {
     display: flex;
-    gap: 20px;
+    gap: 10px;
+}
+
+.icon-container div {
+    cursor: pointer;
+}
+
+.icon-container img {
+    width: 30px;
+    height: 30px;
 }
 
 .navbar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
     background-color: #02092b;
-    color: #fff;
+    color: #ffffff;
     position: fixed;
     top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    overflow-y: auto;
-    transition: left 0.3s;
-    z-index: 999;
-    padding: 20px;
-}
-
-.navbar.active {
     left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
 }
 
 .navbar ul {
-    list-style: none;
+    list-style-type: none;
+    padding: 0;
 }
 
-.navbar ul a {
+.navbar ul li {
+    padding: 15px 0;
+}
+
+.navbar ul li a {
+    color: #ffffff;
     text-decoration: none;
-    color: #fff;
-    display: block;
-    padding: 10px 0;
-    border-bottom: 1px solid #444;
+    font-size: 18px;
+}
+
+.navbar ul li a img.icon {
+    margin-right: 10px;
+    width: 20px;
+    vertical-align: middle;
 }
 
 .close-btn {
-    font-size: 24px;
+    align-self: flex-end;
+    padding: 10px;
     cursor: pointer;
-    display: block;
-    text-align: right;
 }
 
-main {
-    margin-top: 80px;
+.main {
     padding: 20px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.title_dcgenenator h1 {
-    font-size: 24px;
-    font-weight: bold;
+.title_dcgenenator {
+    text-align: center;
 }
 
-form {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    background-color: #fff;
+.doc_info {
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    font-size: 14px;
-    margin-bottom: 5px;
+.input_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-input, button {
-    height: 35px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-button {
-    background-color: #02092b;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #333;
-}
-
-button img {
+.input_container .form-group {
+    flex: 1;
     margin-right: 10px;
 }
 
-table {
+.input_container .form-group:last-child {
+    margin-right: 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.AgreBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.AgreBtn button {
+    background-color: #02092b;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.AgreBtn button img {
+    margin-right: 10px;
+}
+
+.tabla_Cont {
+    margin-top: 20px;
+}
+
+.tabla_Cont table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-    padding: 12px 15px;
+.tabla_Cont th, .tabla_Cont td {
+    border: 1px solid #ccc;
+    padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ccc;
 }
 
-th {
-    background-color: #f0f0f0;
+.tabla_Cont th {
+    background-color: #02092b;
+    color: #ffffff;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
+#checkboxFirmas {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.hidden {
-    display: none;
+#checkboxFirmas label {
+    margin-right: 10px;
 }
 
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+#firmaContainer1, #firmaContainer2 {
+    margin-top: 20px;
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.modal-content {
+#firmaContainer1 h3, #firmaContainer2 h3 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.modal-content a {
+#firmaContainer1 .input_container, #firmaContainer2 .input_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#firmaContainer1 .form-group, #firmaContainer2 .form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+#firmaContainer1 .form-group:last-child, #firmaContainer2 .form-group:last-child {
+    margin-right: 0;
+}
+
+#firmaContainer1 canvas, #firmaContainer2 canvas {
     display: block;
-    margin: 10px 0;
-    color: #02092b;
-    text-decoration: none;
-}
-
-.modal-content a:hover {
-    text-decoration: underline;
-}
-
-.modal-content .close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 24px;
-    cursor: pointer;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 footer {
+    padding: 20px;
     text-align: center;
-    margin: 20px 0;
+    background-color: #02092b;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-footer .botones-container {
-    display: inline-block;
+footer .botones-container a {
+    text-decoration: none;
 }
 
-footer button {
+footer .botones-container button {
+    background-color: #ffffff;
+    color: #02092b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
-footer button img {
-    width: 20px;
-    height: 20px;
+footer .botones-container button img {
+    margin-right: 10px;
 }
