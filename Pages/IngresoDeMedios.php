@@ -25,7 +25,6 @@ if (!isset($_SESSION["id"])) {
 </head>
 <body>
     <div class="overlay"></div>
-    <!--Inicio Cabecera-->
     <header>
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
@@ -47,7 +46,6 @@ if (!isset($_SESSION["id"])) {
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
         </div>
-        <!--Inicio Menu-->
         <nav class="navbar"><br>
             <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
             <ul>
@@ -57,7 +55,6 @@ if (!isset($_SESSION["id"])) {
                 <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
             </ul>
         </nav>
-        <!--Fin Menu-->
     </header>
     <main>
         <div class="title_dcgenenator">
@@ -172,7 +169,6 @@ if (!isset($_SESSION["id"])) {
           </div>
         </div>
     </main>
-    <!-- Ventana emergente -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
@@ -192,5 +188,4 @@ if (!isset($_SESSION["id"])) {
         </div>
     </footer>
 </body>
-<!--Devoloped by Brandon Ventura-->
 </html>
