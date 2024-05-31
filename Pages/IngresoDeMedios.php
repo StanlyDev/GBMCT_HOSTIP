@@ -143,7 +143,7 @@
                         </div>
                     </div>
                     <canvas id="lienzoFirma1" width="300" height="150"></canvas>
-                    <center><button onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
+                    <center><button type="button" onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
                 </div>
                 <div id="firmaContainer2" class="oculto">
                     <h3>Recibido por:</h3>
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <canvas id="lienzoFirma2" width="300" height="150"></canvas>
-                    <center><button onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
+                    <center><button type="button" onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
                 </div>
             </div>
         </div>
