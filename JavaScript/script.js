@@ -1,21 +1,25 @@
-// script.js
-
+// Toggle menu function
 function toggleMenu() {
-  console.log('Toggle menu function called'); // Agregamos un log para verificar que se llama la función
-  var navbar = document.querySelector('.navbar');
-  var overlay = document.querySelector('.overlay');
+  const navbar = document.querySelector('.navbar');
+  navbar.classList.toggle('active');
+}
 
-  if (navbar.style.display === 'block' || getComputedStyle(navbar).display === 'block') {
-    navbar.style.animation = 'slideOut 0.5s ease-in';
-    overlay.style.display = 'none';
-    setTimeout(() => {
-      navbar.style.display = 'none';
-      navbar.style.animation = '';
-    }, 500);
-  } else {
-    navbar.style.display = 'block';
-    navbar.style.animation = 'slideIn 0.5s ease-out';
-    overlay.style.display = 'block';
+// Function to show modal options
+function showOptions() {
+  const modal = document.getElementById('myModal');
+  modal.style.display = "block";
+}
+
+// Function to close modal options
+function closeOptions() {
+  const modal = document.getElementById('myModal');
+  modal.style.display = "none";
+}
+
+// Close the modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('myModal');
+  if (event.target == modal) {
+      modal.style.display = "none";
   }
 }
-/*Devoloped by Brandon Ventura*/

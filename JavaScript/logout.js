@@ -9,7 +9,7 @@ function iniciarTemporizador() {
         clearTimeout(temporizador);
         temporizador = setTimeout(function() {
             // Redirigir al usuario a la página de cerrar sesión
-            window.location.href = "/index.html";
+            window.location.href = "/logout.php";
         }, tiempoLimite);
     }
 

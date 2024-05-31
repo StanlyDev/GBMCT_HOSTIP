@@ -25,30 +25,33 @@ if (!isset($_SESSION["id"])) {
     <!--Inicio Cabecera-->
     <header>
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
-        <div class="close_user"><a href="/index.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
-            <lord-icon
-                src="https://cdn.lordicon.com/eoacwhtz.json"
-                trigger="hover"
-                stroke="bold"
-                colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
-                style="width:30px;height:30px">
-            </lord-icon></a></div>
-        <div class="home"><a href="/Pages/HomePage.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
-            <lord-icon
-                src="https://cdn.lordicon.com/wmwqvixz.json"
-                trigger="morph"
-                state="morph-home-3"
-                colors="primary:#ffffff"
-                style="width:30px;height:30px">
-            </lord-icon></a></div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
+        <div class="icon-container">
+            <div class="home"><a href="/Pages/HomePage.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/wmwqvixz.json"
+                    trigger="morph"
+                    state="morph-home-3"
+                    colors="primary:#ffffff"
+                    style="width:30px;height:30px">
+                </lord-icon></a></div>
+            <div class="close_user"><a href="/index.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/eoacwhtz.json"
+                    trigger="hover"
+                    stroke="bold"
+                    colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
+                    style="width:30px;height:30px">
+                </lord-icon></a></div>
+        </div>
         <!--Inicio Menu-->
-        <nav class="navbar">
+        <nav class="navbar"><br>
             <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
             <ul>
                 <a href="/Pages/inventory.html"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
+                <a href="/Pages/create_user.html"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
             </ul>
         </nav>
         <!--Fin Menu-->
