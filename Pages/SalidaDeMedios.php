@@ -12,11 +12,14 @@ if (!isset($_SESSION["id"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/CSS/AddInvent.css">
+    <link rel="stylesheet" href="/CSS/DocGenerator.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
-    <script defer src="/JavaScript/AddInvent.js"></script>
+    <script defer src="/JavaScript/getValue2.js"></script>
+    <script defer src="/JavaScript/agregarCinta2.js"></script>
     <script defer src="/JavaScript/windowsDoc.js"></script>
+    <script defer src="/JavaScript/sharedData.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
+    <script defer src="/JavaScript/firmas.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
     <title>GBM | CT</title>
 </head>
@@ -27,7 +30,7 @@ if (!isset($_SESSION["id"])) {
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
         <div class="icon-container">
-            <div class="home"><a href="/Pages/HomePage.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+            <div class="home"><a href="/Pages/HomePage.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/wmwqvixz.json"
                     trigger="morph"
@@ -48,53 +51,47 @@ if (!isset($_SESSION["id"])) {
         <nav class="navbar"><br>
             <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
             <ul>
-                <a href="/Pages/inventory.html"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
+                <a href="/Pages/inventory.php"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
-                <a href="/Pages/create_user.html"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
+                <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
             </ul>
         </nav>
         <!--Fin Menu-->
     </header>
-    <!--Fin Cabecera-->
     <main>
-        <!--Inicio Main-->
-        <div class="head-add">
-            <h1>
-                Agregar cintas al Inventario
-            </h1><br>
-            <div class="advert">
-                <em><p>INGRESAR TODOS LOS VALORES EN LOS CAMPOS QUE SE PRESENTAN ACONTINUACION</p></em><hr>
-            </div>
+        <div class="title_dcgenenator">
+            <h1>Salida de Medios</h1>
+            <hr>
         </div>
-        <div class="add_info">
+        <div class="doc_info">
             <form action="" id="FrmCinta">
                 <div class="input_container_1">
-                    <div class="client_name">
-                        <label for="client_name">Nombre del Cliente:</label>
-                        <input type="text" id="client_name" name="client_name" placeholder="Client" required>
+                    <div class="SR">
+                        <label for="SR">Ticket (SR):</label>
+                        <input type="text" id="SR" name="SR">
                     </div>
-                    <div class="co">
-                        <label for="co">Contrato:</label>
-                        <input type="text" placeholder="CO" id="co" class="co" name="co" required>
+                    <div class="Ori">
+                        <label for="Origen">Origen:</label>
+                        <input type="text" placeholder="GBM" id="Origen" class="inp" name="Origen">
                     </div>
-                    <div class="enc">
-                        <label for="enc">Field-Manager:</label>
-                        <input type="text" placeholder="Field-Manager" id="enc" name="enc" required>
+                    <div class="Dest">
+                        <label for="Destino">Destino:</label>
+                        <input type="text" placeholder="Nombre del Cliente" id="Destino" name="Destino">
                     </div>
                 </div>
                 <div class="input_container_2">
                     <div class="HRest">
-                        <label for="hrEsti">Hora de ingreso:</label>
-                        <input type="time" id="hrEsti" name="hrEsti" required>
+                        <label for="hrEsti">Hora estimada:</label>
+                        <input type="time" id="hrEsti" name="hrEsti">
                     </div>
                     <div class="FechaS">
-                        <label for="FechaIO">Fecha de ingreso:</label>
-                        <input type="date" id="FechaIO" name="FechaIO" required>
+                        <label for="FechaIO">Fecha:</label>
+                        <input type="date" id="FechaIO" name="FechaIO">
                     </div>
-                    <div class="ingr">
-                        <label for="ingr">Agregada por:</label>
-                        <input type="text" id="ingr" name="ingr" placeholder="Operador" required>
+                    <div class="SolX">
+                        <label for="SoliX">Solicitado por:</label>
+                        <input type="text" id="SoliX" name="SoliX">
                     </div>
                 </div>
                 <hr>
@@ -102,15 +99,15 @@ if (!isset($_SESSION["id"])) {
                     <div class="input_container_3">
                         <div class="TCinta">
                             <label for="TypeCinta">Tipo:</label>
-                            <input type="text" class="TipoCint" id="TypeCinta" name="TypeCinta" placeholder="LTO" required>
+                            <input type="text" class="TipoCint" id="TypeCinta" name="TypeCinta">
                         </div>
                         <div class="Desc">
                             <label for="DesCin">Descripcion:</label>
-                            <input type="text" id="DesCin" name="DesCin" placeholder="LTO - 1.5TB" required>
+                            <input type="text" id="DesCin" name="DesCin">
                         </div>
                         <div class="Code">
                             <label for="CCinta">Codigo:</label>
-                            <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
+                            <input type="text" id="CCinta" name="CCinta">
                         </div>
                     </div><br>
                     <div class="AgreBtn">
@@ -134,26 +131,63 @@ if (!isset($_SESSION["id"])) {
                             <!-- ... Contenido de la tabla ... -->
                         </table>
                     </div>
-            </div><br>
+                </div><br>
+                <!-- Espacio para la firma debajo de la tabla -->
+                <div id="checkboxFirmas">
+                  <label for="mostrarFirmas"><b>Agregar firma</b></label>
+                  <input type="checkbox" id="mostrarFirmas">
+              </div>
+                <div id="firmaContainer1" class="oculto">
+                <center><p style="font-size: 15px; color: red;"><em>En caso de no poder realizar la firma dejar solo Nombre y DNI (Opcion de firma en desarrollo)</em></p></center><br>
+                  <center><h3>Entregado por:</h3></center>
+                  <div class="input_container_4">
+                      <div class="TCinta">
+                          <label for="Nombre1">Nombre:</label>
+                          <input type="text" class="TipoCint" id="Nombre1" name="Nombre1">
+                      </div>
+                      <div class="Desc">
+                          <label for="DNI1">DNI:</label>
+                          <input type="text" id="DNI1" name="DNI1">
+                      </div>
+                  </div>
+                  <canvas id="lienzoFirma1" width="300" height="150"></canvas>
+                  <br>
+                  <center><button onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
+              </div><br>
+              <div id="firmaContainer2" class="oculto">
+                  <center><h3>Recibido por:</h3></center>
+                  <div class="input_container_4">
+                      <div class="TCinta">
+                          <label for="Nombre2">Nombre:</label>
+                          <input type="text" class="TipoCint" id="Nombre2" name="Nombre2">
+                      </div>
+                      <div class="Desc">
+                          <label for="DNI2">DNI:</label>
+                          <input type="text" id="DNI2" name="DNI2">
+                      </div>
+                  </div>
+                  <canvas id="lienzoFirma2" width="300" height="150"></canvas>
+                  <br>
+                  <center><button onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
+              </div>
           </div>
         </div>
-        <!--Fin Main-->
     </main>
     <!-- Ventana emergente -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
             <p>Elige una opción:</p><hr>
-            <a href="/Pages/IngresoDeMedios.html">Ingreso de Medios</a>
-            <a href="/Pages/SalidaDeMedios.html">Salida de Medios</a>
+            <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+            <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
         </div>
     </div>
     <footer>
         <div class="botones-container">
-            <a href="#">
-                <button onclick="">
-                    <img src="/IMG/Icon/database-add.svg">
-                    <img src="/IMG/Icon/database-fill-add.svg">
+            <a href="/Pages/DocVisor2.html" target="_blank">
+                <button onclick="imprimirValores2()">
+                    <img src="/IMG/Icon/file-earmark-pdf-fill.svg">
+                    <img src="/IMG/Icon/file-earmark-pdf.svg">Descargar PDF
                 </button>                
             </a>
         </div>

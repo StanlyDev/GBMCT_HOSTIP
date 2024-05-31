@@ -30,7 +30,7 @@ if (!isset($_SESSION["id"])) {
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
         <div class="icon-container">
-            <div class="home"><a href="/Pages/HomePage.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+            <div class="home"><a href="/Pages/HomePage.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/wmwqvixz.json"
                     trigger="morph"
@@ -51,10 +51,10 @@ if (!isset($_SESSION["id"])) {
         <nav class="navbar"><br>
             <button class="close-btn" onclick="toggleMenu()">✕</button><br><br>
             <ul>
-                <a href="/Pages/inventory.html"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
+                <a href="/Pages/inventory.php"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
-                <a href="/Pages/create_user.html"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
+                <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
             </ul>
         </nav>
         <!--Fin Menu-->
@@ -177,8 +177,8 @@ if (!isset($_SESSION["id"])) {
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
             <p>Elige una opción:</p><hr>
-            <a href="/Pages/IngresoDeMedios.html">Ingreso de Medios</a>
-            <a href="/Pages/SalidaDeMedios.html">Salida de Medios</a>
+            <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+            <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
         </div>
     </div>
     <footer>
