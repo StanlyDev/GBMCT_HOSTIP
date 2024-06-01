@@ -187,8 +187,8 @@ if (!isset($_SESSION["id"])) {
     </div>
     <footer>
         <div class="botones-container">
-            <a href="/Pages/DocVisor.html" target="_blank">
-                <button onclick="imprimirValores()">
+            <a href="/Pages/DocVisor2.html" target="_blank">
+                <button onclick="imprimirValores2()">
                     <img src="/IMG/Icon/file-earmark-pdf-fill.svg">
                     Descargar PDF
                 </button>
