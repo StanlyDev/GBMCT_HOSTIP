@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Guardar el elemento y el contexto del primer canvas
     const canvas1 = document.getElementById("lienzoFirma1");
     const ctx1 = canvas1.getContext("2d");
 
-    // Guardar el elemento y el contexto del segundo canvas
     const canvas2 = document.getElementById("lienzoFirma2");
     const ctx2 = canvas2.getContext("2d");
 

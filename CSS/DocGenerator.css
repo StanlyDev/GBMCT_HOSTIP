@@ -1,94 +1,136 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* CSS Reset */
+* {
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #02092b;
-    color: #ffffff;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-btn {
-    cursor: pointer;
-    padding: 10px;
-}
-
-.logo img {
-    height: 40px;
-}
-
-.icon-container {
-    display: flex;
-    gap: 10px;
-}
-
-.icon-container div {
-    cursor: pointer;
-}
-
-.icon-container img {
-    width: 30px;
-    height: 30px;
-}
-
-.navbar {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    background-color: #02092b;
-    color: #ffffff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-}
-
-.navbar ul {
-    list-style-type: none;
+    box-sizing: border-box;
+    font-family: themillion;
+  }
+  
+  @font-face {
+    font-family: themillion;
+    src: url(/Fonts/Chivo-ExtraLight.ttf);
+  }
+  
+  /* Estilos generales */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #02092b;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+.title_dcgenenator{
+    text-align: left;
 }
 
-.navbar ul li {
-    padding: 15px 0;
+.title_dcgenenator h1{
+    font-weight: bold;
+    text-align: start;
+    margin-left: 50px;
+    font-size: 2em;
+    margin-left: 50px;
 }
 
-.navbar ul li a {
-    color: #ffffff;
+/* Contenedor del logo */
+.logo img {
+    height: 60px;
+    margin-left: 40px;
+  }
+  
+  /* Botones de menú y cerrar */
+  .menu-btn, .close-btn {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    margin: 0 20px;
+  }
+  
+  .close_user, .home{
+    margin-right: 20px;
+  }
+  
+  /* Contenedor de los iconos */
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Estilo del navbar */
+  .navbar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #02092b;
+    overflow-y: auto;
+    transition: left 0.3s;
+  }
+  
+  /* Estilo de la lista del navbar */
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Estilo de los enlaces de la lista */
+  .navbar ul a {
     text-decoration: none;
-    font-size: 18px;
-}
-
-.navbar ul li a img.icon {
+    color: white;
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid #111540;
+  }
+  
+  /* Efecto hover en los enlaces de la lista */
+  .navbar ul a:hover {
+    background-color: #19266477;
+  }
+  
+  /* Estilo de los iconos de los enlaces */
+  .navbar ul a img {
     margin-right: 10px;
     width: 20px;
-    vertical-align: middle;
-}
+    float: left;
+  }
+  
+  /* Estilo de los elementos de la lista */
+  .navbar ul a li {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Mostrar navbar cuando está activo */
+  .navbar.active {
+    left: 0;
+  }
 
-.close-btn {
-    align-self: flex-end;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.main {
-    padding: 20px;
-}
+  main {
+    padding: 60px 20px 20px;
+    padding-top: 100px;
+  }
 
 .title_dcgenenator {
     text-align: center;
 }
 
 .doc_info {
+    margin-right: 50px;
+    margin-left: 50px;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -101,7 +143,8 @@ header {
 
 .input_container .form-group {
     flex: 1;
-    margin-right: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
 }
 
 .input_container .form-group:last-child {
@@ -144,6 +187,7 @@ header {
 
 .tabla_Cont {
     margin-top: 20px;
+    overflow-x: auto;
 }
 
 .tabla_Cont table {
@@ -153,13 +197,31 @@ header {
 
 .tabla_Cont th, .tabla_Cont td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 5px;
     text-align: left;
 }
 
 .tabla_Cont th {
-    background-color: #02092b;
-    color: #ffffff;
+    background-color: #f2f2f2;
+}
+
+.tabla_Cont .delete-row-btn {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: red;
+    display: block;
+    margin: 10 auto;
+    height: 30px;
+    border-radius: 5px;
+    width: 30px;
+}
+
+.tabla_Cont .delete-row-btn-cell {
+    border: none;
+    text-align: center;
 }
 
 #checkboxFirmas {
@@ -208,33 +270,31 @@ header {
 }
 
 footer {
-    padding: 20px;
+    color: white;
     text-align: center;
-    background-color: #02092b;
-    color: #ffffff;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+    padding-bottom: 10px;
+  }
+  
+  footer .botones-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-footer .botones-container a {
+  footer .botones-container a {
     text-decoration: none;
 }
-
-footer .botones-container button {
-    background-color: #ffffff;
-    color: #02092b;
+  
+  footer .botones-container button {
+    background-color: #02092b;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: white;
+    padding: 15px 20px;
     cursor: pointer;
+    border-radius: 4px;
     display: flex;
     align-items: center;
-}
-
-footer .botones-container button img {
-    margin-right: 10px;
-}
+  }
 
 .oculto {
     display: none;

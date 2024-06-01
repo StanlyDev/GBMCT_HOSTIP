@@ -11,7 +11,7 @@
     <script defer src="/JavaScript/sharedData.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/firmas.js"></script>
-    <script defer src="/JavaScript/logout.js"></script>
+
     <title>GBM | CT</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                     src="https://cdn.lordicon.com/eoacwhtz.json"
                     trigger="hover"
                     stroke="bold"
-                    colors="primary:#ffffff,secondary:#02092b"
+                    colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
         </div>
@@ -121,10 +121,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- ... Contenido de la tabla ... -->
+                            <!-- Las filas se agregarán dinámicamente aquí -->
                         </tbody>
                     </table>
                 </div>
+            </div>            
                 <div id="checkboxFirmas">
                     <label for="mostrarFirmas"><b>Agregar firma</b></label>
                     <input type="checkbox" id="mostrarFirmas">
