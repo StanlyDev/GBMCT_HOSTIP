@@ -49,13 +49,13 @@ if (!isset($_SESSION["id"])) {
                 </lord-icon></a></div>
         </div>
         <!--Inicio Menu-->
-        <nav class="navbar">
+        <nav class="navbar"><br>
             <button class="close-btn" onclick="toggleMenu()">✕</button>
             <ul>
-                <li><a href="/Pages/inventory.php"><img src="/IMG/Icon/box2-fill.svg" class="icon">Inventario en Cintoteca</a></li>
-                <li><a href="#" class="histo" onclick="histoAlert()"><img src="/IMG/Icon/arrow-counterclockwise.svg" class="icon">Historial I/O</a></li>
-                <li><a href="#" class="generate-doc" onclick="showOptions()"><img src="/IMG/Icon/file-earmark-text-fill.svg" class="icon">Generar Documento</a></li>
-                <li><a href="/Pages/create_user.php"><img src="/IMG/Icon/person-circle.svg" class="icon">Crear Usuario</a></li>
+                <a href="/Pages/inventory.php"><li><img src="/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
+                <a href="#" class="histo" onclick="histoAlert()"><li><img src="/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
+                <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
+                <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
             </ul>
         </nav>
         <!--Fin Menu-->
