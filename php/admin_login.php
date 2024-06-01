@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string($password);
 
     // Consulta para buscar al administrador por email y permitir que tanto los administradores como los usuarios root inicien sesión
-    $sql = "SELECT id, username, role FROM usuarios WHERE email='$email' AND password='$password' AND (role='administrador' OR role='root')";
+    $sql = "SELECT id, username, role FROM usuarios WHERE email='$email' AND password='$password' AND (role='admin' OR role='root')";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
