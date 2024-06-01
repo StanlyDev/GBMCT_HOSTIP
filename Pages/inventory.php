@@ -20,6 +20,7 @@ if (!isset($_SESSION["id"])) {
   <script defer src="/JavaScript/BuscadorClient.js"></script>
   <script defer src="/JavaScript/windowsDoc.js"></script>
   <script defer src="/JavaScript/HistoAlert.js"></script>
+  <script defer src="/JavaScript/logout.js"></script>
   <title>GBM | CT</title>
 </head>
 <body>
