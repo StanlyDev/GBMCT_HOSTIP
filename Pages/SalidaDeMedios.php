@@ -187,8 +187,8 @@ if (!isset($_SESSION["id"])) {
             <a href="/Pages/DocVisor2.html" target="_blank">
                 <button onclick="imprimirValores2()">
                     <img src="/IMG/Icon/file-earmark-pdf-fill.svg">
-                    <img src="/IMG/Icon/file-earmark-pdf.svg">Descargar PDF
-                </button>                
+                    Descargar PDF
+                </button>
             </a>
         </div>
     </footer>
