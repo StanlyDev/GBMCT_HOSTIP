@@ -18,8 +18,8 @@ if (!isset($_SESSION["id"])) {
     <script defer src="/JavaScript/agregarCinta2.js"></script>
     <script defer src="/JavaScript/windowsDoc.js"></script>
     <script defer src="/JavaScript/sharedData.js"></script>
+    <script defer src="/JavaScript/script.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
-    <script defer src="/JavaScript/firmas.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
     <title>GBM | CT</title>
 </head>
