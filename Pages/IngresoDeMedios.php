@@ -176,12 +176,12 @@ if (!isset($_SESSION["id"])) {
     <!-- Ventana emergente -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeOptions()">&times;</span>
-            <p>Elige una opción:</p>
-            <hr>
-            <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
-            <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
+          <span class="close" onclick="closeOptions()">&times;</span>
+          <p>Elige una opción:</p><hr>
+          <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+          <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
         </div>
+      </div>
     </div>
     <footer>
         <div class="botones-container">
