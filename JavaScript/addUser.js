@@ -14,13 +14,13 @@ function editarUsuario(userId) {
     const rolOriginal = rolCell.textContent.trim();
 
     // Convertir los elementos en inputs/editables
-    nombreCell.innerHTML = `<input type="text" value="${nombreOriginal}" class="editable">`;
-    correoCell.innerHTML = `<input type="email" value="${correoOriginal}" class="editable">`;
+    nombreCell.innerHTML = `<input type="text" value="${nombreOriginal}" class="editable nombre">`;
+    correoCell.innerHTML = `<input type="email" value="${correoOriginal}" class="editable correo">`;
     rolCell.innerHTML = `
-        <select class="editable">
-            <option value="admin"${rolOriginal === 'Administrador' ? ' selected' : ''}>Administrador</option>
-            <option value="operator"${rolOriginal === 'Operador' ? ' selected' : ''}>Operador</option>
-            <option value="root"${rolOriginal === 'Root' ? ' selected' : ''}>Root</option>
+        <select class="editable rol">
+            <option value="Administrador"${rolOriginal === 'Administrador' ? ' selected' : ''}>Administrador</option>
+            <option value="Operador"${rolOriginal === 'Operador' ? ' selected' : ''}>Operador</option>
+            <option value="Root"${rolOriginal === 'Root' ? ' selected' : ''}>Root</option>
         </select>
     `;
     actionCell.innerHTML = `
@@ -28,7 +28,6 @@ function editarUsuario(userId) {
         <button class="cancel" onclick="cancelarEdicion(${userId})">Cancelar</button>
     `;
 }
-
 
 // Función para guardar cambios en un usuario
 function guardarCambiosUsuario(userId) {
