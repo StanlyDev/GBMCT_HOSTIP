@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "No se pudo encontrar el usuario recién creado";
         }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error al agregar usuario: " . $conn->error;
     }
 }
 
