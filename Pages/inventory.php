@@ -160,6 +160,12 @@ if (!isset($_SESSION["id"])) {
         tablaBody.appendChild(row);
       });
     }
-  </script>    
+  </script>
+  <div id="inactivityModal" class="modal">
+    <div class="modal-content">
+        <p>En <span id="inactivityCountdown">5</span> segundos se cerrará la sesión.</p>
+        <button id="continueSessionBtn">Continuar sesión</button>
+    </div>
+</div>    
 </body>
 </html>

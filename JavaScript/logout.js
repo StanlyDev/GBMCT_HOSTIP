@@ -1,7 +1,7 @@
 // Función para redirigir al usuario al cerrar sesión después de cierto tiempo de inactividad
 function iniciarTemporizador() {
-    var tiempoLimite = 20 * 1000; // 20 segundos en milisegundos
-    var avisoTiempo = 15 * 1000; // Tiempo antes de que aparezca la alerta (15 segundos de inactividad)
+    var tiempoLimite = 50 * 1000; // 20 segundos en milisegundos
+    var avisoTiempo = 20 * 1000; // Tiempo antes de que aparezca la alerta (15 segundos de inactividad)
     var temporizador, temporizadorAviso;
 
     var modal = document.getElementById('inactivityModal');
@@ -10,7 +10,7 @@ function iniciarTemporizador() {
 
     // Función para redirigir al usuario a la página de cerrar sesión
     function redirigirLogout() {
-        window.location.href = "/logout.php";
+        window.location.href = "/php/logout.php";
     }
 
     // Función para mostrar el aviso con cuenta regresiva
@@ -53,4 +53,3 @@ function iniciarTemporizador() {
 
 // Iniciar el temporizador cuando la página se carga completamente
 window.onload = iniciarTemporizador;
-    
