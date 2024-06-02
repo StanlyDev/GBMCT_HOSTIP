@@ -36,15 +36,18 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     colors="primary:#ffffff"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
-            <div class="close_user"><a href="/index.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
-                <lord-icon
-                    src="https://cdn.lordicon.com/eoacwhtz.json"
-                    trigger="hover"
-                    stroke="bold"
-                    colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
-                    style="width:30px;height:30px">
-                </lord-icon></a></div>
-        </div>
+                <div class="close_user">
+                <a href="/php/logout.php">
+                    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                    <lord-icon
+                        src="https://cdn.lordicon.com/eoacwhtz.json"
+                        trigger="hover"
+                        stroke="bold"
+                        colors="primary:#ffffff,secondary:#02092b,tertiary:#02092b,quaternary:#02092b,quinary:#02092b,senary:#02092b,septenary:#ffffff"
+                        style="width:30px;height:30px">
+                    </lord-icon>
+                </a>
+                </div>
         <nav class="navbar">
             <button class="close-btn" onclick="toggleMenu()">✕</button>
             <ul>

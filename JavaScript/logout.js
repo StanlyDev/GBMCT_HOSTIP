@@ -55,4 +55,13 @@ function iniciarTemporizador() {
 }
 
 // Iniciar el temporizador cuando la página se carga completamente
-window.onload = iniciarTemporizador;
+window.onload = function() {
+    iniciarTemporizador();
+
+    // Agregar evento de clic al botón de cerrar sesión
+    document.getElementById('cerrarSesionBtn').addEventListener('click', function() {
+        // Redirigir al usuario a la página de cierre de sesión
+        window.location.href = "/php/logout.php";
+    });
+};
+
