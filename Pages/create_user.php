@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-// Verificar si el usuario ha iniciado sesión y tiene el rol de "root" o "admin", de lo contrario, redirigirlo al formulario de inicio de sesión
-if (!isset($_SESSION["role"]) || ($_SESSION["role"] !== "root" && $_SESSION["role"] !== "admin")) {
+// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
     exit();
-
-    // Obtener el rol del usuario desde la sesión
-$usuario_rol = $_SESSION["role"] ?? '';
 }
+// Obtener el rol del usuario desde la sesión
+$usuario_rol = $_SESSION["role"] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
