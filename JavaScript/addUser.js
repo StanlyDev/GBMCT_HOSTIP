@@ -2,7 +2,7 @@ document.getElementById('createUserForm').addEventListener('submit', function(ev
     event.preventDefault();
     const formData = new FormData(this);
 
-    fetch('add_user.php', {
+    fetch('create_user.php', { // Aquí se cambió a 'create_user.php'
         method: 'POST',
         body: formData
     })
