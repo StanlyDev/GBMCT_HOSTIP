@@ -1,519 +1,266 @@
+/* CSS Reset */
 * {
-    margin: 0;
-    font-family: themillion;
-  }
-  
-  @font-face {
-    font-family: themillion;
-    src: url(/Fonts/Chivo-ExtraLight.ttf);
-  }
-  
-  body {
-    margin: 0;
-    padding-top: 80px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  header {
-    background: #02092b;
-    height: 80px;
-    color: #fff;
-    text-align: center;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    top: 0;
-  }
-  
-  .logo {
-    display: flex;
-    justify-content: center;
-    height: 90px;
-  }
-  
-  
-  .menu-btn {
-    padding: 25px;
-    cursor: pointer;
-    float: left;
-    font-size: 25px;
-  }
-  
-  .home{
-    float: right;
-    padding: 25px;
-  }
-  
-  .home img{
-    width: 25px;
-  }
-  
-  .close_user{
-    float: right;
-    padding: 25px;
-  }
-  
-  .close_user img{
-    width: 25px;
-  }
-
-  .navbar {
-    display: none;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    background-color: #02092b;
-    width: 25%;
-    height: 100vh;
-    padding: 15px;
-    box-sizing: border-box;
-    animation: slideIn 0.5s ease-out;
-  }
-  
-  .close-btn {
-    float: right;
-    cursor: pointer;
-    background-color: #02092b;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  @keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-  }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
-  .navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar li {
-    cursor: pointer;
-    margin-top: 25px;
-    margin-left: -10px;
-    padding: 20px;
-    margin-bottom: 10px;
-    text-align: left;
-  }
-  
-  .navbar li:hover {
-    border-left: 5px solid rgb(255, 255, 255);
-    background: #ffffff48;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-  }
-  
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-  }
-  
-  .modal {
-    color: #ffffff;
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Ajusta el índice z según sea necesario para superponer la ventana emergente sobre el contenido */
-  }
-  
-  .modal-content {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #02092b;
-    width: 180px;
-    height: 100px;
-    border-radius: 5px;
-    transition: transform 0.5s ease-out; /* Agrega un efecto de transición suave */
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .modal-content a {
-    display: block;
-    margin: 20px 0;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .modal-content a:hover {
-    color: #555;
-  }
-  
-  .navbar a.generate-doc:hover {
-    border-left: 5px solid rgb(255, 255, 255);
-    background: #ffffff48;
-  }  
-
-  .head-add {
-    margin-top: 20px;
-    align-items: center;
-  }
-
-  .head-add h1 {
-    margin-left: 20px;
-    font-size: 25px;
-    text-align: left; 
-  }
-
-  .advert p{
-    margin-top: -12px;
-    margin-left: 20px;
-    font-size: 14px;
-    color: red;
-    text-align: left; 
-    align-items: center;
-  }
-
-  .advert hr{
-    border: 2px solid;
-  }
-
-  .Num_Doc {
-    position: relative;
-    float: right;
-    display: flex;
-    text-align: center;
-    margin-top: -40px;
-    margin-right: 100px;
-    font-weight: bold;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif; /* Cambio de fuente */
 }
 
-.title_dcgenenator hr {
-    border: 2px solid;
+/* Estilos generales */
+body {
+  background-color: #f4f4f4;
 }
 
-.botones-container {
-    margin-right: 45px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: flex-end;
+header {
+  background-color: #02092b;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.botones-container button {
-    justify-content: flex-end;
-    margin-right: 10px;
-    position: relative;
-    cursor: pointer;
-    font-size: 15px;
-    color: #02092b;
-    border: 2px solid #02092b;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: transparent;
+.logo img {
+  height: 60px;
+  margin-left: 40px;
 }
 
-.botones-container button:hover {
-    color: #fff;
-    background: #02092b;
+.menu-btn, .close-btn {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  margin: 0 20px;
 }
 
-.botones-container button img {
-    display: flex;
-    float: inline-start;
-    width: 30px;
-    margin-top: -15px;
-    position: absolute;
-    z-index: 1;
+.icon-container {
+  display: flex;
+  align-items: center;
 }
 
-.input_container_1,
-.input_container_2{
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    justify-content: center;
+.navbar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #02092b;
+  overflow-y: auto;
+  transition: left 0.3s;
 }
 
-.input_container_1 > *:not(:last-child) input,
-.input_container_2 > *:not(:last-child) input,
-.input_container_1 > *:not(:last-child) select,
-.input_container_2 > *:not(:last-child) select {
-    margin-right: 100px;
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.input_container_1 label,
-.input_container_2 label {
-    font-weight: bold;
-    margin: 0;
-    text-align: right;
-    margin-right: 10px;
-    width: 120px;
+.navbar ul a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 15px 20px;
+  border-bottom: 1px solid #111540;
 }
 
-.input_container_1 select,
-.input_container_2 select,
-.input_container_1 input,
-.input_container_2 input {
-    font-size: 20px;
-    border: 1px solid;
-    border-radius: 5px;
-    height: 40px;
-    width: 200px;
+.navbar ul a:hover {
+  background-color: #19266477;
 }
 
-.add_info hr {
-    margin-top: 40px;
-    margin-left: 40px;
-    margin-right: 40px;
+.navbar ul a img {
+  margin-right: 10px;
+  width: 20px;
+  float: left;
 }
 
-.input_container_3,
-.input_container_4 {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    justify-content: center;
+.main {
+  padding: 60px 20px 20px;
+  padding-top: 100px;
 }
 
-.input_container_3 > *:not(:last-child),
-.input_container_4 > *:not(:last-child) {
-    margin-right: 10px;
-    margin-left: 40px;
+.title_dcgenenator h1 {
+  font-weight: bold;
+  text-align: start;
+  margin-left: 50px;
+  font-size: 2em;
 }
 
-.input_container_3 label,
-.input_container_4 label {
-    font-weight: bold;
-    margin: 0;
-    text-align: right;
-    margin-right: 10px;
-    width: 120px;
+.doc_info {
+  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.input_container_3 input,
-.input_container_4 input {
-    font-size: 20px;
-    border: 1px solid;
-    border-radius: 5px;
-    height: 40px;
-    width: 250px;
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.input_container .form-group {
+  flex: 1;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.input_container .form-group:last-child {
+  margin-right: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .AgreBtn {
-    display: flex;
-    justify-content: flex-end;
-}
-
-#lienzoFirma1,#lienzoFirma2 {
-    border: 1px solid #000;
-    margin-top: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#checkboxFirmas {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center; /* Alinea verticalmente los elementos en el eje cruzado */
-}
-
-#checkboxFirmas label {
-    margin-left: 100px; /* Espacio entre el checkbox y el texto del label */
-}
-
-#checkboxFirmas input {
-    margin-left: 10px; /* Espacio entre el checkbox y el texto del label */
-}
-
-.oculto {
-    display: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .AgreBtn button {
-    justify-content: flex-end;
-    position: relative;
-    cursor: pointer;
-    font-size: 15px;
-    color: white;
-    border: none;
-    text-align: center;
-    width: 180px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: #02092b;
+  background-color: #02092b;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .AgreBtn button img {
-    display: flex;
-    float: inline-start;
-    text-align: center;
-    width: 30px;
-    margin-top: -5px;
-    position: absolute;
-    z-index: 1;
+  margin-right: 10px;
 }
 
-.EliBtn {
-    display: flex;
-    justify-content: flex-end;
+.tabla_Cont {
+  margin-top: 20px;
+  overflow-x: auto;
 }
 
-.EliBtn button {
-    margin-right: 15px;
-    justify-content: flex-end;
-    position: relative;
-    cursor: pointer;
-    font-size: 15px;
-    color: white;
-    border: none;
-    text-align: center;
-    width: 180px;
-    height: 50px;
-    border-radius: 5px;
-    background-color: #02092b;
+.tabla_Cont table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.EliBtn button img {
-    display: flex;
-    float: inline-start;
-    text-align: center;
-    width: 30px;
-    margin-top: -5px;
-    position: absolute;
-    z-index: 1;
+.tabla_Cont th, .tabla_Cont td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: left;
 }
 
-.tabla_Cont{
-    margin-top: 20px;
-    justify-content: center;
-    display: flex;
-    text-align: center;
-  }
-
-  .tabla_Cont table{
-    border-collapse: collapse;
-  }
-
-  .tabla_Cont table th{
-    width: 200px;
-    border: 2px solid black;
-  }
-
-  .tabla_Cont table td{
-    width: 20px;
-    border: 1px solid black;
-  }
-
-  .modal {
-    color: #ffffff;
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Ajusta el índice z según sea necesario para superponer la ventana emergente sobre el contenido */
-  }
-  
-  .modal-content {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #02092b;
-    width: 180px;
-    height: 100px;
-    border-radius: 5px;
-    transition: transform 0.5s ease-out; /* Agrega un efecto de transición suave */
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .modal-content a {
-    display: block;
-    margin: 20px 0;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .modal-content a:hover {
-    color: #555;
-  }
-  
-  .navbar a.generate-doc:hover {
-    border-left: 5px solid rgb(255, 255, 255);
-    background: #ffffff48;
-  }  
-
-  .delete-row-btn {
-    margin-left: 10px;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
+.tabla_Cont th {
+  background-color: #f2f2f2;
 }
 
-.delete-row-btn-cell {
-    border: none !important; /* Elimina los bordes de la celda */
-    text-align: center; /* Ajusta la alineación del contenido del botón */
-    width: 30px; /* Ajusta el ancho de la celda según tus necesidades */
+.tabla_Cont .delete-row-btn {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: red;
+  display: block;
+  margin: 10 auto;
+  height: 30px;
+  border-radius: 5px;
+  width: 30px;
 }
 
-.delete-row-btn:hover {
-    background-color: #c0392b;
+.tabla_Cont .delete-row-btn-cell {
+  border: none;
+  text-align: center;
 }
 
-/* Estilos para el modal de inactividad */
+#checkboxFirmas {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#checkboxFirmas label {
+  margin-right: 10px;
+}
+
+#firmaContainer1, #firmaContainer2 {
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#firmaContainer1 h3, #firmaContainer2 h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#firmaContainer1 .input_container, #firmaContainer2 .input_container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#firmaContainer1 .form-group, #firmaContainer2 .form-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+#firmaContainer1 .form-group:last-child, #firmaContainer2 .form-group:last-child {
+  margin-right: 0;
+}
+
+#firmaContainer1 canvas, #firmaContainer2 canvas {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+footer .botones-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .botones-container a {
+  text-decoration: none;
+}
+
+footer .botones-container button {
+  background-color: #02092b;
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.oculto {
+  display: none;
+}
+
+/* Ventana emergente */
 .modal {
   display: none;
   position: fixed;
@@ -523,35 +270,91 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Contenido de la ventana modal */
 .modal-content {
   color: white;
   background-color: #02092b;
   margin: 15% auto;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #888;
   width: 80%;
   max-width: 400px;
-  text-align: center;
-  border-radius: 8px;
+  border-radius: 8px
+}
+
+/* Enlaces en la ventana modal */
+.modal-content a {
+    display: block;
+    padding: 10px 0;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Efecto hover en los enlaces de la ventana modal */
+.modal-content a:hover {
+    background-color: #19266477;
+}
+
+/* Botón cerrar en la ventana modal */
+.close-btn {
+    background-color: #02092b;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+}
+
+.close {
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para el modal de inactividad */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    color: white;
+    background-color: #02092b;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
 }
 
 #continueSessionBtn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 #continueSessionBtn:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
-
-
-
-  /*Devoloped by Brandon Ventura*/
