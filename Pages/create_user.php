@@ -79,9 +79,9 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <div>
                     <label for="role">Rol</label>
                     <select id="role" name="role" required>
-                        <option value="admin">Administrador</option>
-                        <option value="operator" selected>Operador</option>
-                        <option value="root">Root</option>
+                        <option value="admin">admin</option>
+                        <option value="operator" selected>operador</option>
+                        <option value="root">root</option>
                     </select>
                 </div>
                 <div>

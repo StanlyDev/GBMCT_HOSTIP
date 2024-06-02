@@ -1,32 +1,40 @@
 document.getElementById('createUserForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const role = document.getElementById('role').value;
-    const password = document.getElementById('password').value;
+    const formData = new FormData(this);
 
-    const userTableBody = document.getElementById('userTableBody');
-    const newRow = document.createElement('tr');
-    newRow.innerHTML = `
-        <td><input type="text" value="${name}" class="editable" disabled></td>
-        <td><input type="email" value="${email}" class="editable" disabled></td>
-        <td>
-            <select class="editable" disabled>
-                <option value="admin"${role === 'admin' ? ' selected' : ''}>Administrador</option>
-                <option value="operator"${role === 'operator' ? ' selected' : ''}>Operador</option>
-                <option value="root"${role === 'root' ? ' selected' : ''}>Root</option>
-            </select>
-        </td>
-        <td class="action-buttons flex">
-            <button class="edit" onclick="editRow(this)">Editar</button>
-            <button class="save hidden" onclick="saveRow(this)">Guardar</button>
-            <button class="cancel hidden" onclick="cancelEdit(this)">Cancelar</button>
-        </td>
-    `;
-    userTableBody.appendChild(newRow);
+    fetch('add_user.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(usuario => {
+        // Insertar el nuevo usuario en la tabla HTML
+        const userTableBody = document.getElementById('userTableBody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td><input type="text" value="${usuario.nombre}" class="editable" disabled></td>
+            <td><input type="email" value="${usuario.correo}" class="editable" disabled></td>
+            <td>
+                <select class="editable" disabled>
+                    <option value="admin"${usuario.rol === 'admin' ? ' selected' : ''}>Administrador</option>
+                    <option value="operator"${usuario.rol === 'operator' ? ' selected' : ''}>Operador</option>
+                    <option value="root"${usuario.rol === 'root' ? ' selected' : ''}>Root</option>
+                </select>
+            </td>
+            <td class="action-buttons flex">
+                <button class="edit" onclick="editRow(this)">Editar</button>
+                <button class="save hidden" onclick="saveRow(this)">Guardar</button>
+                <button class="cancel hidden" onclick="cancelEdit(this)">Cancelar</button>
+            </td>
+        `;
+        userTableBody.appendChild(newRow);
+    })
+    .catch(error => {
+        console.error('Error al agregar usuario:', error);
+    });
 
-    // Reset the form
-    document.getElementById('createUserForm').reset();
+    // Resetear el formulario
+    this.reset();
 });
 
 function editRow(button) {
@@ -46,7 +54,7 @@ function saveRow(button) {
     row.querySelector('.save').classList.add('hidden');
     row.querySelector('.cancel').classList.add('hidden');
 
-    // Here you can make an AJAX request to your server to save the changes
+    // Aquí puedes hacer una solicitud AJAX a tu servidor para guardar los cambios si lo deseas
 }
 
 function cancelEdit(button) {
