@@ -1,38 +1,25 @@
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('createUserForm').onsubmit = saveUser;
-});
-
 function saveUser(event) {
-    event.preventDefault();
+    event.preventDefault(); // Evitar el envío predeterminado del formulario
 
-    var form = document.getElementById('createUserForm');
-    var formData = new FormData(form);
+    // Obtener los datos del formulario
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var role = document.getElementById("role").value;
+    var password = document.getElementById("password").value;
 
+    // Realizar una solicitud AJAX para guardar el usuario
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/php/save_user.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                try {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.error) {
-                        console.error("Error al guardar el usuario:", response.error);
-                        alert("Error al guardar el usuario: " + response.error);
-                    } else {
-                        console.log("Usuario guardado exitosamente:", response.message);
-                        alert("Usuario guardado exitosamente");
-                        // Actualizar la lista de usuarios después de agregar uno nuevo
-                        getUsers();
-                    }
-                } catch (e) {
-                    console.error("Error al parsear la respuesta:", e);
-                    alert("Error inesperado. Por favor, inténtelo de nuevo.");
-                }
-            } else {
-                console.error("Error de solicitud:", xhr.status);
-                alert("Error de solicitud: " + xhr.status);
-            }
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Actualizar la tabla de usuarios después de guardar el usuario
+            getUsers();
+            // Limpiar los campos del formulario después de guardar el usuario
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
         }
     };
-    xhr.send(formData);
+    xhr.send("name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email) + "&role=" + encodeURIComponent(role) + "&password=" + encodeURIComponent(password));
 }
