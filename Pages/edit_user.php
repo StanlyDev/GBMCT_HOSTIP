@@ -53,7 +53,7 @@ $conn->close();
                     <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
                 </div>
                 <button type="submit">Guardar Cambios</button>
-                <button class="del" type="submit" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
+                <button style="background-color: red;" type="submit" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
             </form>
         </div>
     </div>
