@@ -2,7 +2,7 @@
 function getUsers() {
     // Realizar una solicitud AJAX para obtener los usuarios
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/Pages/create_user.php", true);
+    xhr.open("GET", "/php/get_user.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Actualizar el cuerpo de la tabla con los usuarios obtenidos
