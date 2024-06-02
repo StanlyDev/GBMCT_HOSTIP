@@ -2,7 +2,7 @@
 function getUsers() {
     // Realizar una solicitud AJAX para obtener los usuarios
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/php/get_user.php", true); // Asegúrate de que la ruta sea correcta
+    xhr.open("GET", "/php/get_users.php", true); // Corregido el nombre del archivo PHP
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Parsear la respuesta JSON
@@ -15,8 +15,7 @@ function getUsers() {
             userTable.innerHTML = "";
 
             // Iterar sobre los usuarios y agregarlos a la tabla
-            for (var i = 0; i < users.length; i++) {
-                var user = users[i];
+            users.forEach(function(user) {
                 var row = "<tr>";
                 row += "<td>" + user.username + "</td>";
                 row += "<td>" + user.email + "</td>";
@@ -24,17 +23,8 @@ function getUsers() {
                 row += "<td><button onclick='editUser(" + user.id + ")'>Editar</button></td>";
                 row += "</tr>";
                 userTable.innerHTML += row;
-            }
+            });
         }
     };
     xhr.send();
-}
-
-// Llamar a la función para obtener los usuarios cuando la página se carga
-window.onload = getUsers;
-
-// Función para editar un usuario
-function editUser(userId) {
-    // Redirigir a la página de edición de usuario con el ID del usuario como parámetro
-    window.location.href = "/Pages/edit_user.php?id=" + userId;
 }
