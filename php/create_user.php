@@ -24,15 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["email"
     $password = $_POST["password"];
 
     // Consulta SQL para insertar un nuevo usuario
-    $sql = "INSERT INTO usuarios (username, password, role, email) VALUES (?, ?, ?, ?)";
+    $sql_insert = "INSERT INTO usuarios (username, password, role, email) VALUES (?, ?, ?, ?)";
 
-    // Preparar la consulta
-    $stmt = $conn->prepare($sql);
+    // Preparar la consulta de inserción
+    $stmt_insert = $conn->prepare($sql_insert);
     
-    if ($stmt) {
+    if ($stmt_insert) {
         // Enlazar parámetros e insertar el usuario en la base de datos
-        $stmt->bind_param("ssss", $nombre, $password, $rol, $correo);
-        if ($stmt->execute()) {
+        $stmt_insert->bind_param("ssss", $nombre, $password, $rol, $correo);
+        if ($stmt_insert->execute()) {
             // Éxito al insertar el usuario
             $usuario = [
                 "nombre" => $nombre,
@@ -45,17 +45,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["email"
             http_response_code(500);
             echo json_encode(["error" => "Error al insertar el usuario en la base de datos"]);
         }
-        // Cerrar la declaración
-        $stmt->close();
+        // Cerrar la declaración de inserción
+        $stmt_insert->close();
     } else {
-        // Error en la preparación de la consulta
+        // Error en la preparación de la consulta de inserción
         http_response_code(500);
-        echo json_encode(["error" => "Error en la preparación de la consulta"]);
+        echo json_encode(["error" => "Error en la preparación de la consulta de inserción"]);
     }
-
-    // Cerrar la conexión
-    $conn->close();
-
-    exit();
 }
+
+// Consulta SQL para obtener todos los usuarios
+$sql_select = "SELECT * FROM usuarios";
+$resultado = $conn->query($sql_select);
+
+// Verificar si hay resultados
+if ($resultado->num_rows > 0) {
+    // Generar las filas de la tabla HTML
+    while ($fila = $resultado->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $fila["username"] . "</td>";
+        echo "<td>" . $fila["email"] . "</td>";
+        echo "<td>" . $fila["role"] . "</td>";
+        echo "<td><button class='edit'>Editar</button></td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='4'>No se encontraron usuarios</td></tr>";
+}
+
+// Cerrar la conexión
+$conn->close();
 ?>
