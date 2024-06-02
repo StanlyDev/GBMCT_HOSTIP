@@ -2,7 +2,7 @@
 function getUsers() {
     // Realizar una solicitud AJAX para obtener los usuarios
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "php/get_user.php", true);
+    xhr.open("GET", "/php/get_user.php", true); // Asegúrate de que la ruta sea correcta
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Parsear la respuesta JSON
