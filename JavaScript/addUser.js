@@ -1,81 +1,63 @@
-document.getElementById('createUserForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);
+// Función para editar usuario
+function editarUsuario(userId) {
+    // Buscar el usuario por su ID
+    const usuario = obtenerUsuarioPorId(userId);
 
-    fetch('/php/create_user.php', {
+    // Completar el formulario de creación de usuario con los datos del usuario
+    document.getElementById('name').value = usuario.nombre;
+    document.getElementById('email').value = usuario.correo;
+    document.getElementById('role').value = usuario.rol;
+
+    // Cambiar el texto y el comportamiento del botón
+    const createUserForm = document.getElementById('createUserForm');
+    createUserForm.removeEventListener('submit', agregarUsuario);
+    createUserForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        guardarCambiosUsuario(userId);
+    });
+    const submitButton = createUserForm.querySelector('button[type="submit"]');
+    submitButton.textContent = 'Guardar Cambios';
+
+    // Mostrar botón de cancelar
+    document.getElementById('cancelButton').classList.remove('hidden');
+}
+
+// Función para guardar cambios en un usuario
+function guardarCambiosUsuario(userId) {
+    const formData = new FormData(document.getElementById('createUserForm'));
+
+    fetch(`/php/edit_user.php?id=${userId}`, {
         method: 'POST',
         body: formData
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Error al agregar usuario');
+            throw new Error('Error al editar usuario');
         }
         return response.json();
     })
     .then(usuario => {
-        // Insertar el nuevo usuario en la tabla HTML
-        const userTableBody = document.getElementById('userTableBody');
-        const newRow = document.createElement('tr');
-        newRow.innerHTML = `
-            <td><input type="text" value="${usuario.nombre}" class="editable" disabled></td>
-            <td><input type="email" value="${usuario.correo}" class="editable" disabled></td>
-            <td>
-                <select class="editable" disabled>
-                    <option value="admin"${usuario.rol === 'admin' ? ' selected' : ''}>Administrador</option>
-                    <option value="operator"${usuario.rol === 'operator' ? ' selected' : ''}>Operador</option>
-                    <option value="root"${usuario.rol === 'root' ? ' selected' : ''}>Root</option>
-                </select>
-            </td>
-            <td class="action-buttons flex">
-                <button class="edit" onclick="editRow(this)">Editar</button>
-                <button class="save hidden" onclick="saveRow(this)">Guardar</button>
-                <button class="cancel hidden" onclick="cancelEdit(this)">Cancelar</button>
-            </td>
-        `;
-        userTableBody.appendChild(newRow);
+        // Aquí podrías actualizar la fila de la tabla con los nuevos datos del usuario
+        console.log('Usuario editado:', usuario);
     })
     .catch(error => {
-        console.error('Error al agregar usuario:', error);
-        // Mostrar mensaje de error al usuario
-        alert('Error al agregar usuario: ' + error.message);
+        console.error('Error al editar usuario:', error);
+        alert('Error al editar usuario: ' + error.message);
     });
 
     // Resetear el formulario
-    this.reset();
-});
-
-function editRow(button) {
-    const row = button.closest('tr');
-    const inputs = row.querySelectorAll('.editable');
-    inputs.forEach(input => input.disabled = false);
-    row.querySelector('.edit').classList.add('hidden');
-    row.querySelector('.save').classList.remove('hidden');
-    row.querySelector('.cancel').classList.remove('hidden');
+    document.getElementById('createUserForm').reset();
 }
 
-function saveRow(button) {
-    const row = button.closest('tr');
-    const inputs = row.querySelectorAll('.editable');
-    inputs.forEach(input => input.disabled = true);
-    row.querySelector('.edit').classList.remove('hidden');
-    row.querySelector('.save').classList.add('hidden');
-    row.querySelector('.cancel').classList.add('hidden');
+// Función para cancelar la edición
+function cancelarEdicion() {
+    // Limpiar el formulario y restablecer el botón
+    document.getElementById('createUserForm').reset();
+    const submitButton = document.getElementById('createUserForm').querySelector('button[type="submit"]');
+    submitButton.textContent = 'Crear Usuario';
+    submitButton.removeEventListener('click', guardarCambiosUsuario);
+    submitButton.addEventListener('click', agregarUsuario);
 
-    // Aquí puedes hacer una solicitud AJAX a tu servidor para guardar los cambios si lo deseas
-}
-
-function cancelEdit(button) {
-    const row = button.closest('tr');
-    const inputs = row.querySelectorAll('.editable');
-    inputs.forEach(input => {
-        input.disabled = true;
-        if (input.tagName === 'INPUT') {
-            input.value = input.defaultValue;
-        } else if (input.tagName === 'SELECT') {
-            input.value = input.querySelector('option[selected]').value;
-        }
-    });
-    row.querySelector('.edit').classList.remove('hidden');
-    row.querySelector('.save').classList.add('hidden');
-    row.querySelector('.cancel').classList.add('hidden');
+    // Ocultar botón de cancelar
+    document.getElementById('cancelButton').classList.add('hidden');
 }
