@@ -1,63 +1,44 @@
 // Función para editar usuario
 function editarUsuario(userId) {
-    // Buscar el usuario por su ID
-    const usuario = obtenerUsuarioPorId(userId);
+    // Obtener la fila de la tabla que corresponde al usuario seleccionado
+    const userRow = document.querySelector(`tr[data-user-id="${userId}"]`);
 
-    // Completar el formulario de creación de usuario con los datos del usuario
-    document.getElementById('name').value = usuario.nombre;
-    document.getElementById('email').value = usuario.correo;
-    document.getElementById('role').value = usuario.rol;
+    // Obtener los elementos de la fila
+    const nombreCell = userRow.querySelector('.nombre');
+    const correoCell = userRow.querySelector('.correo');
+    const rolCell = userRow.querySelector('.rol');
+    const actionCell = userRow.querySelector('.action-buttons');
 
-    // Cambiar el texto y el comportamiento del botón
-    const createUserForm = document.getElementById('createUserForm');
-    createUserForm.removeEventListener('submit', agregarUsuario);
-    createUserForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        guardarCambiosUsuario(userId);
-    });
-    const submitButton = createUserForm.querySelector('button[type="submit"]');
-    submitButton.textContent = 'Guardar Cambios';
-
-    // Mostrar botón de cancelar
-    document.getElementById('cancelButton').classList.remove('hidden');
+    // Convertir los elementos en inputs/editables
+    nombreCell.innerHTML = `<input type="text" value="${nombreCell.textContent}" class="editable">`;
+    correoCell.innerHTML = `<input type="email" value="${correoCell.textContent}" class="editable">`;
+    rolCell.innerHTML = `
+        <select class="editable">
+            <option value="admin"${rolCell.textContent === 'Administrador' ? ' selected' : ''}>Administrador</option>
+            <option value="operator"${rolCell.textContent === 'Operador' ? ' selected' : ''}>Operador</option>
+            <option value="root"${rolCell.textContent === 'Root' ? ' selected' : ''}>Root</option>
+        </select>
+    `;
+    actionCell.innerHTML = `
+        <button class="save" onclick="guardarCambiosUsuario(${userId})">Guardar</button>
+        <button class="cancel" onclick="cancelarEdicion(${userId})">Cancelar</button>
+    `;
 }
 
 // Función para guardar cambios en un usuario
 function guardarCambiosUsuario(userId) {
-    const formData = new FormData(document.getElementById('createUserForm'));
+    // Obtener los valores editados
+    const userRow = document.querySelector(`tr[data-user-id="${userId}"]`);
+    const nombre = userRow.querySelector('.nombre input').value;
+    const correo = userRow.querySelector('.correo input').value;
+    const rol = userRow.querySelector('.rol select').value;
 
-    fetch(`/php/edit_user.php?id=${userId}`, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error al editar usuario');
-        }
-        return response.json();
-    })
-    .then(usuario => {
-        // Aquí podrías actualizar la fila de la tabla con los nuevos datos del usuario
-        console.log('Usuario editado:', usuario);
-    })
-    .catch(error => {
-        console.error('Error al editar usuario:', error);
-        alert('Error al editar usuario: ' + error.message);
-    });
-
-    // Resetear el formulario
-    document.getElementById('createUserForm').reset();
+    // Aquí puedes enviar una solicitud AJAX para guardar los cambios
+    console.log(`Guardando cambios para el usuario ${userId}: Nombre: ${nombre}, Correo: ${correo}, Rol: ${rol}`);
 }
 
 // Función para cancelar la edición
-function cancelarEdicion() {
-    // Limpiar el formulario y restablecer el botón
-    document.getElementById('createUserForm').reset();
-    const submitButton = document.getElementById('createUserForm').querySelector('button[type="submit"]');
-    submitButton.textContent = 'Crear Usuario';
-    submitButton.removeEventListener('click', guardarCambiosUsuario);
-    submitButton.addEventListener('click', agregarUsuario);
-
-    // Ocultar botón de cancelar
-    document.getElementById('cancelButton').classList.add('hidden');
+function cancelarEdicion(userId) {
+    // Recargar la página para cancelar la edición
+    location.reload();
 }
