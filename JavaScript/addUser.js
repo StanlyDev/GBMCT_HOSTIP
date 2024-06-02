@@ -1,22 +1,26 @@
-// Función para editar usuario
 function editarUsuario(userId) {
     // Obtener la fila de la tabla que corresponde al usuario seleccionado
     const userRow = document.querySelector(`tr[data-user-id="${userId}"]`);
 
     // Obtener los elementos de la fila
-    const nombreCell = userRow.querySelector('.nombre');
-    const correoCell = userRow.querySelector('.correo');
-    const rolCell = userRow.querySelector('.rol');
-    const actionCell = userRow.querySelector('.action-buttons');
+    const nombreCell = userRow.querySelector('td:nth-child(1)');
+    const correoCell = userRow.querySelector('td:nth-child(2)');
+    const rolCell = userRow.querySelector('td:nth-child(3)');
+    const actionCell = userRow.querySelector('td:nth-child(4)');
+
+    // Obtener los valores originales de los campos
+    const nombreOriginal = nombreCell.textContent.trim();
+    const correoOriginal = correoCell.textContent.trim();
+    const rolOriginal = rolCell.textContent.trim();
 
     // Convertir los elementos en inputs/editables
-    nombreCell.innerHTML = `<input type="text" value="${nombreCell.textContent}" class="editable">`;
-    correoCell.innerHTML = `<input type="email" value="${correoCell.textContent}" class="editable">`;
+    nombreCell.innerHTML = `<input type="text" value="${nombreOriginal}" class="editable">`;
+    correoCell.innerHTML = `<input type="email" value="${correoOriginal}" class="editable">`;
     rolCell.innerHTML = `
         <select class="editable">
-            <option value="admin"${rolCell.textContent === 'Administrador' ? ' selected' : ''}>Administrador</option>
-            <option value="operator"${rolCell.textContent === 'Operador' ? ' selected' : ''}>Operador</option>
-            <option value="root"${rolCell.textContent === 'Root' ? ' selected' : ''}>Root</option>
+            <option value="admin"${rolOriginal === 'Administrador' ? ' selected' : ''}>Administrador</option>
+            <option value="operator"${rolOriginal === 'Operador' ? ' selected' : ''}>Operador</option>
+            <option value="root"${rolOriginal === 'Root' ? ' selected' : ''}>Root</option>
         </select>
     `;
     actionCell.innerHTML = `
@@ -24,6 +28,7 @@ function editarUsuario(userId) {
         <button class="cancel" onclick="cancelarEdicion(${userId})">Cancelar</button>
     `;
 }
+
 
 // Función para guardar cambios en un usuario
 function guardarCambiosUsuario(userId) {
