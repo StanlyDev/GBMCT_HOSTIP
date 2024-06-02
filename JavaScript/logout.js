@@ -34,17 +34,24 @@ function iniciarTemporizador() {
         };
     }
 
-    // Función para reiniciar los temporizadores solo cuando se hace clic en "Cancelar"
+    // Función para reiniciar los temporizadores solo cuando el modal no está visible
     function reiniciarTemporizador() {
-        clearTimeout(temporizador);
-        clearTimeout(temporizadorAviso);
-        temporizadorAviso = setTimeout(mostrarAviso, avisoTiempo);
-        temporizador = setTimeout(redirigirLogout, tiempoLimite);
+        if (modal.style.display !== 'block') {
+            clearTimeout(temporizador);
+            clearTimeout(temporizadorAviso);
+            temporizadorAviso = setTimeout(mostrarAviso, avisoTiempo);
+            temporizador = setTimeout(redirigirLogout, tiempoLimite);
+        }
     }
 
     // Iniciar los temporizadores al cargar la página
-    temporizadorAviso = setTimeout(mostrarAviso, avisoTiempo);
-    temporizador = setTimeout(redirigirLogout, tiempoLimite);
+    reiniciarTemporizador();
+
+    // Agregar event listeners para reiniciar el temporizador al detectar actividad del usuario
+    document.addEventListener("mousemove", reiniciarTemporizador);
+    document.addEventListener("keypress", reiniciarTemporizador);
+    document.addEventListener("click", reiniciarTemporizador);
+    document.addEventListener("scroll", reiniciarTemporizador);
 }
 
 // Iniciar el temporizador cuando la página se carga completamente
