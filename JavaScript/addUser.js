@@ -2,11 +2,16 @@ document.getElementById('createUserForm').addEventListener('submit', function(ev
     event.preventDefault();
     const formData = new FormData(this);
 
-    fetch('/php/create_user.php', { 
+    fetch('/php/create_user.php', {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al agregar usuario');
+        }
+        return response.json();
+    })
     .then(usuario => {
         // Insertar el nuevo usuario en la tabla HTML
         const userTableBody = document.getElementById('userTableBody');
@@ -31,6 +36,8 @@ document.getElementById('createUserForm').addEventListener('submit', function(ev
     })
     .catch(error => {
         console.error('Error al agregar usuario:', error);
+        // Mostrar mensaje de error al usuario
+        alert('Error al agregar usuario: ' + error.message);
     });
 
     // Resetear el formulario

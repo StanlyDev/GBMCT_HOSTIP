@@ -21,6 +21,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
     <script defer src="/JavaScript/addUser.js"></script>
+    <script defer src="/JavaScript/get_user.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>

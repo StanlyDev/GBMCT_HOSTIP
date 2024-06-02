@@ -18,24 +18,23 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Consulta SQL para obtener todos los usuarios
-$sql_select = "SELECT * FROM usuarios";
-$resultado = $conn->query($sql_select);
+// Consulta SQL para obtener usuarios
+$sql = "SELECT id, username, email, role FROM usuarios";
+$result = $conn->query($sql);
 
-// Verificar si hay resultados
-if ($resultado->num_rows > 0) {
-    // Generar las filas de la tabla HTML
-    while ($fila = $resultado->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $fila["username"] . "</td>";
-        echo "<td>" . $fila["email"] . "</td>";
-        echo "<td>" . $fila["role"] . "</td>";
-        echo "<td><button class='edit'>Editar</button></td>";
-        echo "</tr>";
+// Crear un array para almacenar los usuarios
+$usuarios = [];
+
+// Obtener resultados de la consulta y agregarlos al array de usuarios
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $usuarios[] = $row;
     }
-} else {
-    echo "<tr><td colspan='4'>No se encontraron usuarios</td></tr>";
 }
+
+// Devolver usuarios en formato JSON
+header('Content-Type: application/json');
+echo json_encode($usuarios);
 
 // Cerrar la conexión
 $conn->close();
