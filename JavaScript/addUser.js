@@ -1,48 +1,66 @@
-function editarUsuario(userId) {
-    // Obtener la fila de la tabla que corresponde al usuario seleccionado
-    const userRow = document.querySelector(`tr[data-user-id="${userId}"]`);
+document.getElementById('createUserForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const role = document.getElementById('role').value;
+    const password = document.getElementById('password').value;
 
-    // Obtener los elementos de la fila
-    const nombreCell = userRow.querySelector('td:nth-child(1)');
-    const correoCell = userRow.querySelector('td:nth-child(2)');
-    const rolCell = userRow.querySelector('td:nth-child(3)');
-    const actionCell = userRow.querySelector('td:nth-child(4)');
-
-    // Obtener los valores originales de los campos
-    const nombreOriginal = nombreCell.textContent.trim();
-    const correoOriginal = correoCell.textContent.trim();
-    const rolOriginal = rolCell.textContent.trim();
-
-    // Convertir los elementos en inputs/editables
-    nombreCell.innerHTML = `<input type="text" value="${nombreOriginal}" class="editable nombre">`;
-    correoCell.innerHTML = `<input type="email" value="${correoOriginal}" class="editable correo">`;
-    rolCell.innerHTML = `
-        <select class="editable rol">
-            <option value="Administrador"${rolOriginal === 'Administrador' ? ' selected' : ''}>Administrador</option>
-            <option value="Operador"${rolOriginal === 'Operador' ? ' selected' : ''}>Operador</option>
-            <option value="Root"${rolOriginal === 'Root' ? ' selected' : ''}>Root</option>
-        </select>
+    const userTableBody = document.getElementById('userTableBody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+        <td><input type="text" value="${name}" class="editable" disabled></td>
+        <td><input type="email" value="${email}" class="editable" disabled></td>
+        <td>
+            <select class="editable" disabled>
+                <option value="admin"${role === 'admin' ? ' selected' : ''}>Administrador</option>
+                <option value="operator"${role === 'operator' ? ' selected' : ''}>Operador</option>
+                <option value="root"${role === 'root' ? ' selected' : ''}>Root</option>
+            </select>
+        </td>
+        <td class="action-buttons flex">
+            <button class="edit" onclick="editRow(this)">Editar</button>
+            <button class="save hidden" onclick="saveRow(this)">Guardar</button>
+            <button class="cancel hidden" onclick="cancelEdit(this)">Cancelar</button>
+        </td>
     `;
-    actionCell.innerHTML = `
-        <button class="save" onclick="guardarCambiosUsuario(${userId})">Guardar</button>
-        <button class="cancel" onclick="cancelarEdicion(${userId})">Cancelar</button>
-    `;
+    userTableBody.appendChild(newRow);
+
+    // Reset the form
+    document.getElementById('createUserForm').reset();
+});
+
+function editRow(button) {
+    const row = button.closest('tr');
+    const inputs = row.querySelectorAll('.editable');
+    inputs.forEach(input => input.disabled = false);
+    row.querySelector('.edit').classList.add('hidden');
+    row.querySelector('.save').classList.remove('hidden');
+    row.querySelector('.cancel').classList.remove('hidden');
 }
 
-// Función para guardar cambios en un usuario
-function guardarCambiosUsuario(userId) {
-    // Obtener los valores editados
-    const userRow = document.querySelector(`tr[data-user-id="${userId}"]`);
-    const nombre = userRow.querySelector('.nombre input').value;
-    const correo = userRow.querySelector('.correo input').value;
-    const rol = userRow.querySelector('.rol select').value;
+function saveRow(button) {
+    const row = button.closest('tr');
+    const inputs = row.querySelectorAll('.editable');
+    inputs.forEach(input => input.disabled = true);
+    row.querySelector('.edit').classList.remove('hidden');
+    row.querySelector('.save').classList.add('hidden');
+    row.querySelector('.cancel').classList.add('hidden');
 
-    // Aquí puedes enviar una solicitud AJAX para guardar los cambios
-    console.log(`Guardando cambios para el usuario ${userId}: Nombre: ${nombre}, Correo: ${correo}, Rol: ${rol}`);
+    // Here you can make an AJAX request to your server to save the changes
 }
 
-// Función para cancelar la edición
-function cancelarEdicion(userId) {
-    // Recargar la página para cancelar la edición
-    location.reload();
+function cancelEdit(button) {
+    const row = button.closest('tr');
+    const inputs = row.querySelectorAll('.editable');
+    inputs.forEach(input => {
+        input.disabled = true;
+        if (input.tagName === 'INPUT') {
+            input.value = input.defaultValue;
+        } else if (input.tagName === 'SELECT') {
+            input.value = input.querySelector('option[selected]').value;
+        }
+    });
+    row.querySelector('.edit').classList.remove('hidden');
+    row.querySelector('.save').classList.add('hidden');
+    row.querySelector('.cancel').classList.add('hidden');
 }

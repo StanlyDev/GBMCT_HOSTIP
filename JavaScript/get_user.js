@@ -21,9 +21,3 @@ function cargarUsuarios() {
 
 // Función para cargar usuarios al cargar la página
 window.onload = cargarUsuarios;
-
-// Función para editar usuario
-function editarUsuario(userId) {
-    // Aquí puedes implementar la lógica para editar un usuario
-    console.log('Editando usuario con ID:', userId);
-}
