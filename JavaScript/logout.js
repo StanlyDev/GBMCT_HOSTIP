@@ -1,38 +1,44 @@
 // Función para redirigir al usuario al cerrar sesión después de cierto tiempo de inactividad
 function iniciarTemporizador() {
-    // Definir el tiempo límite de inactividad en milisegundos (20 segundos)
     var tiempoLimite = 20 * 1000; // 20 segundos en milisegundos
-    var avisoTiempo = 5 * 1000; // Tiempo antes de que aparezca la alerta (15 segundos de inactividad)
+    var avisoTiempo = 15 * 1000; // Tiempo antes de que aparezca la alerta (15 segundos de inactividad)
     var temporizador, temporizadorAviso;
+
+    var modal = document.getElementById('inactivityModal');
+    var countdownElement = document.getElementById('inactivityCountdown');
+    var continueSessionBtn = document.getElementById('continueSessionBtn');
 
     // Función para redirigir al usuario a la página de cerrar sesión
     function redirigirLogout() {
-        window.location.href = "/php/logout.php";
+        window.location.href = "/logout.php";
     }
 
     // Función para mostrar el aviso con cuenta regresiva
     function mostrarAviso() {
+        modal.style.display = 'block';
         var contador = 5; // Tiempo para la cuenta regresiva en segundos
+        countdownElement.textContent = contador;
         var intervalo = setInterval(function() {
-            if (contador > 0) {
-                var continuar = confirm("En " + contador + " segundos se cerrará la sesión, de click en Aceptar para continuar en sesión.");
-                if (continuar) {
-                    reiniciarTemporizador();
-                    clearInterval(intervalo);
-                    return;
-                }
-                contador--;
-            } else {
+            contador--;
+            countdownElement.textContent = contador;
+            if (contador <= 0) {
                 clearInterval(intervalo);
                 redirigirLogout();
             }
         }, 1000);
+
+        continueSessionBtn.onclick = function() {
+            clearInterval(intervalo);
+            modal.style.display = 'none';
+            reiniciarTemporizador();
+        };
     }
 
     // Función para reiniciar los temporizadores
     function reiniciarTemporizador() {
         clearTimeout(temporizador);
         clearTimeout(temporizadorAviso);
+        modal.style.display = 'none';
         temporizadorAviso = setTimeout(mostrarAviso, avisoTiempo);
         temporizador = setTimeout(redirigirLogout, tiempoLimite);
     }
@@ -47,3 +53,4 @@ function iniciarTemporizador() {
 
 // Iniciar el temporizador cuando la página se carga completamente
 window.onload = iniciarTemporizador;
+    
