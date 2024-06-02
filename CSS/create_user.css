@@ -31,10 +31,6 @@ header {
   justify-content: space-between;
 }
 
-  @font-face {
-      font-family: themillion;
-      src: url(/Fonts/Chivo-ExtraLight.ttf);
-    }
 
   .container {
       max-width: 800px;

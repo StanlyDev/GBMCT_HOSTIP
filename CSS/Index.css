@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -10,6 +9,12 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    font-family: themillion;
+}
+
+@font-face {
+  font-family: themillion;
+  src: url(/Fonts/Chivo-ExtraLight.ttf);
 }
 
 .container {
