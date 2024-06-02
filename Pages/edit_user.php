@@ -24,6 +24,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/create_user.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
+    <script defer src="/JavaScript/logout.js"></script>
     <title>Editar Usuario</title>
 </head>
 <body>
@@ -52,7 +53,7 @@ $conn->close();
                     <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
                 </div>
                 <button type="submit">Guardar Cambios</button>
-                <button type="submit" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
+                <button class="del" type="submit" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
             </form>
         </div>
     </div>
