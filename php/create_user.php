@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Datos de conexión a la base de datos
 $servername = "10.4.27.113";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
@@ -9,48 +10,52 @@ $dbname = "dbmedios_gbm";
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
+// Verificar la conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Verificar si se ha enviado el formulario de creación de usuario
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["email"], $_POST["role"], $_POST["password"])) {
+    // Obtener los datos del formulario
     $nombre = $_POST["name"];
     $correo = $_POST["email"];
     $rol = $_POST["role"];
-    $contraseña = $_POST["password"];
+    $password = $_POST["password"];
 
-    // Escapar caracteres especiales para evitar inyección SQL
-    $nombre = $conn->real_escape_string($nombre);
-    $correo = $conn->real_escape_string($correo);
-    $rol = $conn->real_escape_string($rol);
-    $contraseña = $conn->real_escape_string($contraseña);
+    // Consulta SQL para insertar un nuevo usuario
+    $sql = "INSERT INTO usuarios (username, password, role, email) VALUES (?, ?, ?, ?)";
 
-    // Insertar nuevo usuario en la tabla 'usuarios'
-    $sql = "INSERT INTO usuarios (nombre, correo, rol, contraseña) VALUES ('$nombre', '$correo', '$rol', '$contraseña')";
+    // Preparar la consulta
+    $stmt = $conn->prepare($sql);
     
-    if ($conn->query($sql) === TRUE) {
-        // Obtener el ID del usuario recién insertado
-        $usuario_id = $conn->insert_id;
-
-        // Consulta para obtener los datos del usuario recién insertado
-        $consulta_usuario = $conn->query("SELECT * FROM usuarios WHERE id = $usuario_id");
-
-        // Verificar si se encontró el usuario
-        if ($consulta_usuario->num_rows > 0) {
-            // Obtener los datos del usuario
-            $usuario = $consulta_usuario->fetch_assoc();
-
-            // Devolver los datos del usuario como respuesta en formato JSON
+    if ($stmt) {
+        // Enlazar parámetros e insertar el usuario en la base de datos
+        $stmt->bind_param("ssss", $nombre, $password, $rol, $correo);
+        if ($stmt->execute()) {
+            // Éxito al insertar el usuario
+            $usuario = [
+                "nombre" => $nombre,
+                "correo" => $correo,
+                "rol" => $rol
+            ];
             echo json_encode($usuario);
         } else {
-            echo "No se pudo encontrar el usuario recién creado";
+            // Error al insertar el usuario
+            http_response_code(500);
+            echo json_encode(["error" => "Error al insertar el usuario en la base de datos"]);
         }
+        // Cerrar la declaración
+        $stmt->close();
     } else {
-        echo "Error al agregar usuario: " . $conn->error;
+        // Error en la preparación de la consulta
+        http_response_code(500);
+        echo json_encode(["error" => "Error en la preparación de la consulta"]);
     }
-}
 
-// Cerrar conexión MySQL
-$conn->close();
+    // Cerrar la conexión
+    $conn->close();
+
+    exit();
+}
 ?>
