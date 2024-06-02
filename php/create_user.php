@@ -24,15 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["email"
     $password = $_POST["password"];
 
     // Consulta SQL para insertar un nuevo usuario
-    $sql = "INSERT INTO usuarios (username, password, role, email) VALUES (?, ?, ?, ?)";
+    $sql_insert = "INSERT INTO usuarios (username, password, role, email) VALUES (?, ?, ?, ?)";
 
-    // Preparar la consulta
-    $stmt = $conn->prepare($sql);
+    // Preparar la consulta de inserción
+    $stmt_insert = $conn->prepare($sql_insert);
     
-    if ($stmt) {
+    if ($stmt_insert) {
         // Enlazar parámetros e insertar el usuario en la base de datos
-        $stmt->bind_param("ssss", $nombre, $password, $rol, $correo);
-        if ($stmt->execute()) {
+        $stmt_insert->bind_param("ssss", $nombre, $password, $rol, $correo);
+        if ($stmt_insert->execute()) {
             // Éxito al insertar el usuario
             $usuario = [
                 "nombre" => $nombre,
@@ -45,17 +45,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["name"], $_POST["email"
             http_response_code(500);
             echo json_encode(["error" => "Error al insertar el usuario en la base de datos"]);
         }
-        // Cerrar la declaración
-        $stmt->close();
+        // Cerrar la declaración de inserción
+        $stmt_insert->close();
     } else {
-        // Error en la preparación de la consulta
+        // Error en la preparación de la consulta de inserción
         http_response_code(500);
-        echo json_encode(["error" => "Error en la preparación de la consulta"]);
+        echo json_encode(["error" => "Error en la preparación de la consulta de inserción"]);
     }
-
-    // Cerrar la conexión
-    $conn->close();
-
-    exit();
 }
+
+// Cerrar la conexión
+$conn->close();
 ?>
