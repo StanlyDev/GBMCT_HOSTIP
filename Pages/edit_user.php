@@ -32,7 +32,7 @@ $conn->close();
             <h1>Editar Usuario</h1><hr>
             <form id="editUserForm">
                 <div>
-                    <label for="name">Name</label>
+                    <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" value="<?php echo $user['username']; ?>" required>
                 </div>
                 <div>
@@ -52,6 +52,7 @@ $conn->close();
                     <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
                 </div>
                 <button type="submit">Guardar Cambios</button>
+                <button type="button" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
             </form>
         </div>
     </div>
@@ -71,6 +72,21 @@ $conn->close();
             };
             xhr.send(formData);
         };
+
+        function deleteUser(userId) {
+            if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/php/delete_user.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert("Usuario eliminado exitosamente.");
+                        window.location.href = "/Pages/create_user.php";
+                    }
+                };
+                xhr.send("id=" + userId);
+            }
+        }
     </script>
 </body>
 </html>
