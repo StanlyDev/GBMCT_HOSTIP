@@ -12,16 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error de conexión: " . $conn->connect_error);
     }
 
+    $userId = $_POST["id"];
     $name = $_POST["name"];
     $email = $_POST["email"];
     $role = $_POST["role"];
     $password = $_POST["password"];
 
-    $sql = "INSERT INTO usuarios (username, email, role, password) VALUES ('$name', '$email', '$role', '$password')";
+    $sql = "UPDATE usuarios SET username='$name', email='$email', role='$role', password='$password' WHERE id=$userId";
     if ($conn->query($sql) === TRUE) {
-        echo "Usuario agregado exitosamente.";
+        echo "Usuario actualizado exitosamente.";
     } else {
-        echo "Error al agregar el usuario: " . $conn->error;
+        echo "Error al actualizar el usuario: " . $conn->error;
     }
 
     $conn->close();
