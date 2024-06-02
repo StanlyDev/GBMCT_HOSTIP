@@ -163,7 +163,7 @@ if (!isset($_SESSION["id"])) {
   </script>
   <div id="inactivityModal" class="modal">
     <div class="modal-content">
-        <p>En <span id="inactivityCountdown">5</span> segundos se cerrará la sesión.</p>
+        <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
         <button id="continueSessionBtn">Continuar sesión</button>
     </div>
 </div>    
