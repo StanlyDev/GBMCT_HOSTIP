@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
-if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
-}
-// Obtener el rol del usuario desde la sesión
-$usuario_rol = $_SESSION["role"] ?? '';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,6 +10,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
     <script defer src="/JavaScript/get_user.js"></script>
+    <script defer src="/JavaScript/save_user.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
@@ -67,7 +57,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <div class="container">
         <div class="form-container">
             <h1>Crear Usuario</h1><hr>
-            <form id="createUserForm">
+            <form id="createUserForm" onsubmit="saveUser(event)">
                 <div>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter user name" required>
@@ -100,7 +90,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         <th>Rol</th>
                         <th>Editar</th>
                     </tr>
-                </thead>
+                    </thead>
                 <tbody id="userTableBody">
                     <!-- Dynamic content will be inserted here -->
                 </tbody>
