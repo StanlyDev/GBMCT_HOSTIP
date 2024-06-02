@@ -21,10 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Obtener los datos del formulario
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $role = $_POST["role"];
-    $password = $_POST["password"];
+    $name = $_POST["name"] ?? '';
+    $email = $_POST["email"] ?? '';
+    $role = $_POST["role"] ?? '';
+    $password = $_POST["password"] ?? '';
+
+    // Verificar que todos los campos estén completos
+    if (empty($name) || empty($email) || empty($role) || empty($password)) {
+        error_log("Campos del formulario incompletos");
+        http_response_code(400);
+        echo json_encode(["error" => "Todos los campos son obligatorios"]);
+        exit();
+    }
 
     // Preparar la consulta para evitar inyecciones SQL
     $stmt = $conn->prepare("INSERT INTO usuarios (username, email, role, password) VALUES (?, ?, ?, ?)");
