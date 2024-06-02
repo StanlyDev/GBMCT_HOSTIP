@@ -22,14 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $role = $_POST["role"];
     $password = $_POST["password"];
+    $userId = $_POST["userId"]; // Id del usuario a editar
 
-    // Insertar el nuevo usuario en la base de datos
-    $sql = "INSERT INTO usuarios (username, email, role, password) VALUES ('$name', '$email', '$role', '$password')";
+    // Actualizar los datos del usuario en la base de datos
+    $sql = "UPDATE usuarios SET username='$name', email='$email', role='$role', password='$password' WHERE id=$userId";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Usuario agregado exitosamente.";
+        // Respondemos con un JSON para que el JavaScript pueda manejar la respuesta
+        echo json_encode(["success" => true]);
     } else {
-        echo "Error al agregar el usuario: " . $conn->error;
+        // Si hay un error, también respondemos con un JSON
+        echo json_encode(["success" => false, "error" => $conn->error]);
     }
 
     // Cerrar la conexión
