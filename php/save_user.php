@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "10.4.27.113";
+    $servername = "10.4.27.116";
     $username = "stanvsdev";
     $password = "Stanlyv00363";
     $dbname = "dbmedios_gbm";

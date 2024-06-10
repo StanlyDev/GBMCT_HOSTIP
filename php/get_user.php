@@ -5,7 +5,7 @@ session_start();
 $usuario_rol = $_SESSION["role"] ?? '';
 
 // Datos de conexión a la base de datos
-$servername = "10.4.27.113";
+$servername = "10.4.27.116";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
