@@ -40,22 +40,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
                   colors="primary:#ffffff"
                   style="width:30px;height:30px">
               </lord-icon></a></div>
-              <div class="AddInvent"><a href="/Pages/AddInvent.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
-                <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                <lord-icon
-                    src="https://cdn.lordicon.com/jgnvfzqg.json"
-                    trigger="hover"
-                    colors="primary:#ffffff"
-                    style="width:30px;height:30px">
-                </lord-icon></a></div>
-                <div class="DeleInvent"><a href="/Pages/DeleteInvent.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
-                  <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                  <lord-icon
-                      src="https://cdn.lordicon.com/skkahier.json"
-                      trigger="hover"
-                      colors="primary:#ffffff"
-                      style="width:30px;height:30px">
-                  </lord-icon></a></div>
                 <div class="close_user">
                 <a href="/php/logout.php">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
@@ -86,7 +70,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
   <main>
     <!--Inicio Main-->
     <div class="title_inven">
-      <h1> Inventario en Cintoteca</h1><hr>
+      <h1>Eliminar cinta del inventario</h1><br>
+      <p style="color: red; margin-left: 50px;">Los cambios realizados en este apartados son irreversibles</p><hr>
     </div>
     <!--Informacion de cinta-->
     <div class="Info_Cinta">
@@ -97,11 +82,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <p style="margin-left: 10px;">Codigo: </p>
           <input id="search-codigo" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
         </div>
-      </div>
-      <div class="checkend_inv">
-        <label for="">En Cintoteca: </label>
-        <input type="checkbox" id="check"><label for="check">Si</label>
-        <input type="checkbox" id="check1"><label for="check1">No</label>
       </div>
     </div>
     <!--Fin Informacion de cinta-->
@@ -136,13 +116,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
       <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
     </div>
   </div>
-  <footer>
-    <div class="botones-container">
-      <button onclick="descargarExcel()">
-        <img style="height: 25px; margin-right: 5px;" src="/IMG/Icon/file-earmark-excel.svg"><p>Descargar Excel</p>
-      </button>
-    </div>
-  </footer>
   <script>
     document.addEventListener('DOMContentLoaded', fetchData);
 
@@ -169,6 +142,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.Descripcion}</td>
           <td>${item.CodigoCinta}</td>
           <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
+          <td>${item.SR}</td>
+          <td>${item.FMDEmail}</td>
+          <td>${item.HrAdd}</td>
+          <td>${item.DateAdd}</td>
+          <td>${item.OperatorName}</td>
         `;
         tablaBody.appendChild(row);
       });

@@ -75,10 +75,13 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         <input type="text" id="client_name" name="client_name" placeholder="Client" required>
                     </div>
                     <div class="form-group">
-                        <label for="co">Contrato:</
-                            label>
+                        <label for="co">Contrato:</label>
                             <input type="text" placeholder="CO" id="co" class="co" name="co" required>
                         </div>
+                        <div class="form-group">
+                            <label for="sr">Ticket de Ingreso:</label>
+                                <input type="text" placeholder="SR" id="sr" class="sr" name="sr" required>
+                            </div>
                         <div class="form-group">
                             <label for="enc">Email Field Manager:</label>
                             <input type="text" placeholder="Field-Manager" id="enc" name="enc" required>

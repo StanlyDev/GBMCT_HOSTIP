@@ -44,7 +44,7 @@ header {
   margin: 0 20px;
 }
 
-.close_user, .home{
+.close_user, .home, .AddInvent, .DeleInvent{
   margin-right: 20px;
 }
 
