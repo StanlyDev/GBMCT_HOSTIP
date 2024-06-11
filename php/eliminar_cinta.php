@@ -20,7 +20,7 @@ $cinta_id = $_POST["id"];
 $servername = "10.4.27.116";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
-$dbname = "nombre_de_tu_base_de_datos";
+$dbname = "dbmedios_gbm";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -31,7 +31,7 @@ if ($conn->connect_error) {
 }
 
 // Preparar la declaración SQL para eliminar la cinta
-$sql = "DELETE FROM tabla_de_cintas WHERE id = $cinta_id";
+$sql = "DELETE FROM TableInventory WHERE id = $cinta_id";
 
 // Ejecutar la declaración SQL
 if ($conn->query($sql) === TRUE) {
