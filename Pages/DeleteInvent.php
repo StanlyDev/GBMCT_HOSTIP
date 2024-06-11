@@ -163,28 +163,30 @@ $usuario_rol = $_SESSION["role"] ?? '';
     }
 
     function eliminarCinta(id) {
-      if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
-        // Enviar una solicitud para eliminar la cinta
-        fetch(`/php/delete_cinta.php?id=${id}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        })
-        .then(response => {
-          if (response.ok) {
-            // Si la eliminación fue exitosa, recargar la tabla de inventario
-            fetchData();
-            alert("Cinta eliminada exitosamente.");
-          } else {
-            alert("Error al eliminar la cinta.");
-          }
-        })
-        .catch(error => {
-          console.error('Error al eliminar la cinta:', error);
-          alert("Error al eliminar la cinta.");
-        });
-      }
+        if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
+            // Hacer una solicitud para eliminar la cinta
+            fetch('/php/eliminar_cinta.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'id=' + id, // Pasar el ID de la cinta como parámetro en la solicitud POST
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al eliminar la cinta');
+                }
+                return response.text();
+            })
+            .then(data => {
+                alert(data); // Mostrar mensaje de éxito
+                fetchData(); // Volver a cargar los datos para actualizar la tabla
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al eliminar la cinta');
+            });
+        }
     }
   </script>
 </body>
