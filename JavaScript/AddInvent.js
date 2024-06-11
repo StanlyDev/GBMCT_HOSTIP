@@ -34,6 +34,21 @@ form.addEventListener("submit", function(event) {
     newTypeCellRef = newTransactionRowRef.insertCell(4);
     newTypeCellRef.textContent = ccintaValue;
 
+    newTypeCellRef = newTransactionRowRef.insertCell(5);
+    newTypeCellRef.textContent = document.getElementById("sr").value;
+
+    newTypeCellRef = newTransactionRowRef.insertCell(6);
+    newTypeCellRef.textContent = document.getElementById("enc").value;
+
+    newTypeCellRef = newTransactionRowRef.insertCell(7);
+    newTypeCellRef.textContent = document.getElementById("hrEsti").value;
+
+    newTypeCellRef = newTransactionRowRef.insertCell(8);
+    newTypeCellRef.textContent = document.getElementById("FechaIO").value;
+
+    newTypeCellRef = newTransactionRowRef.insertCell(9);
+    newTypeCellRef.textContent = document.getElementById("ingr").value;
+
     // Agregar botón de eliminación
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "X";

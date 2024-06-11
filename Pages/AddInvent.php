@@ -133,6 +133,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
+                                <th>Ticket</th>
+                                <th>Field Manager Email</th>
+                                <th>Hora de ingreso</th>
+                                <th>Fecha de ingreso</th>
+                                <th>Agregado por</th>
                             </tr>
                             <!-- Contenido de la tabla -->
                         </table>
