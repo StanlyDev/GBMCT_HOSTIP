@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
-if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
-}
-// Obtener el rol del usuario desde la sesión
-$usuario_rol = $_SESSION["role"] ?? '';
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -68,7 +57,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </div>
         </div>
         <div class="doc_info">
-            <form action="/php/add_inventory.php" method="POST" id="FrmCinta">
+            <form id="FrmCinta">
                 <div class="input_container">
                     <div class="form-group">
                         <label for="client_name">Nombre del Cliente:</label>
@@ -118,7 +107,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             </div>
                         </div><br>
                         <div class="AgreBtn">
-                            <button type="submit" onclick="agregarCinta()">
+                            <button type="button" onclick="agregarCinta()">
                                 <img src="/IMG/Icon/plus-lg.svg"> Agregar
                             </button>
                         </div>
@@ -147,7 +136,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
         </main>
         <footer>
             <div class="botones-container">
-                <button id="addDatabaseButton" onclick="document.getElementById('FrmCinta').submit();">
+                <button id="addDatabaseButton" onclick="agregarCintasAlInventario();">
                     <img style="height: 20px;" src="/IMG/Icon/database-add.svg">
                 </button>
             </div>
