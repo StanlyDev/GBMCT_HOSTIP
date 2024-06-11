@@ -1,34 +1,33 @@
 <?php
-// Verificar si se recibió un ID válido para eliminar
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
+session_start();
 
-    // Conexión a la base de datos
-    $servername = "10.4.27.116";
-    $username = "stanvsdev";
-    $password = "Stanlyv00363";
-    $dbname = "dbmedios_gbm";
+$servername = "10.4.27.116";
+$username = "stanvsdev";
+$password = "Stanlyv00363";
+$dbname = "dbmedios_gbm";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar conexión
-    if ($conn->connect_error) {
-        die("Conexión fallida: " . $conn->connect_error);
-    }
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
 
-    // Preparar y ejecutar consulta SQL para eliminar la fila
-    $sql = "DELETE FROM TableInventory WHERE id = $id";
+// Verificar si se ha enviado un ID de cinta para eliminar
+if (isset($_POST['id_cinta'])) {
+    $id_cinta = $_POST['id_cinta'];
 
+    // Preparar y ejecutar consulta SQL para eliminar la cinta
+    $sql = "DELETE FROM TableInventory WHERE NumeroCinta = $id_cinta";
     if ($conn->query($sql) === TRUE) {
-        echo "La cinta fue eliminada exitosamente";
+        echo "La cinta ha sido eliminada correctamente";
     } else {
         echo "Error al eliminar la cinta: " . $conn->error;
-        error_log("Error al eliminar la cinta: " . $conn->error);
     }
-
-    // Cerrar conexión MySQL
-    $conn->close();
 } else {
-    echo "ID de cinta no proporcionado";
+    echo "No se proporcionó un ID de cinta para eliminar";
 }
+
+$conn->close();
 ?>

@@ -23,6 +23,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/JavaScript/windowsDoc.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
+    <script defer src="/JavaScript/view_DeIn.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
@@ -125,69 +126,5 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <button id="continueSessionBtn">Continuar sesión</button>
     </div>
   </div> 
-  <script>
-    document.addEventListener('DOMContentLoaded', fetchData);
-
-    async function fetchData() {
-      try {
-        const response = await fetch('/php/preview_invent.php');
-        const data = await response.json();
-        displayData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    function displayData(data) {
-      const tablaBody = document.getElementById('tablaBody');
-      tablaBody.innerHTML = '';
-
-      data.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${index + 1}</td>
-          <td>${item.NombreCliente}</td>
-          <td>${item.TipoCinta}</td>
-          <td>${item.Descripcion}</td>
-          <td>${item.CodigoCinta}</td>
-          <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
-          <td>${item.TickectSR}</td>
-          <td>${item.FMDEmail}</td>
-          <td>${item.HrAdd}</td>
-          <td>${item.DateAdd}</td>
-          <td>${item.OperatorName}</td>
-          <td><button onclick="eliminarCinta(${item.id})">X</button></td> <!-- Botón de eliminar cinta -->
-        `;
-        tablaBody.appendChild(row);
-      });
-    }
-
-    function eliminarCinta(id) {
-        if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
-            // Hacer una solicitud para eliminar la cinta
-            fetch('/php/delete_cinta.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'id=' + id, // Pasar el ID de la cinta como parámetro en la solicitud POST
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error al eliminar la cinta');
-                }
-                return response.text();
-            })
-            .then(data => {
-                alert(data); // Mostrar mensaje de éxito
-                fetchData(); // Volver a cargar los datos para actualizar la tabla
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error al eliminar la cinta');
-            });
-        }
-    }
-  </script>
 </body>
 </html>
