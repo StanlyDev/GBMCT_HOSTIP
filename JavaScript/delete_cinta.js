@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const botonesEliminar = document.querySelectorAll('.eliminar-cinta');
+    const botonesEliminar = document.querySelectorAll('.delete_cinta');
 
     botonesEliminar.forEach(boton => {
         boton.addEventListener('click', function() {
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (confirmacion) {
                 const fila = boton.closest('tr');
                 const idCinta = fila.dataset.idCinta;
-
                 // Realizar solicitud de eliminación al servidor
                 eliminarCinta(idCinta);
             }

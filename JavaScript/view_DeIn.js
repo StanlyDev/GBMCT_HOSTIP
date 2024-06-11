@@ -28,9 +28,8 @@ function displayData(data) {
         <td>${item.HrAdd}</td>
         <td>${item.DateAdd}</td>
         <td>${item.OperatorName}</td>
-        <td><button class="eliminar-cinta" style="color: red;">X</button></td> <!-- Botón de eliminar cinta -->
+        <td><button class="delete_cinta" style="color: red;">X</button></td> <!-- Botón de eliminar cinta -->
     `;
-    row.dataset.idCinta = item.NumeroCinta; // Establecer el ID de cinta en el atributo de datos de la fila
     tablaBody.appendChild(row);
 });
 }
