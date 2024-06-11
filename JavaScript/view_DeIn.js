@@ -1,10 +1,13 @@
 document.addEventListener('DOMContentLoaded', async function() {
-  try {
-      const response = await fetch('/php/preview_invent.php');
-      const data = await response.json();
-      displayData(data);
-  } catch (error) {
-      console.error('Error fetching data:', error);
+  // Función para obtener y mostrar los datos en la tabla
+  async function fetchData() {
+      try {
+          const response = await fetch('/php/preview_invent.php');
+          const data = await response.json();
+          displayData(data);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
   }
 
   function displayData(data) {
@@ -59,9 +62,13 @@ document.addEventListener('DOMContentLoaded', async function() {
       .then(data => {
           alert(data); // Muestra un mensaje de éxito o error después de la eliminación
           // Recargar la página o actualizar la tabla de inventario si es necesario
+          fetchData(); // Actualizar los datos en la tabla después de la eliminación
       })
       .catch(error => {
           console.error('Error al eliminar la cinta:', error);
       });
   }
+
+  // Obtener y mostrar los datos en la tabla cuando el DOM esté listo
+  fetchData();
 });
