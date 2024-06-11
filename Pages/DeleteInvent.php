@@ -165,7 +165,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     function eliminarCinta(id) {
         if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
             // Hacer una solicitud para eliminar la cinta
-            fetch('/php/eliminar_cinta.php', {
+            fetch('/php/delete_cinta.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
