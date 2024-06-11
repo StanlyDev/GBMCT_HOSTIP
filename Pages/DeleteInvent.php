@@ -24,6 +24,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
     <script defer src="/JavaScript/view_DeIn.js"></script>
+    <script defer src="/JavaScript/delete_cinta.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
