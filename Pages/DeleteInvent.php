@@ -12,18 +12,18 @@ $usuario_rol = $_SESSION["role"] ?? '';
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/CSS/inventory.css">
-  <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
-  <script defer src="/JavaScript/script.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
-  <script defer src="/JavaScript/TableInventoryJS.js"></script>
-  <script defer src="/JavaScript/BuscadorClient.js"></script>
-  <script defer src="/JavaScript/windowsDoc.js"></script>
-  <script defer src="/JavaScript/HistoAlert.js"></script>
-  <script defer src="/JavaScript/logout.js"></script>
-  <title>GBM | CT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/inventory.css">
+    <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
+    <script defer src="/JavaScript/script.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+    <script defer src="/JavaScript/TableInventoryJS.js"></script>
+    <script defer src="/JavaScript/BuscadorClient.js"></script>
+    <script defer src="/JavaScript/windowsDoc.js"></script>
+    <script defer src="/JavaScript/HistoAlert.js"></script>
+    <script defer src="/JavaScript/logout.js"></script>
+    <title>GBM | CT</title>
 </head>
 <body>
   <div class="overlay"></div>
@@ -61,8 +61,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
               <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
               <?php if ($usuario_rol === 'root' || $usuario_rol === 'admin'): ?>
                 <a href="/Pages/create_user.php"><li><img src="/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
-                <?php endif; ?>          
-              </ul>
+              <?php endif; ?>          
+          </ul>
       </nav>
       <!--Fin Menu-->
   </header>
@@ -107,10 +107,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Hora de ingreso</th>
                 <th scope="col">Fecha de ingreso</th>
                 <th scope="col">Agregado por</th>
+                <th scope="col">Acciones</th> <!-- Nuevo encabezado para acciones -->
             </tr>
-        </thead>        
+          </thead>        
           <tbody id="tablaBody">
-            
+            <!-- Aquí se agregarán las filas de la tabla -->
           </tbody>
         </table>
       </div>
@@ -119,13 +120,14 @@ $usuario_rol = $_SESSION["role"] ?? '';
   </main><br>
   <!-- Ventana emergente -->
   <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeOptions()">&times;</span>
-      <p>Elige una opción:</p><hr>
-      <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
-      <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
+  class="modal-content">
+        <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
+        <button id="continueSessionBtn">Continuar sesión</button>
     </div>
   </div>
+  <!-- Botón para eliminar cinta -->
+  <button style="background-color: red;" id="deleteCintaButton" onclick="deleteCinta()">Eliminar Cinta</button>
+
   <script>
     document.addEventListener('DOMContentLoaded', fetchData);
 
@@ -157,16 +159,19 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.HrAdd}</td>
           <td>${item.DateAdd}</td>
           <td>${item.OperatorName}</td>
+          <td><button onclick="eliminarCinta(${item.id})">Eliminar</button></td> <!-- Botón de eliminar cinta -->
         `;
         tablaBody.appendChild(row);
       });
     }
+
+    function eliminarCinta(id) {
+      if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
+        // Aquí puedes enviar una solicitud para eliminar la cinta con el ID proporcionado
+        // Por ejemplo, puedes hacer una solicitud fetch a un script PHP que maneje la eliminación de la cinta
+        // y luego, después de la eliminación exitosa, puedes volver a cargar los datos para actualizar la tabla
+      }
+    }
   </script>
-  <div id="inactivityModal" class="modal">
-    <div class="modal-content">
-        <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
-        <button id="continueSessionBtn">Continuar sesión</button>
-    </div>
-</div>    
 </body>
 </html>
