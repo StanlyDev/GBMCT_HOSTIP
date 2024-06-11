@@ -164,9 +164,26 @@ $usuario_rol = $_SESSION["role"] ?? '';
 
     function eliminarCinta(id) {
       if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
-        // Aquí puedes enviar una solicitud para eliminar la cinta con el ID proporcionado
-        // Por ejemplo, puedes hacer una solicitud fetch a un script PHP que maneje la eliminación de la cinta
-        // y luego, después de la eliminación exitosa, puedes volver a cargar los datos para actualizar la tabla
+        // Enviar una solicitud para eliminar la cinta
+        fetch(`/php/eliminar_cinta.php?id=${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        })
+        .then(response => {
+          if (response.ok) {
+            // Si la eliminación fue exitosa, recargar la tabla de inventario
+            fetchData();
+            alert("Cinta eliminada exitosamente.");
+          } else {
+            alert("Error al eliminar la cinta.");
+          }
+        })
+        .catch(error => {
+          console.error('Error al eliminar la cinta:', error);
+          alert("Error al eliminar la cinta.");
+        });
       }
     }
   </script>
