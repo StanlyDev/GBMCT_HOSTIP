@@ -68,7 +68,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </div>
         </div>
         <div class="doc_info">
-        <form action="" id="FrmCinta">
+        <form action="/php/Add_cintas.php" method="POST" id="FrmCinta">
             <div class="input_container">
                 <div class="form-group">
                     <label for="client_name">Nombre del Cliente:</label>
