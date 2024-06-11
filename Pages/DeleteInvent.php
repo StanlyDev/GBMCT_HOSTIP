@@ -83,6 +83,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <input id="search-codigo" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
         </div>
       </div>
+      <div class="checkend_inv">
+        <label for="">En Cintoteca: </label>
+        <input type="checkbox" id="check"><label for="check">Si</label>
+        <input type="checkbox" id="check1"><label for="check1">No</label>
+      </div>
     </div>
     <!--Fin Informacion de cinta-->
     <div class="tabla_Cont">
@@ -146,7 +151,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.TipoCinta}</td>
           <td>${item.Descripcion}</td>
           <td>${item.CodigoCinta}</td>
-          <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
+          <td>${item.EnCintoteca ? 'Y' : 'N'}</td>
           <td>${item.TickectSR}</td>
           <td>${item.FMDEmail}</td>
           <td>${item.HrAdd}</td>
