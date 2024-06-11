@@ -85,5 +85,22 @@ function eliminarFila(button) {
     }
 }
 
-// JavaScript functions to toggle the menu and modal
-/*Devoloped by Brandon Ventura*/
+// Función para agregar cintas al inventario
+function agregarCintasAlInventario() {
+    // Recopilar los datos del formulario
+    let formData = new FormData(form);
+
+    // Enviar los datos al servidor
+    fetch('/php/Add_cintas.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Muestra un mensaje de éxito o error
+        // Luego puedes recargar la página o hacer lo que necesites
+    })
+    .catch(error => {
+        console.error('Error al agregar cintas al inventario:', error);
+    });
+}

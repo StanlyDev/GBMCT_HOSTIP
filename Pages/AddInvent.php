@@ -68,62 +68,62 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </div>
         </div>
         <div class="doc_info">
-            <form action="" id="FrmCinta">
+        <form action="" id="FrmCinta">
+            <div class="input_container">
+                <div class="form-group">
+                    <label for="client_name">Nombre del Cliente:</label>
+                    <input type="text" id="client_name" name="client_name" placeholder="Client" required>
+                </div>
+                <div class="form-group">
+                    <label for="co">Contrato:</label>
+                    <input type="text" placeholder="CO" id="co" class="co" name="co" required>
+                </div>
+                <div class="form-group">
+                    <label for="sr">Ticket de Ingreso:</label>
+                    <input type="text" placeholder="SR" id="sr" class="sr" name="sr" required>
+                </div>
+                <div class="form-group">
+                    <label for="enc">Email Field Manager:</label>
+                    <input type="text" placeholder="Field-Manager" id="enc" name="enc" required>
+                </div>
+            </div>
+            <div class="input_container">
+                <div class="form-group">
+                    <label for="hrEsti">Hora de ingreso:</label>
+                    <input type="time" id="hrEsti" name="hrEsti" required>
+                </div>
+                <div class="form-group">
+                    <label for="FechaIO">Fecha de ingreso:</label>
+                    <input type="date" id="FechaIO" name="FechaIO" required>
+                </div>
+                <div class="form-group">
+                    <label for="ingr">Agregada por:</label>
+                    <input type="text" id="ingr" name="ingr" placeholder="Operador" required>
+                </div>
+            </div>
+            <hr>
+            <div class="Info_cinta">
                 <div class="input_container">
                     <div class="form-group">
-                        <label for="client_name">Nombre del Cliente:</label>
-                        <input type="text" id="client_name" name="client_name" placeholder="Client" required>
+                        <label for="TypeCinta">Tipo:</label>
+                        <input type="text" class="TipoCint" id="TypeCinta" name="TypeCinta" placeholder="LTO" required>
                     </div>
                     <div class="form-group">
-                        <label for="co">Contrato:</label>
-                            <input type="text" placeholder="CO" id="co" class="co" name="co" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="sr">Ticket de Ingreso:</label>
-                                <input type="text" placeholder="SR" id="sr" class="sr" name="sr" required>
-                            </div>
-                        <div class="form-group">
-                            <label for="enc">Email Field Manager:</label>
-                            <input type="text" placeholder="Field-Manager" id="enc" name="enc" required>
-                        </div>
+                        <label for="DesCin">Descripcion:</label>
+                        <input type="text" id="DesCin" name="DesCin" placeholder="LTO - 1.5TB" required>
                     </div>
-                    <div class="input_container">
-                        <div class="form-group">
-                            <label for="hrEsti">Hora de ingreso:</label>
-                            <input type="time" id="hrEsti" name="hrEsti" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="FechaIO">Fecha de ingreso:</label>
-                            <input type="date" id="FechaIO" name="FechaIO" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ingr">Agregada por:</label>
-                            <input type="text" id="ingr" name="ingr" placeholder="Operador" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="CCinta">Codigo:</label>
+                        <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
                     </div>
-                    <hr>
-                    <div class="Info_cinta">
-                        <div class="input_container">
-                            <div class="form-group">
-                                <label for="TypeCinta">Tipo:</label>
-                                <input type="text" class="TipoCint" id="TypeCinta" name="TypeCinta" placeholder="LTO" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="DesCin">Descripcion:</label>
-                                <input type="text" id="DesCin" name="DesCin" placeholder="LTO - 1.5TB" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="CCinta">Codigo:</label>
-                                <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
-                            </div>
-                        </div><br>
-                        <div class="AgreBtn">
-                            <button type="submit" onclick="agregarCinta()">
-                                <img src="/IMG/Icon/plus-lg.svg"> Agregar
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                </div><br>
+                <div class="AgreBtn">
+                    <button type="submit" onclick="agregarCinta()">
+                        <img src="/IMG/Icon/plus-lg.svg"> Agregar
+                    </button>
+                </div>
+            </div>
+        </form>
                 <div class="tabla_Cont">
                     <div class="tabla_preview">
                         <table id="tablaCintas">
@@ -151,9 +151,9 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <footer>
             <div class="botones-container">
                 <a href="#">
-                    <button onclick="">
-                        <img style="height: 20px;" src="/IMG/Icon/database-add.svg">
-                    </button>                
+                <button id="addDatabaseButton">
+                    <img style="height: 20px;" src="/IMG/Icon/database-add.svg">
+                </button>
                 </a>
             </div>
         </footer>
