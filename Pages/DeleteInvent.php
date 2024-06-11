@@ -97,6 +97,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Descripción</th>
                 <th scope="col">Código</th>
                 <th scope="col">En Cintoteca Y/N</th>
+                <th scope="col">Ticket</th>
+                <th scope="col">Field Manager Email</th>
+                <th scope="col">Hora de ingreso</th>
+                <th scope="col">Fecha de ingreso</th>
+                <th scope="col">Agregado por</th>
             </tr>
         </thead>        
           <tbody id="tablaBody">
@@ -142,7 +147,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.Descripcion}</td>
           <td>${item.CodigoCinta}</td>
           <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
-          <td>${item.SR}</td>
+          <td>${item.TickectSR}</td>
           <td>${item.FMDEmail}</td>
           <td>${item.HrAdd}</td>
           <td>${item.DateAdd}</td>
