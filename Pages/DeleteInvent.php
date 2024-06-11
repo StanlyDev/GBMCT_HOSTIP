@@ -126,7 +126,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
 
     async function fetchData() {
       try {
-        const response = await fetch('/php/fetch_data.php');
+        const response = await fetch('/php/preview_invent.php');
         const data = await response.json();
         displayData(data);
       } catch (error) {

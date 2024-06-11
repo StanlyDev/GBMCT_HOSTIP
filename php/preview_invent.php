@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Preparar y ejecutar consulta SQL
-$sql = "SELECT NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca FROM TableInventory";
+$sql = "SELECT NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca, TickectSR, FMDEmail, HrAdd, DateAdd, OperatorName FROM TableInventory";
 $result = $conn->query($sql);
 
 // Verificar si la consulta se ejecutó correctamente
