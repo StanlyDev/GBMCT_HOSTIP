@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+if (!isset($_SESSION["id"])) {
+    header("Location: /index.html");
+    exit();
+}
+// Obtener el rol del usuario desde la sesión
+$usuario_rol = $_SESSION["role"] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
