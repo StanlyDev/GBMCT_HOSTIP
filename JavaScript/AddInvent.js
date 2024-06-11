@@ -91,7 +91,7 @@ function agregarCintasAlInventario() {
     let formData = new FormData(form);
 
     // Enviar los datos al servidor
-    fetch('/php/Add_cintas.php', {
+    fetch('/php/add_inventory.php', {
         method: 'POST',
         body: formData
     })
