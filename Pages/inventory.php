@@ -168,7 +168,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.TipoCinta}</td>
           <td>${item.Descripcion}</td>
           <td>${item.CodigoCinta}</td>
-          <td>${item.EnCintoteca ? 'Y' : 'N'}</td>
+          <td>${item.EnCintoteca}</td>
         `;
         tablaBody.appendChild(row);
       });
