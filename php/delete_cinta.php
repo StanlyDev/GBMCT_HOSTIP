@@ -1,49 +1,33 @@
 <?php
-session_start();
+// Verificar si se recibió un ID válido para eliminar
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
 
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión si no ha iniciado sesión
-if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
-}
+    // Conexión a la base de datos
+    $servername = "10.4.27.116";
+    $username = "stanvsdev";
+    $password = "Stanlyv00363";
+    $dbname = "dbmedios_gbm";
 
-// Verificar si se ha recibido un ID válido para la cinta a eliminar
-if (!isset($_POST["id"]) || empty($_POST["id"])) {
-    http_response_code(400); // Código de error 400 para solicitud incorrecta
-    exit("Error: ID de cinta no proporcionado.");
-}
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Recuperar el ID de la cinta a eliminar
-$cinta_id = $_POST["id"];
+    // Verificar conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
 
-// Conectar a la base de datos
-$servername = "10.4.27.116";
-$username = "stanvsdev";
-$password = "Stanlyv00363";
-$dbname = "dbmedios_gbm";
+    // Preparar y ejecutar consulta SQL para eliminar la fila
+    $sql = "DELETE FROM TableInventory WHERE id = $id";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->query($sql) === TRUE) {
+        echo "La cinta fue eliminada exitosamente";
+    } else {
+        echo "Error al eliminar la cinta: " . $conn->error;
+    }
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    http_response_code(500); // Código de error 500 para error interno del servidor
-    exit("Error de conexión: " . $conn->connect_error);
-}
-
-// Preparar la declaración SQL para eliminar la cinta
-$sql = "DELETE FROM TableInventory WHERE id = $cinta_id";
-
-// Ejecutar la declaración SQL
-if ($conn->query($sql) === TRUE) {
-    // La cinta se eliminó correctamente
-    http_response_code(200); // Código de éxito 200
-    echo "Cinta eliminada exitosamente.";
+    // Cerrar conexión MySQL
+    $conn->close();
 } else {
-    // Error al eliminar la cinta
-    http_response_code(500); // Código de error 500 para error interno del servidor
-    echo "Error al eliminar la cinta: " . $conn->error;
+    echo "ID de cinta no proporcionado";
 }
-
-// Cerrar la conexión a la base de datos
-$conn->close();
 ?>
