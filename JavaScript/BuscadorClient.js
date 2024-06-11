@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 mostrarFila = false;
             }
 
-            if ((mostrarSi && enCintoteca !== 'Si') ||
+            if ((mostrarSi && mostrarNo && (enCintoteca !== 'Si' && enCintoteca !== 'No')) ||
+                (mostrarSi && enCintoteca !== 'Si') ||
                 (mostrarNo && enCintoteca !== 'No')) {
                 mostrarFila = false;
             }
