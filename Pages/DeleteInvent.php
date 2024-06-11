@@ -107,7 +107,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Hora de ingreso</th>
                 <th scope="col">Fecha de ingreso</th>
                 <th scope="col">Agregado por</th>
-                <th scope="col">Acciones</th> <!-- Nuevo encabezado para acciones -->
+                <th scope="col">X</th> <!-- Nuevo encabezado para acciones -->
             </tr>
           </thead>        
           <tbody id="tablaBody">
@@ -165,7 +165,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     function eliminarCinta(id) {
       if (confirm("¿Estás seguro de que quieres eliminar esta cinta?")) {
         // Enviar una solicitud para eliminar la cinta
-        fetch(`/php/eliminar_cinta.php?id=${id}`, {
+        fetch(`/php/delete_cinta.php?id=${id}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
