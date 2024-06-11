@@ -23,6 +23,7 @@ if (isset($_POST['id'])) {
         echo "La cinta fue eliminada exitosamente";
     } else {
         echo "Error al eliminar la cinta: " . $conn->error;
+        error_log("Error al eliminar la cinta: " . $conn->error);
     }
 
     // Cerrar conexión MySQL
