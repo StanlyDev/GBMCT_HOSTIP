@@ -125,9 +125,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <button id="continueSessionBtn">Continuar sesión</button>
     </div>
   </div>
-  <!-- Botón para eliminar cinta -->
-  <button style="background-color: red;" id="deleteCintaButton" onclick="deleteCinta()">Eliminar Cinta</button>
-
   <script>
     document.addEventListener('DOMContentLoaded', fetchData);
 
@@ -159,7 +156,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.HrAdd}</td>
           <td>${item.DateAdd}</td>
           <td>${item.OperatorName}</td>
-          <td><button onclick="eliminarCinta(${item.id})">Eliminar</button></td> <!-- Botón de eliminar cinta -->
+          <td><button onclick="eliminarCinta(${item.id})">X</button></td> <!-- Botón de eliminar cinta -->
         `;
         tablaBody.appendChild(row);
       });
