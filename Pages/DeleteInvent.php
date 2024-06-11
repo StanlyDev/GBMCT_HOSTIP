@@ -119,12 +119,12 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <!--Fin Main-->
   </main><br>
   <!-- Ventana emergente -->
-  <div id="myModal" class="modal">
-  class="modal-content">
+  <div id="inactivityModal" class="modal">
+    <div class="modal-content">
         <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
         <button id="continueSessionBtn">Continuar sesión</button>
     </div>
-  </div>
+  </div> 
   <script>
     document.addEventListener('DOMContentLoaded', fetchData);
 
