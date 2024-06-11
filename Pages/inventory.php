@@ -116,7 +116,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Tipo</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Código</th>
-                <th scope="col">En Cintoteca Y/N</th>
+                <th scope="col">En Cintoteca Si/No</th>
             </tr>
         </thead>        
           <tbody id="tablaBody">
@@ -168,7 +168,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.TipoCinta}</td>
           <td>${item.Descripcion}</td>
           <td>${item.CodigoCinta}</td>
-          <td>${item.EnCintoteca}</td>
+          <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
         `;
         tablaBody.appendChild(row);
       });
