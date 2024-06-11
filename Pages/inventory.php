@@ -48,7 +48,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     colors="primary:#ffffff"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
-                <div class="DeleInvent"><a href="/Pages/DeleteInvent.html"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <div class="DeleInvent"><a href="/Pages/DeleteInvent.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                   <script src="https://cdn.lordicon.com/lordicon.js"></script>
                   <lord-icon
                       src="https://cdn.lordicon.com/skkahier.json"
