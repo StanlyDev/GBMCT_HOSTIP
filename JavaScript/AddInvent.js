@@ -16,7 +16,7 @@ function agregarCinta() {
             }
         };
         xhr.send(formData);
-        
+
     let ccintaInput = document.getElementById("CCinta");
     let ccintaValue = ccintaInput.value;
 
@@ -77,9 +77,6 @@ function agregarCinta() {
     let deleteCellRef = newTransactionRowRef.insertCell(-1);
     deleteCellRef.appendChild(deleteButton);
     deleteCellRef.classList.add('delete-row-btn-cell');
-
-    // Limpiar campos del formulario
-    form.reset();
 
     numeroSecuencial++;
 }
