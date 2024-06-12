@@ -6,10 +6,10 @@ if (!isset($_SESSION["id"])) {
     exit();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tu_base_de_datos";
+$servername = "10.4.27.116";
+$username = "stanvsdev";
+$password = "Stanlyv00363";
+$dbname = "dbmedios_gbm";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -31,7 +31,7 @@ foreach ($data as $cinta) {
     $DesCin = $cinta['DesCin'];
     $CCinta = $cinta['CCinta'];
 
-    $sql = "INSERT INTO inventory (client_name, co, sr, enc, hrEsti, FechaIO, ingr, TypeCinta, DesCin, CCinta)
+    $sql = "INSERT INTO TableInventory (NombreCliente, CO, TicketSR, FDMEmail, HrAdd, DateAdd, OperatorName, TipoCinta, Descripcion, CodigoCinta)
             VALUES ('$client_name', '$co', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$TypeCinta', '$DesCin', '$CCinta')";
 
     if (!$conn->query($sql)) {
