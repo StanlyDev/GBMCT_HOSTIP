@@ -67,6 +67,21 @@ function agregarCinta() {
     form.reset();
 
     numeroSecuencial++;
+
+    // Obtener los valores del formulario
+    let formData = new FormData(form);
+
+    // Enviar los datos al servidor utilizando AJAX
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "/php/add_inventory.php", true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Si la inserción en la base de datos fue exitosa, hacer algo si es necesario
+        } else {
+            // Manejar el error si la inserción en la base de datos falla
+        }
+    };
+    xhr.send(formData);
 }
 
 function isDuplicateValue(tableId, value, columnIndex) {

@@ -15,34 +15,35 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener los datos del formulario (suponiendo que están enviados por POST)
-$NumeroCinta = $_POST['NumeroCinta'] ?? '';
-$NombreCliente = $_POST['NombreCliente'] ?? '';
-$TipoCinta = $_POST['TipoCinta'] ?? '';
-$Descripcion = $_POST['Descripcion'] ?? '';
-$CodigoCinta = $_POST['CodigoCinta'] ?? '';
-$EnCintoteca = $_POST['EnCintoteca'] ?? '';
-$TickectSR = $_POST['TickectSR'] ?? '';
-$FDMEmail = $_POST['FDMEmail'] ?? '';
-$HrAdd = $_POST['HrAdd'] ?? '';
-$DateAdd = $_POST['DateAdd'] ?? '';
-$OperatorName = $_POST['OperatorName'] ?? '';
-$CO = $_POST['CO'] ?? '';
+// Obtener los datos del formulario enviados por AJAX
+$NumeroCinta = $_POST['NumeroCinta'];
+$NombreCliente = $_POST['NombreCliente'];
+$TipoCinta = $_POST['TipoCinta'];
+$Descripcion = $_POST['Descripcion'];
+$CodigoCinta = $_POST['CodigoCinta'];
+$EnCintoteca = $_POST['EnCintoteca'];
+$TickectSR = $_POST['TickectSR'];
+$FDMEmail = $_POST['FDMEmail'];
+$HrAdd = $_POST['HrAdd'];
+$DateAdd = $_POST['DateAdd'];
+$OperatorName = $_POST['OperatorName'];
+$CO = $_POST['CO'];
 
-// Preparar la consulta SQL con consultas preparadas
+// Preparar la consulta SQL
 $sql = "INSERT INTO TableInventory (NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+// Preparar la declaración
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssssssssss", $NumeroCinta, $NombreCliente, $TipoCinta, $Descripcion, $CodigoCinta, $EnCintoteca, $TickectSR, $FDMEmail, $HrAdd, $DateAdd, $OperatorName, $CO);
 
+// Ejecutar la declaración
 if ($stmt->execute()) {
     echo "Nuevo registro agregado correctamente.";
 } else {
-    echo "Error al agregar el registro: " . $stmt->error;
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 // Cerrar conexión
-$stmt->close();
 $conn->close();
 ?>
