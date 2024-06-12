@@ -36,7 +36,7 @@ if ($data) {
         $OperatorName = $row['OperatorName'];
         $CO = $row['CO'];
 
-        $sql = "INSERT INTO tu_tabla (
+        $sql = "INSERT INTO TableInventory (
             NumeroCinta,
             NombreCliente,
             TipoCinta,
