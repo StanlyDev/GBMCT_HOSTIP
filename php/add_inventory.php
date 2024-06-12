@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// Verificar si el usuario no ha iniciado sesión
 if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
     exit();
@@ -11,24 +12,35 @@ $username = "stanvsdev";
 $password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
 
+// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Verificar conexión
 if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+    error_log("Error de conexión: " . $conn->connect_error);
+    echo "Error de conexión: " . $conn->connect_error;
+    exit();
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
+// Leer datos de la solicitud
+$input = file_get_contents('php://input');
+$data = json_decode($input, true);
 
+// Verificar errores en la decodificación del JSON
 if (json_last_error() !== JSON_ERROR_NONE) {
+    error_log("Error en la decodificación del JSON: " . json_last_error_msg());
     echo "Error en la decodificación del JSON: " . json_last_error_msg();
     exit();
 }
 
+// Verificar que se hayan recibido datos
 if (empty($data)) {
+    error_log("No se recibieron datos.");
     echo "No se recibieron datos.";
     exit();
 }
 
+// Preparar y ejecutar la consulta para cada cinta
 foreach ($data as $cinta) {
     $client_name = $conn->real_escape_string($cinta['client_name']);
     $co = $conn->real_escape_string($cinta['co']);
@@ -45,7 +57,8 @@ foreach ($data as $cinta) {
             VALUES ('$client_name', '$co', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$TypeCinta', '$DesCin', '$CCinta')";
 
     if (!$conn->query($sql)) {
-        echo "Error en la consulta SQL: " . $sql . "<br>" . $conn->error;
+        error_log("Error en la consulta SQL: " . $sql . " - Error: " . $conn->error);
+        echo "Error en la consulta SQL: " . $sql . " - Error: " . $conn->error;
         exit();
     }
 }
