@@ -119,13 +119,14 @@
                             <tr>
                                 <th>#</th>
                                 <th>Cliente</th>
+                                <th>Contrato</th>
+                                <th>Codigo</th>
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
-                                <th>Codigo</th>
                                 <th>Ticket</th>
-                                <th>Field Manager Email</th>
                                 <th>Hora de ingreso</th>
                                 <th>Fecha de ingreso</th>
+                                <th>Field Manager Email</th>
                                 <th>Agregado por</th>
                                 <th>Acción</th>
                             </tr>

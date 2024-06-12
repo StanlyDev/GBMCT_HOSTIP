@@ -53,8 +53,8 @@ foreach ($data as $cinta) {
     $DesCin = $conn->real_escape_string($cinta['DesCin']);
     $CCinta = $conn->real_escape_string($cinta['CCinta']);
 
-    $sql = "INSERT INTO TableInventory (NombreCliente, CO, TicketSR, FDMEmail, HrAdd, DateAdd, OperatorName, TipoCinta, Descripcion, CodigoCinta)
-            VALUES ('$client_name', '$co', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$TypeCinta', '$DesCin', '$CCinta')";
+    $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CodigoCinta, TicketSR, FMDEmail, HrAdd, DateAdd, OperatorName, CO)
+            VALUES ('$client_name', '$TypeCinta', '$DesCin', '$CCinta', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$co')";
 
     if (!$conn->query($sql)) {
         error_log("Error en la consulta SQL: " . $sql . " - Error: " . $conn->error);

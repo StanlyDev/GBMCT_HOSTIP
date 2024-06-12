@@ -24,19 +24,19 @@ function agregarCinta() {
     newTypeCellRef.textContent = document.getElementById("client_name").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(2);
-    newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
+    newTypeCellRef.textContent = document.getElementById("co").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(3);
-    newTypeCellRef.textContent = document.getElementById("DesCin").value;
-
-    newTypeCellRef = newTransactionRowRef.insertCell(4);
     newTypeCellRef.textContent = ccintaValue;
 
+    newTypeCellRef = newTransactionRowRef.insertCell(4);
+    newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
+
     newTypeCellRef = newTransactionRowRef.insertCell(5);
-    newTypeCellRef.textContent = document.getElementById("sr").value;
+    newTypeCellRef.textContent = document.getElementById("DesCin").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(6);
-    newTypeCellRef.textContent = document.getElementById("enc").value;
+    newTypeCellRef.textContent = document.getElementById("sr").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(7);
     newTypeCellRef.textContent = document.getElementById("hrEsti").value;
@@ -45,6 +45,9 @@ function agregarCinta() {
     newTypeCellRef.textContent = document.getElementById("FechaIO").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(9);
+    newTypeCellRef.textContent = document.getElementById("enc").value;
+
+    newTypeCellRef = newTransactionRowRef.insertCell(10);
     newTypeCellRef.textContent = document.getElementById("ingr").value;
 
     // Agregar botón de eliminación
@@ -108,14 +111,14 @@ function agregarCintasAlInventario() {
         let cinta = {
             client_name: cells[1].textContent,
             co: cells[2].textContent,
-            sr: cells[5].textContent,
-            enc: cells[6].textContent,
+            CCinta: cells[3].textContent,
+            TypeCinta: cells[4].textContent,
+            DesCin: cells[5].textContent,
+            sr: cells[6].textContent,
             hrEsti: cells[7].textContent,
             FechaIO: cells[8].textContent,
-            ingr: cells[9].textContent,
-            TypeCinta: cells[2].textContent,
-            DesCin: cells[3].textContent,
-            CCinta: cells[4].textContent
+            enc: cells[9].textContent,
+            ingr: cells[10].textContent,
         };
         cintas.push(cinta);
     }
