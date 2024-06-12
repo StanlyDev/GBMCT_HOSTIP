@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 // Establecer conexión con la base de datos
 $servername = "10.4.27.116";
 $username = "stanvsdev";
@@ -14,7 +15,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener los datos del formulario (suponiendo que están enviados por POST)
+// Obtener los datos del formulario enviados por AJAX
 $NumeroCinta = $_POST['NumeroCinta'];
 $NombreCliente = $_POST['NombreCliente'];
 $TipoCinta = $_POST['TipoCinta'];
@@ -30,9 +31,14 @@ $CO = $_POST['CO'];
 
 // Preparar la consulta SQL
 $sql = "INSERT INTO TableInventory (NumeroCinta, NombreCliente, TipoCinta, Descripcion, CodigoCinta, EnCintoteca, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO) 
-        VALUES ('$NumeroCinta', '$NombreCliente', '$TipoCinta', '$Descripcion', '$CodigoCinta', '$EnCintoteca', '$TickectSR', '$FDMEmail', '$HrAdd', '$DateAdd', '$OperatorName', '$CO')";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-if ($conn->query($sql) === TRUE) {
+// Preparar la declaración
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssssssssssss", $NumeroCinta, $NombreCliente, $TipoCinta, $Descripcion, $CodigoCinta, $EnCintoteca, $TickectSR, $FDMEmail, $HrAdd, $DateAdd, $OperatorName, $CO);
+
+// Ejecutar la declaración
+if ($stmt->execute()) {
     echo "Nuevo registro agregado correctamente.";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
