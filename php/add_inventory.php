@@ -12,57 +12,65 @@ $username = "stanvsdev";
 $password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar conexión
+// Verificar la conexión
 if ($conn->connect_error) {
-    error_log("Error de conexión: " . $conn->connect_error);
-    echo "Error de conexión: " . $conn->connect_error;
-    exit();
+    die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Leer datos de la solicitud
-$input = file_get_contents('php://input');
-$data = json_decode($input, true);
+// Leer los datos enviados en el cuerpo de la solicitud
+$data = json_decode(file_get_contents('php://input'), true);
 
-// Verificar errores en la decodificación del JSON
-if (json_last_error() !== JSON_ERROR_NONE) {
-    error_log("Error en la decodificación del JSON: " . json_last_error_msg());
-    echo "Error en la decodificación del JSON: " . json_last_error_msg();
-    exit();
-}
+if ($data) {
+    foreach ($data as $row) {
+        $NumeroCinta = $row['NumeroCinta'];
+        $NombreCliente = $row['NombreCliente'];
+        $TipoCinta = $row['TipoCinta'];
+        $Descripcion = $row['Descripcion'];
+        $CodigoCinta = $row['CodigoCinta'];
+        $TickectSR = $row['TickectSR'];
+        $HrAdd = $row['HrAdd'];
+        $DateAdd = $row['DateAdd'];
+        $FDMEmail = $row['FDMEmail'];
+        $OperatorName = $row['OperatorName'];
+        $CO = $row['CO'];
 
-// Verificar que se hayan recibido datos
-if (empty($data)) {
-    error_log("No se recibieron datos.");
-    echo "No se recibieron datos.";
-    exit();
-}
+        $sql = "INSERT INTO tu_tabla (
+            NumeroCinta,
+            NombreCliente,
+            TipoCinta,
+            Descripcion,
+            CodigoCinta,
+            TickectSR,
+            HrAdd,
+            DateAdd,
+            FDMEmail,
+            OperatorName,
+            CO
+        ) VALUES (
+            '$NumeroCinta',
+            '$NombreCliente',
+            '$TipoCinta',
+            '$Descripcion',
+            '$CodigoCinta',
+            '$TickectSR',
+            '$HrAdd',
+            '$DateAdd',
+            '$FDMEmail',
+            '$OperatorName',
+            '$CO'
+        )";
 
-// Preparar y ejecutar la consulta para cada cinta
-foreach ($data as $cinta) {
-    $client_name = $conn->real_escape_string($cinta['client_name']);
-    $co = $conn->real_escape_string($cinta['co']);
-    $sr = $conn->real_escape_string($cinta['sr']);
-    $enc = $conn->real_escape_string($cinta['enc']);
-    $hrEsti = $conn->real_escape_string($cinta['hrEsti']);
-    $FechaIO = $conn->real_escape_string($cinta['FechaIO']);
-    $ingr = $conn->real_escape_string($cinta['ingr']);
-    $TypeCinta = $conn->real_escape_string($cinta['TypeCinta']);
-    $DesCin = $conn->real_escape_string($cinta['DesCin']);
-    $CCinta = $conn->real_escape_string($cinta['CCinta']);
-
-    $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CodigoCinta, TicketSR, FMDEmail, HrAdd, DateAdd, OperatorName, CO)
-            VALUES ('$client_name', '$TypeCinta', '$DesCin', '$CCinta', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$co')";
-
-    if (!$conn->query($sql)) {
-        error_log("Error en la consulta SQL: " . $sql . " - Error: " . $conn->error);
-        echo "Error en la consulta SQL: " . $sql . " - Error: " . $conn->error;
-        exit();
+        if (!$conn->query($sql)) {
+            echo json_encode(['success' => false, 'error' => $conn->error]);
+            exit;
+        }
     }
+    echo json_encode(['success' => true]);
+} else {
+    echo json_encode(['success' => false, 'error' => 'No data received']);
 }
 
-echo "Cintas agregadas exitosamente";
 $conn->close();
 ?>

@@ -5,12 +5,11 @@ function agregarCinta() {
     let ccintaInput = document.getElementById("CCinta");
     let ccintaValue = ccintaInput.value;
 
-    if (isDuplicateValue("tablaCintas", ccintaValue, 4)) {
+    if (isDuplicateValue("tablaCintas", ccintaValue, 3)) {
         alert("El código de la cinta ya fue ingresado");
         return;
     }
 
-    let transactionFormData = new FormData(form);
     let transactionTableRef = document.getElementById("tablaCintas");
     let newTransactionRowRef = transactionTableRef.insertRow(-1);
 
@@ -45,27 +44,27 @@ function agregarCinta() {
     newTypeCellRef.textContent = document.getElementById("FechaIO").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(9);
-    newTypeCellRef.textContent = document.getElementById("enc").value;
+    newTypeCellRef.textContent = document.getElementById("fdm").value;
 
     newTypeCellRef = newTransactionRowRef.insertCell(10);
-    newTypeCellRef.textContent = document.getElementById("ingr").value;
+    newTypeCellRef.textContent = document.getElementById("operator").value;
 
     // Agregar botón de eliminación
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.className = "delete-row-btn";
     deleteButton.onclick = function() {
-        eliminarFila(this);
+        if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+            eliminarFila(this);
+        }
     };
 
     let deleteCellRef = newTransactionRowRef.insertCell(-1);
     deleteCellRef.appendChild(deleteButton);
-    deleteCellRef.classList.add('delete-row-btn-cell'); // Agregar la clase a la celda    
+    deleteCellRef.classList.add('delete-row-btn-cell');
 
     // Limpiar campos del formulario
-    document.getElementById("TypeCinta").value = "";
-    document.getElementById("DesCin").value = "";
-    document.getElementById("CCinta").value = "";
+    form.reset();
 
     numeroSecuencial++;
 }
@@ -74,13 +73,12 @@ function isDuplicateValue(tableId, value, columnIndex) {
     let table = document.getElementById(tableId);
     let rows = table.rows;
 
-    for (let i = 0; i < rows.length; i++) {
+    for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
         let cell = rows[i].cells[columnIndex];
         if (cell.textContent === value) {
             return true;
         }
     }
-
     return false;
 }
 
@@ -95,32 +93,33 @@ function eliminarFila(button) {
     let table = document.getElementById("tablaCintas");
     let rows = table.rows;
 
-    for (let i = 1; i < rows.length; i++) {
+    for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
         let cell = rows[i].cells[0];
         cell.textContent = numeroSecuencial++;
     }
 }
 
-function agregarCintasAlInventario() {
-    let table = document.getElementById("tablaCintas");
-    let rows = table.rows;
-    let cintas = [];
+function agregarDatosBaseDeDatos() {
+    const table = document.getElementById('tablaCintas');
+    const rows = table.rows;
+    const data = [];
 
-    for (let i = 1; i < rows.length; i++) {
-        let cells = rows[i].cells;
-        let cinta = {
-            client_name: cells[1].textContent,
-            co: cells[2].textContent,
-            CCinta: cells[3].textContent,
-            TypeCinta: cells[4].textContent,
-            DesCin: cells[5].textContent,
-            sr: cells[6].textContent,
-            hrEsti: cells[7].textContent,
-            FechaIO: cells[8].textContent,
-            enc: cells[9].textContent,
-            ingr: cells[10].textContent,
+    for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
+        const cells = rows[i].cells;
+        const rowData = {
+            NumeroCinta: cells[0].textContent,
+            NombreCliente: cells[1].textContent,
+            CO: cells[2].textContent,
+            CodigoCinta: cells[3].textContent,
+            TipoCinta: cells[4].textContent,
+            Descripcion: cells[5].textContent,
+            TickectSR: cells[6].textContent,
+            HrAdd: cells[7].textContent,
+            DateAdd: cells[8].textContent,
+            FDMEmail: cells[9].textContent,
+            OperatorName: cells[10].textContent
         };
-        cintas.push(cinta);
+        data.push(rowData);
     }
 
     fetch('/php/add_inventory.php', {
@@ -128,14 +127,18 @@ function agregarCintasAlInventario() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cintas)
+        body: JSON.stringify(data)
     })
-    .then(response => response.text())
-    .then(data => {
-        alert(data); // Muestra un mensaje de éxito o error
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            alert('Datos agregados exitosamente a la base de datos');
+        } else {
+            alert('Error al agregar datos a la base de datos');
+        }
     })
     .catch(error => {
-        alert('Error: ' + error.message);
-        console.error('Error al agregar cintas al inventario:', error);
+        console.error('Error:', error);
+        alert('Error al agregar datos a la base de datos');
     });
 }
