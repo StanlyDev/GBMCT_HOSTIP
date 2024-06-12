@@ -121,11 +121,15 @@ function agregarDatosBaseDeDatos() {
 
     // Enviar los datos al servidor usando AJAX
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/add_inventory.php", true);
+    xhr.open("POST", "guardar_datos.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log("Los datos se agregaron correctamente a la base de datos.");
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                alert("¡La cinta se agregó correctamente al inventario!");
+            } else {
+                alert("¡Hubo un problema al agregar la cinta al inventario!");
+            }
         }
     };
     xhr.send(JSON.stringify({ data: tableData }));
