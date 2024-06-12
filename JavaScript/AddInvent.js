@@ -1,9 +1,7 @@
 const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
+function agregarCinta() {
     let ccintaInput = document.getElementById("CCinta");
     let ccintaValue = ccintaInput.value;
 
@@ -67,7 +65,7 @@ form.addEventListener("submit", function(event) {
     document.getElementById("CCinta").value = "";
 
     numeroSecuencial++;
-});
+}
 
 function isDuplicateValue(tableId, value, columnIndex) {
     let table = document.getElementById(tableId);
@@ -100,12 +98,9 @@ function eliminarFila(button) {
     }
 }
 
-// Función para agregar cintas al inventario
 function agregarCintasAlInventario() {
-    // Recopilar los datos del formulario
     let formData = new FormData(form);
 
-    // Enviar los datos al servidor
     fetch('/php/add_inventory.php', {
         method: 'POST',
         body: formData
