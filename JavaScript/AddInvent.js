@@ -121,7 +121,7 @@ function agregarDatosBaseDeDatos() {
 
     // Enviar los datos al servidor usando AJAX
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "guardar_datos.php", true);
+    xhr.open("POST", "/php/add_inventory.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
