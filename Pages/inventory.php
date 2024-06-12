@@ -163,7 +163,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
       data.forEach((item, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${index + 1}</td>
+          <td>${item.id}</td>
           <td>${item.NombreCliente}</td>
           <td>${item.TipoCinta}</td>
           <td>${item.Descripcion}</td>
