@@ -107,7 +107,6 @@ function agregarDatosBaseDeDatos() {
     for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
         const cells = rows[i].cells;
         const rowData = {
-            NumeroCinta: cells[0].textContent,
             NombreCliente: cells[1].textContent,
             CO: cells[2].textContent,
             CodigoCinta: cells[3].textContent,

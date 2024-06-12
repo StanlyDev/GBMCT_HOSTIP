@@ -37,7 +37,6 @@ if ($data) {
         $CO = $row['CO'];
 
         $sql = "INSERT INTO TableInventory (
-            NumeroCinta,
             NombreCliente,
             TipoCinta,
             Descripcion,
@@ -49,7 +48,6 @@ if ($data) {
             OperatorName,
             CO
         ) VALUES (
-            '$NumeroCinta',
             '$NombreCliente',
             '$TipoCinta',
             '$Descripcion',

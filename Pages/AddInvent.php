@@ -88,8 +88,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         <input type="text" placeholder="SR" id="sr" class="sr" name="sr" required>
                     </div>
                     <div class="form-group">
-                        <label for="enc">Email Field Manager:</label>
-                        <input type="text" placeholder="Field-Manager" id="fdm" name="enc" required>
+                        <label for="enc">Email Field Manager Email:</label>
+                        <input type="email" placeholder="Field-Manager" id="fdm" name="enc" required>
                     </div>
                 </div>
                 <div class="input_container">
