@@ -130,9 +130,9 @@ function agregarCintasAlInventario() {
     .then(response => response.text())
     .then(data => {
         alert(data); // Muestra un mensaje de éxito o error
-        // Luego puedes recargar la página o hacer lo que necesites
     })
     .catch(error => {
+        alert('Error: ' + error.message);
         console.error('Error al agregar cintas al inventario:', error);
     });
 }
