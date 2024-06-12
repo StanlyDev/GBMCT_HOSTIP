@@ -98,39 +98,3 @@ function eliminarFila(button) {
         cell.textContent = numeroSecuencial++;
     }
 }
-
-function agregarDatosBaseDeDatos() {
-    // Obtener los datos de la tabla
-    var tableData = [];
-    var table = document.getElementById("tablaCintas");
-    var rows = table.rows;
-
-    // Iterar sobre las filas de la tabla
-    for (var i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
-        var rowData = [];
-        var cells = rows[i].cells;
-
-        // Iterar sobre las celdas de la fila y obtener los datos
-        for (var j = 1; j < cells.length - 1; j++) { // Comenzar desde 1 para omitir la celda de botón de eliminación
-            rowData.push(cells[j].textContent);
-        }
-
-        // Agregar los datos de la fila al arreglo de datos de la tabla
-        tableData.push(rowData);
-    }
-
-    // Enviar los datos al servidor usando AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/php/add_inventory.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                alert("¡La cinta se agregó correctamente al inventario!");
-            } else {
-                alert("¡Hubo un problema al agregar la cinta al inventario!");
-            }
-        }
-    };
-    xhr.send(JSON.stringify({ data: tableData }));
-}

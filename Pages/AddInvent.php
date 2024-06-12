@@ -152,13 +152,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </div>
         </div>
     </main>
-    <footer>
-        <div class="botones-container">
-        <button id="addDatabaseButton" type="button" onclick="agregarDatosBaseDeDatos()">
-                <img style="height: 20px;" src="/IMG/Icon/database-add.svg" alt="Añadir a la base de datos">
-            </button>
-        </div>
-    </footer>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
