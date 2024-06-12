@@ -100,44 +100,33 @@ function eliminarFila(button) {
 }
 
 function agregarDatosBaseDeDatos() {
-    const table = document.getElementById('tablaCintas');
-    const rows = table.rows;
-    const data = [];
+    // Obtener los datos de la tabla
+    var tableData = [];
+    var table = document.getElementById("tablaCintas");
+    var rows = table.rows;
 
-    for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
-        const cells = rows[i].cells;
-        const rowData = {
-            NombreCliente: cells[1].textContent,
-            CO: cells[2].textContent,
-            CodigoCinta: cells[3].textContent,
-            TipoCinta: cells[4].textContent,
-            Descripcion: cells[5].textContent,
-            TickectSR: cells[6].textContent,
-            HrAdd: cells[7].textContent,
-            DateAdd: cells[8].textContent,
-            FDMEmail: cells[9].textContent,
-            OperatorName: cells[10].textContent
-        };
-        data.push(rowData);
+    // Iterar sobre las filas de la tabla
+    for (var i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
+        var rowData = [];
+        var cells = rows[i].cells;
+
+        // Iterar sobre las celdas de la fila y obtener los datos
+        for (var j = 1; j < cells.length - 1; j++) { // Comenzar desde 1 para omitir la celda de botón de eliminación
+            rowData.push(cells[j].textContent);
+        }
+
+        // Agregar los datos de la fila al arreglo de datos de la tabla
+        tableData.push(rowData);
     }
 
-    fetch('/php/add_inventory.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.success) {
-            alert('Datos agregados exitosamente a la base de datos');
-        } else {
-            alert('Error al agregar datos a la base de datos');
+    // Enviar los datos al servidor usando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/php/add_inventory.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("Los datos se agregaron correctamente a la base de datos.");
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error al agregar datos a la base de datos');
-    });
+    };
+    xhr.send(JSON.stringify({ data: tableData }));
 }

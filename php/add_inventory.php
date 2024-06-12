@@ -12,63 +12,38 @@ $username = "stanvsdev";
 $password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $database);
 
 // Verificar la conexión
 if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+    die("Error de conexión: " . $conn->connect_error);
 }
 
-// Leer los datos enviados en el cuerpo de la solicitud
-$data = json_decode(file_get_contents('php://input'), true);
+// Iterar sobre las filas de la tabla HTML
+foreach ($_POST['data'] as $row) {
+    $nombreCliente = $row[0];
+    $tipoCinta = $row[1];
+    $descripcion = $row[2];
+    $codigoCinta = $row[3];
+    $tickectSR = $row[4];
+    $fdmEmail = $row[5];
+    $hrAdd = $row[6];
+    $dateAdd = $row[7];
+    $operatorName = $row[8];
+    $co = $row[9];
 
-if ($data) {
-    foreach ($data as $row) {
-        $NumeroCinta = $row['NumeroCinta'];
-        $NombreCliente = $row['NombreCliente'];
-        $TipoCinta = $row['TipoCinta'];
-        $Descripcion = $row['Descripcion'];
-        $CodigoCinta = $row['CodigoCinta'];
-        $TickectSR = $row['TickectSR'];
-        $HrAdd = $row['HrAdd'];
-        $DateAdd = $row['DateAdd'];
-        $FDMEmail = $row['FDMEmail'];
-        $OperatorName = $row['OperatorName'];
-        $CO = $row['CO'];
+    // Preparar la consulta SQL
+    $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CodigoCinta, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO)
+    VALUES ('$nombreCliente', '$tipoCinta', '$descripcion', '$codigoCinta', '$tickectSR', '$fdmEmail', '$hrAdd', '$dateAdd', '$operatorName', '$co')";
 
-        $sql = "INSERT INTO TableInventory (
-            NombreCliente,
-            TipoCinta,
-            Descripcion,
-            CodigoCinta,
-            TickectSR,
-            HrAdd,
-            DateAdd,
-            FDMEmail,
-            OperatorName,
-            CO
-        ) VALUES (
-            '$NombreCliente',
-            '$TipoCinta',
-            '$Descripcion',
-            '$CodigoCinta',
-            '$TickectSR',
-            '$HrAdd',
-            '$DateAdd',
-            '$FDMEmail',
-            '$OperatorName',
-            '$CO'
-        )";
-
-        if (!$conn->query($sql)) {
-            echo json_encode(['success' => false, 'error' => $conn->error]);
-            exit;
-        }
+    // Ejecutar la consulta SQL
+    if ($conn->query($sql) === TRUE) {
+        echo "Los datos se agregaron correctamente a la base de datos.";
+    } else {
+        echo "Error al insertar datos: " . $conn->error;
     }
-    echo json_encode(['success' => true]);
-} else {
-    echo json_encode(['success' => false, 'error' => 'No data received']);
 }
 
+// Cerrar la conexión
 $conn->close();
 ?>

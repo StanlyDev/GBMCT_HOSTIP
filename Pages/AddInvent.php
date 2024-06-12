@@ -16,6 +16,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/AddInvent.css">
     <link rel="shortcut icon" href="/IMG/Icon/GBM-logo-1.ico">
+    <script defer src="/JavaScript/AddInvent.js"></script>
     <script defer src="/JavaScript/windowsDoc.js"></script>
     <script defer src="/JavaScript/HistoAlert.js"></script>
     <script defer src="/JavaScript/logout.js"></script>
@@ -153,7 +154,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     </main>
     <footer>
         <div class="botones-container">
-            <button id="addDatabaseButton" type="button" onclick="agregarDatosBaseDeDatos()">
+        <button id="addDatabaseButton" type="button" onclick="agregarDatosBaseDeDatos()">
                 <img style="height: 20px;" src="/IMG/Icon/database-add.svg" alt="Añadir a la base de datos">
             </button>
         </div>
@@ -172,7 +173,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
             <button id="continueSessionBtn">Continuar sesión</button>
         </div>
     </div>
-    <script defer src="/JavaScript/AddInvent.js"></script>
 </body>
 </html>
 
