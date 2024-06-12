@@ -17,25 +17,29 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-$client_name = $_POST['client_name'];
-$co = $_POST['co'];
-$sr = $_POST['sr'];
-$enc = $_POST['enc'];
-$hrEsti = $_POST['hrEsti'];
-$FechaIO = $_POST['FechaIO'];
-$ingr = $_POST['ingr'];
-$TypeCinta = $_POST['TypeCinta'];
-$DesCin = $_POST['DesCin'];
-$CCinta = $_POST['CCinta'];
+$data = json_decode(file_get_contents('php://input'), true);
 
-$sql = "INSERT INTO inventory (client_name, co, sr, enc, hrEsti, FechaIO, ingr, TypeCinta, DesCin, CCinta)
-        VALUES ('$client_name', '$co', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$TypeCinta', '$DesCin', '$CCinta')";
+foreach ($data as $cinta) {
+    $client_name = $cinta['client_name'];
+    $co = $cinta['co'];
+    $sr = $cinta['sr'];
+    $enc = $cinta['enc'];
+    $hrEsti = $cinta['hrEsti'];
+    $FechaIO = $cinta['FechaIO'];
+    $ingr = $cinta['ingr'];
+    $TypeCinta = $cinta['TypeCinta'];
+    $DesCin = $cinta['DesCin'];
+    $CCinta = $cinta['CCinta'];
 
-if ($conn->query($sql) === TRUE) {
-    echo "Cinta agregada exitosamente";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    $sql = "INSERT INTO inventory (client_name, co, sr, enc, hrEsti, FechaIO, ingr, TypeCinta, DesCin, CCinta)
+            VALUES ('$client_name', '$co', '$sr', '$enc', '$hrEsti', '$FechaIO', '$ingr', '$TypeCinta', '$DesCin', '$CCinta')";
+
+    if (!$conn->query($sql)) {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        exit();
+    }
 }
 
+echo "Cintas agregadas exitosamente";
 $conn->close();
 ?>

@@ -99,11 +99,33 @@ function eliminarFila(button) {
 }
 
 function agregarCintasAlInventario() {
-    let formData = new FormData(form);
+    let table = document.getElementById("tablaCintas");
+    let rows = table.rows;
+    let cintas = [];
+
+    for (let i = 1; i < rows.length; i++) {
+        let cells = rows[i].cells;
+        let cinta = {
+            client_name: cells[1].textContent,
+            co: cells[2].textContent,
+            sr: cells[5].textContent,
+            enc: cells[6].textContent,
+            hrEsti: cells[7].textContent,
+            FechaIO: cells[8].textContent,
+            ingr: cells[9].textContent,
+            TypeCinta: cells[2].textContent,
+            DesCin: cells[3].textContent,
+            CCinta: cells[4].textContent
+        };
+        cintas.push(cinta);
+    }
 
     fetch('/php/add_inventory.php', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cintas)
     })
     .then(response => response.text())
     .then(data => {
