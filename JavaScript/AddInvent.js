@@ -1,4 +1,5 @@
-const form = document.getElementById("FrmCinta");
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
 
 function agregarCinta() {
@@ -141,3 +142,4 @@ function agregarDatosBaseDeDatos() {
         alert('Error al agregar datos a la base de datos');
     });
 }
+  });
