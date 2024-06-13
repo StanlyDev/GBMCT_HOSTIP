@@ -19,7 +19,7 @@ if (isset($_POST['id_cinta'])) {
     $id_cinta = $_POST['id_cinta'];
 
     // Preparar la consulta SQL con una sentencia preparada
-    $sql = "DELETE FROM TableInventory WHERE NumeroCinta = ?";
+    $sql = "DELETE FROM TableInventory WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id_cinta); // "i" indica que el parámetro es un entero
 
