@@ -104,7 +104,7 @@ $email = $_SESSION["email"] ?? '';
                     </div>
                     <div class="form-group">
                         <label for="ingr">Agregada por:</label>
-                        <input type="text" id="operator" name="ingr" value="<?php echo $_SESSION['email'] ?? ''; ?>" readonly>
+                        <input type="text" id="operator" name="ingr" value="<?php echo $_SESSION["email"] ?? ''; ?>" readonly>
                     </div>
                 </div>
                 <hr>
