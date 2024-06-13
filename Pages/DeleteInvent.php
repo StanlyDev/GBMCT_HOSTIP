@@ -118,13 +118,20 @@ $usuario_rol = $_SESSION["role"] ?? '';
       </div>
     </div>
     <!--Fin Main-->
-  </main><br>
-  <!-- Ventana emergente -->
-  <div id="inactivityModal" class="modal">
-    <div class="modal-content">
-        <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
-        <button id="continueSessionBtn">Continuar sesión</button>
+  </main>
+  <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOptions()">&times;</span>
+            <p>Elige una opción:</p><hr>
+            <a href="/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+            <a href="/Pages/SalidaDeMedios.php">Salida de Medios</a>
+        </div>
     </div>
-  </div> 
+    <div id="inactivityModal" class="modal">
+        <div class="modal-content">
+            <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
+            <button id="continueSessionBtn">Continuar sesión</button>
+        </div>
+    </div>
 </body>
 </html>
