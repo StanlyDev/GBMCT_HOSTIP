@@ -2,6 +2,11 @@ const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
 
 function agregarCinta() {
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
     let ccintaInput = document.getElementById("CCinta");
     let ccintaValue = ccintaInput.value;
 
