@@ -83,7 +83,7 @@ function agregarCinta() {
 }
 
 function verificarCodigoCinta(codigo) {
-    return fetch('/php/verificar_codigo_cinta.php', {
+    return fetch('/php/valide_code.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
