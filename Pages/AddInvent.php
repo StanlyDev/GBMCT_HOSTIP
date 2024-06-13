@@ -131,22 +131,26 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </form>
             <div class="tabla_Cont">
                 <div class="tabla_preview">
-                    <table id="tablaCintas">
-                        <tr>
-                            <th>#</th>
-                            <th>Cliente</th>
-                            <th>Contrato</th>
-                            <th>Codigo</th>
-                            <th>Tipo</th>
-                            <th>Descripcion</th>
-                            <th>Ticket</th>
-                            <th>Hora de ingreso</th>
-                            <th>Fecha de ingreso</th>
-                            <th>Field Manager Email</th>
-                            <th>Agregado por</th>
-                            <th>Acción</th>
-                        </tr>
-                        <!-- Contenido de la tabla -->
+                <table id="tablaCintas">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Cliente</th>
+                                <th>Contrato</th>
+                                <th>Codigo</th>
+                                <th>Tipo</th>
+                                <th>Descripcion</th>
+                                <th>Ticket</th>
+                                <th>Hora de ingreso</th>
+                                <th>Fecha de ingreso</th>
+                                <th>Field Manager Email</th>
+                                <th>Agregado por</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Contenido de la tabla -->
+                        </tbody>
                     </table>
                 </div>
             </div>
