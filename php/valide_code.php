@@ -5,7 +5,7 @@ require 'conexion.php'; // Asegúrate de que este archivo contiene la configurac
 header('Content-Type: application/json');
 
 $data = json_decode(file_get_contents('php://input'), true);
-$codigo = $data['CodigoCinta'];
+$codigo = $data['codigo'];
 
 $stmt = $conn->prepare("SELECT COUNT(*) FROM TableInventory WHERE CodigoCinta = ?");
 $stmt->bind_param("s", $codigo);
