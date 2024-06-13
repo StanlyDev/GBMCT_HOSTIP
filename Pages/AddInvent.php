@@ -29,7 +29,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png" alt="GBM Logo"></div>
         <div class="icon-container">
             <div class="home">
-                <a href="/Pages/HomePage.php">
+                <a href="/Pages/HomePage.php" title="Inicio">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon
                         src="https://cdn.lordicon.com/wmwqvixz.json"
@@ -41,7 +41,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 </a>
             </div>
             <div class="close_user">
-                <a href="/php/logout.php">
+                <a href="/php/logout.php" title="Cerrar Sesion">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon
                         src="https://cdn.lordicon.com/eoacwhtz.json"

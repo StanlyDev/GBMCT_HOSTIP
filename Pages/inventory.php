@@ -32,7 +32,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
       <div class="menu-btn" onclick="toggleMenu()">☰</div>
       <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
       <div class="icon-container">
-          <div class="home"><a href="/Pages/HomePage.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+          <div class="home"><a href="/Pages/HomePage.php" title="Inicio"><script src="https://cdn.lordicon.com/lordicon.js"></script>
               <lord-icon
                   src="https://cdn.lordicon.com/wmwqvixz.json"
                   trigger="morph"
@@ -40,7 +40,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                   colors="primary:#ffffff"
                   style="width:30px;height:30px">
               </lord-icon></a></div>
-              <div class="AddInvent"><a href="/Pages/AddInvent.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+              <div class="AddInvent"><a href="/Pages/AddInvent.php" title="Agregar cinta al Inventario"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/jgnvfzqg.json"
@@ -48,7 +48,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     colors="primary:#ffffff"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
-                <div class="DeleInvent"><a href="/Pages/DeleteInvent.php"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <div class="DeleInvent"><a href="/Pages/DeleteInvent.php" title="Eliminar Cinta del Inventario"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                   <script src="https://cdn.lordicon.com/lordicon.js"></script>
                   <lord-icon
                       src="https://cdn.lordicon.com/skkahier.json"
@@ -57,7 +57,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                       style="width:30px;height:30px">
                   </lord-icon></a></div>
                 <div class="close_user">
-                <a href="/php/logout.php">
+                <a href="/php/logout.php" title="Cerrar Sesion">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon
                         src="https://cdn.lordicon.com/eoacwhtz.json"
