@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
               <td>${item.CodigoCinta}</td>
               <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
               <td>${item.TickectSR}</td>
-              <td>${item.FMDEmail}</td>
+              <td>${item.FDMEmail}</td>
               <td>${item.HrAdd}</td>
               <td>${item.DateAdd}</td>
               <td>${item.OperatorName}</td>
