@@ -19,7 +19,7 @@ $errorMsg = "";
 
 // Verificar si se enviaron datos de inicio de sesión
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"]; // Cambiado de username a email
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
     // Escapar caracteres especiales para evitar inyección SQL
@@ -27,16 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string($password);
 
     // Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
-    $sql = "SELECT id, username, role FROM usuarios WHERE email='$email' AND password='$password'";
+    $sql = "SELECT id, email, role FROM usuarios WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         // Usuario encontrado, iniciar sesión
         $row = $result->fetch_assoc();
         $_SESSION["id"] = $row["id"];
-        $_SESSION["email"] = $row["email"]; // Cambiar "username" por "email"
+        $_SESSION["email"] = $row["email"]; // Usar "email" en lugar de "username"
         $_SESSION["role"] = $row["role"];
-    
+
         // Redireccionar a la página de inicio o a donde sea necesario
         header("Location: /Pages/HomePage.php");
         exit();    
