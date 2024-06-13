@@ -32,6 +32,14 @@ $usuario_rol = $_SESSION["role"] ?? '';
       <div class="menu-btn" onclick="toggleMenu()">☰</div>
       <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
       <div class="icon-container">
+      <div class="home"><a href="#" title="Inicio"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/hrjifpbq.json"
+                    trigger="hover"
+                    colors="primary:#ffffff"
+                    style="width:30px;height:30px">
+                </lord-icon></a><p style="float: right; color: white; padding: 5px;"><?php echo $_SESSION["username"]; ?></p></div>
           <div class="home"><a href="/Pages/HomePage.php" title="Inicio"><script src="https://cdn.lordicon.com/lordicon.js"></script>
               <lord-icon
                   src="https://cdn.lordicon.com/wmwqvixz.json"

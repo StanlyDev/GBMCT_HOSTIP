@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+// Verificar si el usuario no ha iniciado sesión o no tiene el rol adecuado
+if (!isset($_SESSION["id"]) || ($_SESSION["role"] !== 'root' && $_SESSION["role"] !== 'admin')) {
+    header("Location: /index.html");
+    exit();
+}
+
+$usuario_rol = $_SESSION["role"] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,6 +31,14 @@
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
         <div class="logo"><img src="/IMG/Logos/Logo-blanco-sin-fondo.png"></div>
         <div class="icon-container">
+        <div class="home"><a href="#" title="Inicio"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <lord-icon
+                    src="https://cdn.lordicon.com/hrjifpbq.json"
+                    trigger="hover"
+                    colors="primary:#ffffff"
+                    style="width:30px;height:30px">
+                </lord-icon></a><p style="float: right; color: white; padding: 5px;"><?php echo $_SESSION["username"]; ?></p></div>
             <div class="home">
                 <a href="/Pages/HomePage.php" title="Inicio">
                 <script src="https://cdn.lordicon.com/lordicon.js"></script>
