@@ -36,7 +36,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     trigger="hover"
                     colors="primary:#ffffff"
                     style="width:30px;height:30px">
-                </lord-icon></a><p><?php echo $_SESSION["username"]; ?></p></div>
+                </lord-icon></a><p style="margin-right: 10px; width: 20px; float: left;"><?php echo $_SESSION["username"]; ?></p></div>
             <div class="home"><a href="/Pages/HomePage.php" title="Inicio"><script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/wmwqvixz.json"
