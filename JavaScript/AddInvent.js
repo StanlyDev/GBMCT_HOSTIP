@@ -2,7 +2,6 @@ const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
 
 function agregarCinta() {
-
     let ccintaInput = document.getElementById("CCinta");
     let ccintaValue = ccintaInput.value;
 
@@ -68,6 +67,9 @@ function agregarCinta() {
 
     // Enviar los datos a través de AJAX
     enviarDatos();
+
+    // Limpiar campos después de agregar
+    limpiarCampos();
 }
 
 function isDuplicateValue(tableId, value, columnIndex) {
@@ -119,4 +121,10 @@ function enviarDatos() {
         console.error('Error:', error);
         alert('Error al agregar la cinta');
     });
+}
+
+function limpiarCampos() {
+    document.getElementById("TypeCinta").value = '';
+    document.getElementById("DesCin").value = '';
+    document.getElementById("CCinta").value = '';
 }
