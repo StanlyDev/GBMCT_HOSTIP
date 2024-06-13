@@ -103,7 +103,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     </div>
                     <div class="form-group">
                         <label for="ingr">Agregada por:</label>
-                        <input type="text" id="operator" name="ingr" placeholder="Operador" required>
+                        <input type="text" id="operator" name="ingr" value="<?php echo $_SESSION['username'] ?? ''; ?>"  required readonly disabled>
                     </div>
                 </div>
                 <hr>
