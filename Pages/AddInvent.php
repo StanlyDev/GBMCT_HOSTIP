@@ -8,6 +8,7 @@ if (!isset($_SESSION["id"])) {
 }
 // Obtener el rol del usuario desde la sesión
 $usuario_rol = $_SESSION["role"] ?? '';
+$email = $_SESSION["email"] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -103,7 +104,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     </div>
                     <div class="form-group">
                         <label for="ingr">Agregada por:</label>
-                        <input type="text" id="operator" name="ingr" value="<?php echo $_SESSION['username'] ?? ''; ?>" disabled>
+                        <input type="text" id="operator" name="ingr" value="<?php echo $_SESSION['email'] ?? ''; ?>" disabled>
                     </div>
                 </div>
                 <hr>
