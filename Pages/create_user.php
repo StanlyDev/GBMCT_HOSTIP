@@ -117,7 +117,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 </tbody>
             </table>
         </div>
-        <div id="myModal" class="modal">
+</div>
+<div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOptions()">&times;</span>
             <p>Elige una opción:</p><hr>
@@ -131,6 +132,5 @@ $usuario_rol = $_SESSION["role"] ?? '';
             <button id="continueSessionBtn">Continuar sesión</button>
         </div>
     </div>
-</div>
 </body>
 </html>
