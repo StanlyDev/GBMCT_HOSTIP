@@ -27,20 +27,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string($password);
 
     // Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
-    $sql = "SELECT id, username, email, role FROM usuarios WHERE email='$email' AND password='$password'";
+    $sql = "SELECT id, username, email, role, first_login FROM usuarios WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         // Usuario encontrado, iniciar sesión
         $row = $result->fetch_assoc();
         $_SESSION["id"] = $row["id"];
-        $_SESSION["email"] = $row["email"]; // Aquí usas "email"
+        $_SESSION["email"] = $row["email"];
         $_SESSION["role"] = $row["role"];
-        $_SESSION["username"] = $row["username"]; // Y aquí usas "username"
+        $_SESSION["username"] = $row["username"];
 
-        // Redireccionar a la página de inicio o a donde sea necesario
-        header("Location: /Pages/HomePage.php");
-        exit();    
+        if ($row["first_login"]) {
+            // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
+            $_SESSION["first_login"] = true;
+            header("Location: /php/change_password.php");
+            exit();
+        } else {
+            // No es el primer inicio de sesión, redirigir a la página de inicio
+            header("Location: /Pages/HomePage.php");
+            exit();
+        }
     } else {
         // Usuario no encontrado, establecer mensaje de error
         $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
