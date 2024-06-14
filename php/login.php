@@ -27,38 +27,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $conn->real_escape_string($password);
 
     // Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
-    $sql = "SELECT id, username, email, password, first_login FROM usuarios WHERE email='$email'";
+    $sql = "SELECT id, username, email, role, first_login FROM usuarios WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        // Usuario encontrado, verificar la contraseña
+        // Usuario encontrado, iniciar sesión
         $row = $result->fetch_assoc();
-        $stored_hash = $row["password"];
+        $_SESSION["id"] = $row["id"];
+        $_SESSION["email"] = $row["email"];
+        $_SESSION["role"] = $row["role"];
+        $_SESSION["username"] = $row["username"];
 
-        if (password_verify($password, $stored_hash)) {
-            // Contraseña válida, iniciar sesión
-            $_SESSION["id"] = $row["id"];
-            $_SESSION["email"] = $row["email"];
-            $_SESSION["role"] = $row["role"];
-            $_SESSION["username"] = $row["username"];
-
-            if ($row["first_login"]) {
-                // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
-                $_SESSION["first_login"] = true;
-                header("Location: /change_password.php");
-                exit();
-            } else {
-                // No es el primer inicio de sesión, redirigir a la página de inicio
-                header("Location: /Pages/HomePage.php");
-                exit();
-            }
+        if ($row["first_login"]) {
+            // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
+            $_SESSION["first_login"] = true;
+            header("Location: /Pages/change_password.php");
+            exit();
         } else {
-            // Contraseña incorrecta
-            $errorMsg = "Usuario o contraseña incorrectos";
+            // No es el primer inicio de sesión, redirigir a la página de inicio
+            header("Location: /Pages/HomePage.php");
+            exit();
         }
     } else {
-        // Usuario no encontrado
-        $errorMsg = "Usuario o contraseña incorrectos";
+        // Usuario no encontrado, establecer mensaje de error
+        $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
+        header("Location: /index.html"); // Redireccionar al formulario de inicio de sesión
+        exit();
     }
 }
 
