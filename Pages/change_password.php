@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Cerrar conexión MySQL al finalizar
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -61,8 +60,3 @@ $conn->close();
     </form>
 </body>
 </html>
-
-<?php
-// Cerrar conexión MySQL al finalizar
-$conn->close();
-?>
