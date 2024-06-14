@@ -42,6 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: /Pages/HomePage.php");
     exit();
 }
+
+// Cerrar conexión MySQL al finalizar
+$conn->close();
 ?>
 
 <!DOCTYPE html>
