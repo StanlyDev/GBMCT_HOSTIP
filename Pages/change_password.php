@@ -3,11 +3,10 @@ session_start();
 
 // Verificar si el usuario está autenticado y es su primer inicio de sesión
 if (!isset($_SESSION["id"]) || !isset($_SESSION["first_login"]) || !$_SESSION["first_login"]) {
-    header("Location: /index.html"); // Redirigir a la página de inicio de sesión si no está autenticado
+    header("Location: /login.php"); // Redirigir a la página de inicio de sesión si no está autenticado o no es primer inicio de sesión
     exit();
 }
 
-// Incluir el archivo de configuración de la base de datos o establecer la conexión aquí
 $servername = "10.4.27.116";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
@@ -43,9 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-// Cerrar conexión MySQL al finalizar
+// Cerrar conexión MySQL
 $conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
