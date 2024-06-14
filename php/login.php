@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($row["first_login"]) {
             // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
             $_SESSION["first_login"] = true;
-            header("Location: /php/change_password.php");
+            header("Location: /Pages/change_password.php");
             exit();
         } else {
             // No es el primer inicio de sesión, redirigir a la página de inicio
