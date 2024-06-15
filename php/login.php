@@ -33,31 +33,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
 
         // Verificar la contraseña ingresada
-        $stored_hash = $row["password"];
-
-        // Verificar la contraseña utilizando password_verify()
-        if (password_verify($password, $stored_hash)) {
-            // Contraseña correcta, iniciar sesión
+        if ($password == "Odc123") {
+            // Contraseña predeterminada encontrada, iniciar sesión y redirigir a cambiar contraseña
             $_SESSION["id"] = $row["id"];
             $_SESSION["email"] = $row["email"];
             $_SESSION["role"] = $row["role"];
             $_SESSION["username"] = $row["username"];
+            $_SESSION["first_login"] = true; // Marcar como primer inicio de sesión
 
-            if ($row["first_login"] == 1) { // Asumiendo que 'first_login' es un campo booleano (1 para primer inicio de sesión)
-                // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
-                $_SESSION["first_login"] = true;
-                header("Location: /Pages/change_password.php");
-                exit();
+            header("Location: /Pages/change_password.php");
+            exit();
+        } else {
+            // Verificar la contraseña almacenada usando password_verify()
+            $stored_hash = $row["password"];
+            if (password_verify($password, $stored_hash)) {
+                // Contraseña correcta, iniciar sesión
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["role"] = $row["role"];
+                $_SESSION["username"] = $row["username"];
+
+                if ($row["first_login"] == 1) { // Asumiendo que 'first_login' es un campo booleano (1 para primer inicio de sesión)
+                    // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
+                    $_SESSION["first_login"] = true;
+                    header("Location: /Pages/change_password.php");
+                    exit();
+                } else {
+                    // No es el primer inicio de sesión, redirigir a la página de inicio
+                    header("Location: /Pages/HomePage.php");
+                    exit();
+                }
             } else {
-                // No es el primer inicio de sesión, redirigir a la página de inicio
-                header("Location: /Pages/HomePage.php");
+                // Contraseña incorrecta
+                $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
+                header("Location: /index.html"); // Redireccionar al formulario de inicio de sesión
                 exit();
             }
-        } else {
-            // Contraseña incorrecta
-            $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
-            header("Location: /index.html"); // Redireccionar al formulario de inicio de sesión
-            exit();
         }
     } else {
         // Usuario no encontrado
