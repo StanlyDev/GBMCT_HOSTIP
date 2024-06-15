@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-$userId = $_GET['id'];
+$userId = $conn->real_escape_string($_GET['id']);
 $sql = "SELECT * FROM usuarios WHERE id = $userId";
 $result = $conn->query($sql);
 $user = $result->fetch_assoc();
@@ -34,11 +34,11 @@ $conn->close();
             <form id="editUserForm">
                 <div>
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" value="<?php echo $user['username']; ?>" required>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['username']); ?>" required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
                 </div>
                 <div>
                     <label for="role">Rol</label>
@@ -50,10 +50,10 @@ $conn->close();
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" value="<?php echo $user['password']; ?>" required>
+                    <input type="password" id="password" name="password" placeholder="Dejar en blanco para mantener la misma contraseña">
                 </div>
                 <button type="submit">Guardar Cambios</button>
-                <button style="background-color: red;" type="submit" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
+                <button type="button" style="background-color: red;" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
             </form>
         </div>
     </div>
