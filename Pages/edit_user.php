@@ -5,15 +5,25 @@ $username = "stanvsdev";
 $password = "Stanlyv00363";
 $dbname = "dbmedios_gbm";
 
+// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
+// Obtener el ID del usuario desde el parámetro GET
 $userId = $conn->real_escape_string($_GET['id']);
+
+// Consulta para obtener la información del usuario
 $sql = "SELECT * FROM usuarios WHERE id = $userId";
 $result = $conn->query($sql);
+
+// Obtener los datos del usuario
 $user = $result->fetch_assoc();
+
+// Cerrar conexión
 $conn->close();
 ?>
 
@@ -30,15 +40,16 @@ $conn->close();
 <body>
     <div class="container">
         <div class="form-container">
-            <h1>Editar Usuario</h1><hr>
-            <form id="editUserForm" method="post" action="/php/update_user.php">
+            <h1>Editar Usuario</h1>
+            <hr>
+            <form id="editUserForm">
                 <div>
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                    <input type="text" id="name" name="name" value="<?php echo $user['username']; ?>" required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                    <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
                 </div>
                 <div>
                     <label for="role">Rol</label>
@@ -49,16 +60,32 @@ $conn->close();
                     </select>
                 </div>
                 <div>
-                    <label for="password">Nueva contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Dejar en blanco para mantener la misma contraseña">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                    <small>Deja en blanco para mantener la contraseña actual</small>
                 </div>
                 <button type="submit">Guardar Cambios</button>
-                <button type="button" style="background-color: red;" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
+                <button style="background-color: red;" type="button" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
             </form>
         </div>
     </div>
 
     <script>
+        document.getElementById('editUserForm').onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(event.target);
+            formData.append('id', <?php echo $userId; ?>);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/php/update_user.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert("Usuario actualizado exitosamente.");
+                    window.location.href = "/Pages/create_user.php";
+                }
+            };
+            xhr.send(formData);
+        };
+
         function deleteUser(userId) {
             if (confirm("¿Estás seguro de que quieres eliminar este usuario?")) {
                 var xhr = new XMLHttpRequest();

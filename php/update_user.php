@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $conn->real_escape_string($_POST["role"]);
     $password = $_POST["password"];
 
-    // Construir la consulta SQL
     if (!empty($password)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "UPDATE usuarios SET username=?, email=?, role=?, password=? WHERE id=?";
