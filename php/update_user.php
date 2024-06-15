@@ -12,19 +12,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    $userId = $_POST["id"];
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $role = $_POST["role"];
+    $userId = $conn->real_escape_string($_POST["id"]);
+    $name = $conn->real_escape_string($_POST["name"]);
+    $email = $conn->real_escape_string($_POST["email"]);
+    $role = $conn->real_escape_string($_POST["role"]);
     $password = $_POST["password"];
 
-    $sql = "UPDATE usuarios SET username='$name', email='$email', role='$role', password='$password' WHERE id=$userId";
-    if ($conn->query($sql) === TRUE) {
-        echo "Usuario actualizado exitosamente.";
+    // Construir la consulta SQL
+    if (!empty($password)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "UPDATE usuarios SET username=?, email=?, role=?, password=? WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssi", $name, $email, $role, $hashed_password, $userId);
     } else {
-        echo "Error al actualizar el usuario: " . $conn->error;
+        $sql = "UPDATE usuarios SET username=?, email=?, role=? WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssi", $name, $email, $role, $userId);
     }
 
+    if ($stmt->execute()) {
+        echo "Usuario actualizado exitosamente.";
+    } else {
+        echo "Error al actualizar el usuario: " . $stmt->error;
+    }
+
+    $stmt->close();
     $conn->close();
 }
 ?>
