@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["role"] = $row["role"];
             $_SESSION["username"] = $row["username"];
 
-            if ($row["first_login"]) {
+            if ($row["first_login"] == 1) { // Asumiendo que 'first_login' es un campo booleano (1 para primer inicio de sesión)
                 // Es el primer inicio de sesión, redirigir a la página para cambiar contraseña
                 $_SESSION["first_login"] = true;
                 header("Location: /Pages/change_password.php");
