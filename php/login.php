@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
 
         // Verificar la contraseña ingresada
-        if ($password == "Odc123") {
+        if ($password == "GBM123") {
             // Contraseña predeterminada encontrada, iniciar sesión y redirigir a cambiar contraseña
             $_SESSION["id"] = $row["id"];
             $_SESSION["email"] = $row["email"];
