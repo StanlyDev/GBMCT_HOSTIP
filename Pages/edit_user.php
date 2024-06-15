@@ -50,7 +50,7 @@ $conn->close();
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Dejar en blanco para mantener la misma contraseña">
+                    <input type="password" id="password" title="Dejar en blanco para mantener la misma contraseña" name="password" placeholder="Dejar en blanco para mantener la misma contraseña">
                 </div>
                 <button type="submit">Guardar Cambios</button>
                 <button type="button" style="background-color: red;" id="deleteButton" onclick="deleteUser(<?php echo $userId; ?>)">Eliminar Usuario</button>
