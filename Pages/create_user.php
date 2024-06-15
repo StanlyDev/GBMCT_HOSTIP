@@ -97,7 +97,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter user password" required>
+                    <input type="password" id="password" name="password" value="GBM123" readonly>
                 </div>
                 <button type="submit">Crear Usuario</button>
             </form>
