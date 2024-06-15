@@ -96,7 +96,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     </select>
                 </div>
                 <div>
-                    <label for="password">Password</label>
+                    <label for="password">Password <br><em>Contraseña predeterminada: GBM123</em></label>
                     <input type="password" id="password" name="password" value="GBM123" readonly>
                 </div>
                 <button type="submit">Crear Usuario</button>
