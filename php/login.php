@@ -29,11 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
-        // Usuario encontrado, verificar la contraseña
+        // Usuario encontrado
         $row = $result->fetch_assoc();
+
+        // Verificar la contraseña ingresada
         $stored_hash = $row["password"];
 
-        // Verificar la contraseña ingresada con el hash almacenado
+        // Verificar la contraseña utilizando password_verify()
         if (password_verify($password, $stored_hash)) {
             // Contraseña correcta, iniciar sesión
             $_SESSION["id"] = $row["id"];
