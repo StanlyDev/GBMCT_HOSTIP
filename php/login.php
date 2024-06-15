@@ -17,22 +17,18 @@ if ($conn->connect_error) {
 // Inicializar mensaje de error vacío
 $errorMsg = "";
 
-// Verificar si se enviaron datos de inicio de sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+// Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
+$sql = "SELECT id, username, email, role, password, first_login FROM usuarios WHERE email='$email'";
+$result = $conn->query($sql);
 
-    // Escapar caracteres especiales para evitar inyección SQL
-    $email = $conn->real_escape_string($email);
-    $password = $conn->real_escape_string($password);
+if ($result->num_rows == 1) {
+    // Usuario encontrado, verificar la contraseña
+    $row = $result->fetch_assoc();
+    $stored_hash = $row["password"];
 
-    // Consulta para buscar el usuario en la tabla 'usuarios' por correo electrónico
-    $sql = "SELECT id, username, email, role, first_login FROM usuarios WHERE email='$email' AND password='$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-        // Usuario encontrado, iniciar sesión
-        $row = $result->fetch_assoc();
+    // Verificar la contraseña ingresada con el hash almacenado
+    if (password_verify($password, $stored_hash)) {
+        // Contraseña correcta, iniciar sesión
         $_SESSION["id"] = $row["id"];
         $_SESSION["email"] = $row["email"];
         $_SESSION["role"] = $row["role"];
@@ -49,12 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } else {
-        // Usuario no encontrado, establecer mensaje de error
+        // Contraseña incorrecta
         $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
         header("Location: /index.html"); // Redireccionar al formulario de inicio de sesión
         exit();
     }
+} else {
+    // Usuario no encontrado
+    $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
+    header("Location: /index.html"); // Redireccionar al formulario de inicio de sesión
+    exit();
 }
+
 
 // Cerrar conexión MySQL
 $conn->close();
