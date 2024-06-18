@@ -1,0 +1,41 @@
+/* validate_code.css */
+.validation-container {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .validation-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .validation-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .validation-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .validation-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .validation-container .error {
+    color: red;
+    margin-top: 10px;
+  }
+  

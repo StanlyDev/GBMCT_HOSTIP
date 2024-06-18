@@ -56,14 +56,17 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     colors="primary:#ffffff"
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
-                <div class="DeleInvent"><a href="/Pages/DeleteInvent.php" title="Eliminar Cinta del Inventario"><script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <div class="DeleInvent">
+                <a href="/Pages/validate_code.php" title="Eliminar Cinta del Inventario">
                   <script src="https://cdn.lordicon.com/lordicon.js"></script>
                   <lord-icon
                       src="https://cdn.lordicon.com/skkahier.json"
                       trigger="hover"
                       colors="primary:#ffffff"
                       style="width:30px;height:30px">
-                  </lord-icon></a></div>
+                  </lord-icon>
+                </a>
+              </div>
                 <div class="close_user">
                 <a href="/php/logout.php" title="Cerrar Sesion">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
