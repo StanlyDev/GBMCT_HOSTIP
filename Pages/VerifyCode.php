@@ -26,8 +26,6 @@ $codigoAleatorio = generarCodigoAleatorio();
 // Guardar el código en la sesión del usuario
 $_SESSION["Code_Temp"] = $codigoAleatorio;
 
-// Redirigir a la página de verificación de código
-header("Location: /Pages/VerifyCode.php");
 exit();
 ?>
 <!DOCTYPE html>
