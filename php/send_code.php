@@ -5,7 +5,7 @@ require 'vendor/autoload.php'; // Incluir el autoload de Composer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Conexión a la base de datos
+// Conexión a la base de datos (ejemplo básico)
 $servername = "10.4.27.116";
 $username = "stanvsdev";
 $password = "Stanlyv00363";
@@ -19,10 +19,10 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener el usuario logueado
-$user_id = $_SESSION['id'];
+// Obtener el usuario logueado (simulado con una variable de sesión)
+$user_id = $_SESSION['id']; // Suponiendo que has establecido $_SESSION['id'] en otro lugar de tu aplicación
 
-// Obtener el correo y nombre del usuario logueado (destinatario)
+// Consulta para obtener el correo y nombre del usuario logueado (destinatario del correo)
 $sql = "SELECT email, username FROM usuarios WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -37,52 +37,39 @@ if ($result->num_rows > 0) {
     // Generar un código aleatorio de 4 dígitos
     $codigo = str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
 
-    // Guardar el código en la base de datos
-    $sql = "UPDATE usuarios SET Code_Temp = ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $codigo, $user_id);
-    $stmt->execute();
+    // Guardar el código temporalmente en la base de datos
+    $sql_update_code = "UPDATE usuarios SET Code_Temp = ? WHERE id = ?";
+    $stmt_update_code = $conn->prepare($sql_update_code);
+    $stmt_update_code->bind_param("si", $codigo, $user_id);
+    $stmt_update_code->execute();
 
-    // Obtener el correo y nombre del remitente (puede ser un usuario específico, aquí se usa el primer usuario)
-    $sql = "SELECT email, username FROM usuarios WHERE id = 1"; // Ajusta según sea necesario
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Configuración de PHPMailer
+    $mail = new PHPMailer(true);
 
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $remitente_email = $row['email'];
-        $remitente_nombre = $row['username'];
+    try {
+        // Configuración del servidor SMTP
+        $mail->isSMTP();
+        $mail->Host       = 'mail.gbmmedios.localhost'; // Tu host SMTP
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'no-reply@gbmmedios'; // Cambiar al correo SMTP del remitente
+        $mail->Password   = '960450'; // Cambiar a la contraseña del correo SMTP del remitente
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
 
-        // Configuración de PHPMailer
-        $mail = new PHPMailer(true);
+        // Destinatario (correo y nombre del usuario logueado)
+        $mail->setFrom('no-reply@gbmmedios', 'No Reply'); // Cambiar al remitente deseado
+        $mail->addAddress($email, $username);
 
-        try {
-            // Configuración del servidor SMTP
-            $mail->isSMTP();
-            $mail->Host       = 'mail.gbmmedios.localhost'; // Tu host SMTP
-            $mail->SMTPAuth   = true;
-            $mail->Username   = $remitente_email; // Correo SMTP del remitente
-            $mail->Password   = 'TuContraseñaSegura'; // Contraseña del correo SMTP del remitente
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port       = 587;
+        // Contenido del correo
+        $mail->isHTML(true);
+        $mail->Subject = 'Código de validación';
+        $mail->Body    = 'Hola ' . $username . ',<br>Tu código de validación es: <strong>' . $codigo . '</strong>';
 
-            // Destinatarios
-            $mail->setFrom($remitente_email, $remitente_nombre);
-            $mail->addAddress($email);
-
-            // Contenido del correo
-            $mail->isHTML(true);
-            $mail->Subject = 'Código de validación';
-            $mail->Body    = 'Hola ' . $username . ',<br>Tu código de validación es: <strong>' . $codigo . '</strong>';
-
-            $mail->send();
-            echo 'El mensaje ha sido enviado.';
-        } catch (Exception $e) {
-            echo "El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}";
-        }
-    } else {
-        echo 'No se encontró el correo del remitente.';
+        // Enviar el correo
+        $mail->send();
+        echo 'El mensaje ha sido enviado.';
+    } catch (Exception $e) {
+        echo "El mensaje no pudo ser enviado. Mailer Error: {$mail->ErrorInfo}";
     }
 } else {
     echo 'No se encontró el correo del usuario.';
