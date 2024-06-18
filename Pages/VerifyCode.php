@@ -1,10 +1,34 @@
 <?php
 session_start();
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión
+
+// Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
     exit();
 }
+
+// Generar código aleatorio
+function generarCodigoAleatorio() {
+    $longitud = 4;
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $codigo = '';
+
+    for ($i = 0; $i < $longitud; $i++) {
+        $codigo .= $caracteres[random_int(0, strlen($caracteres) - 1)];
+    }
+
+    return $codigo;
+}
+
+// Obtener el código generado
+$codigoAleatorio = generarCodigoAleatorio();
+
+// Guardar el código en la sesión del usuario
+$_SESSION["Code_Temp"] = $codigoAleatorio;
+
+// Redirigir a la página de verificación de código
+header("Location: /Pages/VerifyCode.php");
+exit();
 ?>
 <!DOCTYPE html>
 <html lang="es">
