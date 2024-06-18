@@ -1,15 +1,8 @@
 <?php
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["id"])) {
-    http_response_code(403); // No autorizado
-    exit("Usuario no autenticado");
-}
-
 // Generar código aleatorio
-function generarCodigoAleatorio() {
-    $longitud = 4;
+function generarCodigoAleatorio($longitud = 4) {
     $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $codigo = '';
 
@@ -49,12 +42,55 @@ try {
 
     // Cerrar conexión
     $conn = null;
-
-    // Respuesta exitosa
-    http_response_code(200);
-    exit();
 } catch(PDOException $e) {
-    http_response_code(500); // Error interno del servidor
-    exit("Error al actualizar el código en la base de datos: " . $e->getMessage());
+    echo "Error al actualizar el código en la base de datos: " . $e->getMessage();
+    die();
 }
+
+// Función para enviar correo electrónico
+function enviarCorreo($destinatario, $codigo) {
+    $asunto = "Código de verificación";
+    $mensaje = "Su código de verificación es: $codigo";
+
+    // Establecer cabeceras del correo
+    $cabeceras = "From: gbmmedios.localhost\r\n";
+    $cabeceras .= "Reply-To: bventura@gbm.net\r\n";
+    $cabeceras .= "Content-type: text/html\r\n";
+
+    // Enviar correo
+    if (mail($destinatario, $asunto, $mensaje, $cabeceras)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Obtener el correo electrónico del usuario desde la base de datos
+try {
+    // Conexión PDO ya establecida en el bloque anterior
+    $stmt = $conn->prepare("SELECT email FROM usuarios WHERE id = :id");
+    $stmt->bindParam(':id', $usuario_id);
+    $stmt->execute();
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($resultado && isset($resultado['email'])) {
+        $correoDestino = $resultado['email'];
+
+        // Llamar a la función para enviar el correo
+        if (enviarCorreo($correoDestino, $codigoAleatorio)) {
+            echo "Código generado y enviado por correo electrónico: $codigoAleatorio";
+        } else {
+            echo "Error al enviar el correo electrónico.";
+        }
+    } else {
+        echo "No se encontró un correo electrónico para este usuario.";
+    }
+} catch(PDOException $e) {
+    echo "Error al obtener el correo electrónico: " . $e->getMessage();
+    die();
+}
+
+// Redirigir a la página de verificación de código
+header("Location: /Pages/VerifyCode.php");
+exit();
 ?>
