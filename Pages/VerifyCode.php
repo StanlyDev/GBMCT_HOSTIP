@@ -19,7 +19,7 @@ if (!isset($_SESSION["id"])) {
     <!-- Aquí puedes colocar el formulario o la lógica para verificar el código -->
     <form action="/php/process_verify_code.php" method="POST">
         <label for="codigo">Ingrese el código a verificar:</label><br>
-        <label style="font-size: 10px; color: red; margin-bottom: 8px;">Revisa tu bandeja principal o de SPAM en tu correo</label>
+        <label style="font-size: 10px; color: red; margin-bottom: 8px; margin-top: -10px;">Revisa tu bandeja principal o de SPAM en tu correo</label>
         <input type="text" id="codigo" name="codigo" required><br>
         <button type="submit">Verificar</button>
     </form>
