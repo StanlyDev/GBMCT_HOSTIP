@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: ''
+            body: '' // No se envía ningún dato adicional en el cuerpo, porque el PHP no lo necesita
         })
         .then(response => {
             if (!response.ok) {
