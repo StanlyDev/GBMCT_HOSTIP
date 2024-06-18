@@ -33,7 +33,7 @@ $emailUsuario = $_SESSION["email"] ?? '';
 $to = $emailUsuario;
 $subject = 'Código de verificación';
 $message = "Tu código de verificación es: $codigoAleatorio";
-$headers = 'From: gbmmedios.localhost' . "\r\n" .
+$headers = 'From: no-reply@gbmmedios' . "\r\n" .
            'Reply-To: bventura@gbm.net' . "\r\n" .
            'X-Mailer: PHP/' . phpversion();
 
