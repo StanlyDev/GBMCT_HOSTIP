@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'path/to/PHPMailer/PHPMailerAutoload.php'; // Asegúrate de tener PHPMailer instalado y configurado
+require '/var/www/html/PHPMailer/PHPMailerAutoload.php';
 
 $servername = "10.4.27.116";
 $username = "stanvsdev";
