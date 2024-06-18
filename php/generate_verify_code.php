@@ -3,8 +3,8 @@ session_start();
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
+    http_response_code(403); // No autorizado
+    exit("Usuario no autenticado");
 }
 
 // Generar código aleatorio
@@ -49,12 +49,12 @@ try {
 
     // Cerrar conexión
     $conn = null;
-} catch(PDOException $e) {
-    echo "Error al actualizar el código en la base de datos: " . $e->getMessage();
-    die();
-}
 
-// Redirigir a la página de verificación de código
-header("Location: /Pages/VerifyCode.php");
-exit();
+    // Respuesta exitosa
+    http_response_code(200);
+    exit();
+} catch(PDOException $e) {
+    http_response_code(500); // Error interno del servidor
+    exit("Error al actualizar el código en la base de datos: " . $e->getMessage());
+}
 ?>

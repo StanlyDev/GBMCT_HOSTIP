@@ -23,6 +23,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
   <script defer src="/JavaScript/windowsDoc.js"></script>
   <script defer src="/JavaScript/HistoAlert.js"></script>
   <script defer src="/JavaScript/logout.js"></script>
+  <script defer src="/JavaScript/VerifyLink.js"></script>
   <title>GBM | CT</title>
 </head>
 <body>
@@ -57,7 +58,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
                 <div class="DeleInvent">
-                  <a href="/Pages/VerifyCode.php" title="Eliminar Cinta del Inventario">
+                  <a href="#" title="Eliminar Cinta del Inventario" id="verifyLink">
                       <script src="https://cdn.lordicon.com/lordicon.js"></script>
                       <script src="https://cdn.lordicon.com/lordicon.js"></script>
                       <lord-icon
