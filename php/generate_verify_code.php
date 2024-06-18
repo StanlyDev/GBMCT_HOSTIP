@@ -62,7 +62,7 @@ try {
         use PHPMailer\PHPMailer\Exception;
 
         // Cargar la clase PHPMailer
-        require 'vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta si usas Composer
+        require '/vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta si usas Composer
 
         // Configuración de PHPMailer
         $mail = new PHPMailer(true);
