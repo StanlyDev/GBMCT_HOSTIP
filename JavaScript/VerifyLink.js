@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
 
         // Hacer la solicitud al servidor PHP para generar y guardar el código
-        fetch('/php/php/generate_verify_code.php', {
+        fetch('/php/generate_verify_code.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
