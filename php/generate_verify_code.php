@@ -58,31 +58,27 @@ try {
         $stmt->execute();
 
         // Enviar correo electrónico con PHPMailer
+        require '/vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta si usas Composer
+
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception;
-
-        // Cargar la clase PHPMailer
-        require '/vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta si usas Composer
 
         // Configuración de PHPMailer
         $mail = new PHPMailer(true);
 
+        // Configuración del servidor SMTP y envío de correo
         try {
-            // Configuración del servidor SMTP
             $mail->isSMTP();
-            $mail->Host = 'localhost'; // Cambia esto al servidor SMTP que estás usando
-            $mail->SMTPAuth = false; // Si no requiere autenticación SMTP
-            // $mail->SMTPAuth = true;
-            // $mail->Username = 'tu_correo@tudominio.com'; // Cambia esto a tu dirección de correo electrónico si requiere autenticación
-            // $mail->Password = 'tu_contraseña'; // Cambia esto a tu contraseña de correo electrónico si requiere autenticación
+            $mail->Host = 'gbmmedios.localhost'; // Cambia esto al servidor SMTP que estás usando
+            $mail->SMTPAuth = false; // Cambia a true si tu servidor SMTP requiere autenticación
             $mail->SMTPSecure = false; // Puedes cambiar a 'tls' o 'ssl' si tu servidor lo requiere
             $mail->Port = 25; // Puerto SMTP, ajusta según la configuración de tu servidor
 
             // Configuración del correo electrónico
-            $mail->setFrom('mail.gbmmedios.localhost', 'GBM Medios'); // Cambia esto al remitente deseado
-            $mail->addAddress($correoUsuario); // Envía al correo del usuario logeado
-            $mail->Subject = 'Código de Verificación'; // Asunto del correo
-            $mail->Body = 'Tu código de verificación es: ' . $codigoAleatorio; // Cuerpo del correo
+            $mail->setFrom('mail.gbmmedios.localhost', 'GBM Medios');
+            $mail->addAddress($correoUsuario);
+            $mail->Subject = 'Código de Verificación';
+            $mail->Body = 'Tu código de verificación es: ' . $codigoAleatorio;
 
             // Enviar correo electrónico
             $mail->send();
