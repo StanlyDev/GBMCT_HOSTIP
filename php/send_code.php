@@ -48,7 +48,7 @@ if ($result->num_rows > 0) {
     try {
         // Configuración del servidor SMTP
         $mail->isSMTP();
-        $mail->Host       = 'smtp.example.com'; // Cambia esto por el host de tu servidor SMTP
+        $mail->Host       = 'mail.gbmmei.com'; // Cambia esto por el host de tu servidor SMTP
         $mail->SMTPAuth   = true;
         $mail->Username   = 'tu_correo@example.com'; // Cambia esto por tu correo
         $mail->Password   = 'tu_contraseña'; // Cambia esto por tu contraseña
