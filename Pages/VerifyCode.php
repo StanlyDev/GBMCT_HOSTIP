@@ -54,8 +54,6 @@ try {
     die();
 }
 
-// Redirigir a la página de verificación de código
-header("Location: /Pages/VerifyCode.php");
 exit();
 ?>
 <!DOCTYPE html>
