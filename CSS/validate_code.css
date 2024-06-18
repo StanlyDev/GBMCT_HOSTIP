@@ -28,7 +28,6 @@ form {
 label {
   font-weight: bold;
   display: block;
-  margin-bottom: 2px;
 }
 
 input[type="text"] {
