@@ -57,17 +57,17 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     style="width:30px;height:30px">
                 </lord-icon></a></div>
                 <div class="DeleInvent">
-                  <a href="/Pages/VerifyCode.php" title="Eliminar Cinta del Inventario" id="">
-                      <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                      <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                      <lord-icon
-                          src="https://cdn.lordicon.com/skkahier.json"
-                          trigger="hover"
-                          colors="primary:#ffffff"
-                          style="width:30px;height:30px">
-                      </lord-icon>
-                  </a>
-              </div>
+                    <a href="/Pages/VerifyCode.php" title="Eliminar Cinta del Inventario" id="eliminarCintaLink">
+                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/skkahier.json"
+                            trigger="hover"
+                            colors="primary:#ffffff"
+                            style="width:30px;height:30px">
+                        </lord-icon>
+                    </a>
+                </div>
                 <div class="close_user">
                 <a href="/php/logout.php" title="Cerrar Sesion">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
