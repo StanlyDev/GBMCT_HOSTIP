@@ -1,9 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '/vendor/autoload.php'; // Ajusta la ruta según la ubicación de tu autoload.php
-
 session_start();
 
 // Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión si no está autenticado
@@ -11,6 +6,11 @@ if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
     exit();
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '/path/to/autoload.php'; // Ajusta la ruta según la ubicación de tu autoload.php
 
 // Función para generar código aleatorio
 function generateRandomCode($length) {
@@ -52,7 +52,28 @@ function enviarCorreo($correoDestino, $nombreDestino, $codigoTemporal) {
     }
 }
 
-// Procesamiento cuando se accede a esta página directamente
+// Verificar si se está accediendo a través de POST (formulario enviado)
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codigo"])) {
+    // Procesar el formulario para verificar el código
+    $codigoTemporal = $_POST["codigo"];
+
+    // Lógica para verificar el código, comparándolo con el valor almacenado en la base de datos, etc.
+    // Aquí deberías implementar la lógica para verificar el código temporal recibido
+
+    // Ejemplo básico:
+    $codigoAlmacenado = $_SESSION['code_temporal'] ?? ''; // Suponiendo que se almacena en la sesión al recibir el correo
+
+    if ($codigoTemporal === $codigoAlmacenado) {
+        echo 'Código verificado correctamente.';
+        // Aquí puedes implementar la lógica adicional, como eliminar la cinta del inventario, etc.
+    } else {
+        echo 'El código ingresado no es válido.';
+    }
+
+    exit(); // Finaliza el script después de verificar el código
+}
+
+// Si se accede a través de GET (generar código temporal y enviar correo)
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Generar código temporal
     $code_temporal = generateRandomCode(4); // Genera un código de 4 dígitos
@@ -91,27 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
     exit(); // Finaliza el script después de enviar el correo
-}
-
-// Si se accede a través de POST (formulario de verificación de código)
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codigo"])) {
-    // Procesar el formulario para verificar el código
-    $codigoTemporal = $_POST["codigo"];
-
-    // Lógica para verificar el código, comparándolo con el valor almacenado en la base de datos, etc.
-    // Aquí deberías implementar la lógica para verificar el código temporal recibido
-
-    // Ejemplo básico:
-    $codigoAlmacenado = $_SESSION['code_temporal'] ?? ''; // Suponiendo que se almacena en la sesión al recibir el correo
-
-    if ($codigoTemporal === $codigoAlmacenado) {
-        echo 'Código verificado correctamente.';
-        // Aquí puedes implementar la lógica adicional, como eliminar la cinta del inventario, etc.
-    } else {
-        echo 'El código ingresado no es válido.';
-    }
-
-    exit(); // Finaliza el script después de verificar el código
 }
 ?>
 <!DOCTYPE html>
