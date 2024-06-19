@@ -17,11 +17,21 @@ if (!isset($_SESSION["id"])) {
 <body>
     <h1>Verificar Código</h1>
     <!-- Formulario para ingresar el código -->
-    <form action="/php/code_gen.php" method="POST">
+    <form id="codigoForm" action="/php/code_gen.php" method="POST">
         <label for="codigo">Ingrese el código a verificar:</label><br>
-        <input type="text" id="codigo" name="codigo" ><br>
-        <button type="submit" name="enviarCorreo">Solicitar Codigo</button>
+        <input type="text" id="codigo" name="codigo" required><br>
+        <button type="submit" name="enviarCorreo" id="solicitarCodigoBtn">Solicitar Codigo</button>
         <button type="submit" name="verificarCodigo">Verificar</button>
     </form>
+
+    <script>
+        document.getElementById('solicitarCodigoBtn').addEventListener('click', function(event) {
+            var codigoInput = document.getElementById('codigo');
+            if (!codigoInput.value.trim()) {
+                event.preventDefault(); // Evita el envío del formulario si el campo está vacío
+                alert('Por favor ingrese el código antes de solicitarlo.');
+            }
+        });
+    </script>
 </body>
 </html>
