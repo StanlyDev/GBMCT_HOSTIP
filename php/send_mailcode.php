@@ -2,30 +2,50 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'ruta/a/PHPMailerAutoload.php';
+require '/vendor/autoload.php'; // Incluye el autoload de Composer
 
-$mail = new PHPMailer(true); // Instancia de PHPMailer con manejo de excepciones
+// Inicia sesión si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica si el usuario está autenticado
+if (!isset($_SESSION['id'])) {
+    die('Usuario no autenticado');
+}
+
+// Obtén los datos del usuario de la sesión
+$emailDestino = $_SESSION['email'] ?? '';
+$nombreDestino = $_SESSION['username'] ?? '';
+
+if (empty($emailDestino)) {
+    die('No se encontró una dirección de correo para el usuario');
+}
 
 try {
-    // Configuración del servidor SMTP
+    // Inicializa PHPMailer
+    $mail = new PHPMailer(true);
+
+    // Configura el servidor SMTP
     $mail->isSMTP();
-    $mail->Host = 'smtp.tudominio.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'tu_correo@tudominio.com';
-    $mail->Password = 'tu_contraseña';
-    $mail->SMTPSecure = 'tls'; // Recuerda usar tls o ssl según la configuración de tu servidor
-    $mail->Port = 587; // Puerto SMTP
+    $mail->Host = 'localhost'; // Cambia por tu servidor SMTP
+    $mail->SMTPAuth = false; // No requiere autenticación si es envío directo desde SMTP
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Habilita la encriptación TLS
+    $mail->Port = 587; // Puerto TCP para conectarse
 
-    // Configuración del correo electrónico
-    $mail->setFrom('tu_correo@tudominio.com', 'Tu Nombre');
-    $mail->addAddress('correo_destino@ejemplo.com'); // Agrega destinatarios
+    // Configura destinatario
+    $mail->addAddress($emailDestino, $nombreDestino); // Usa los datos del usuario autenticado como destinatario
+
+    // Configura el contenido del correo
+    $mail->isHTML(true); // Habilita el contenido HTML
     $mail->Subject = 'Asunto del Correo';
-    $mail->Body = 'Este es el cuerpo del mensaje';
+    $mail->Body = 'Este es el cuerpo del correo en formato HTML.';
+    $mail->AltBody = 'Este es el cuerpo del correo en texto plano para clientes que no soportan HTML.';
 
-    // Envío del correo
+    // Envía el correo
     $mail->send();
-    echo 'Correo enviado correctamente';
+    echo 'El correo se envió correctamente';
 } catch (Exception $e) {
-    echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
+    echo "Error al enviar el correo: {$mail->ErrorInfo}";
 }
 ?>
