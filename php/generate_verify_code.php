@@ -1,10 +1,11 @@
 <?php
 session_start();
 
-// Habilitar el reporte de errores
+// Habilitar el reporte de errores, pero no mostrarlos en la salida
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+ini_set('html_errors', 0);
 
 // Incluir PHPMailer a través de Composer
 require '/vendor/autoload.php';
@@ -18,6 +19,11 @@ function enviarRespuestaJSON($respuesta) {
     echo json_encode($respuesta);
     exit();
 }
+
+// Capturar errores de PHP y enviarlos como JSON
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+    enviarRespuestaJSON(['error' => "Error: $errstr en $errfile en la línea $errline"]);
+});
 
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
