@@ -1,9 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require '/vendor/autoload.php'; // Ajusta la ruta según la ubicación de tu autoload.php
-
 session_start();
 
 // Función para generar código aleatorio
@@ -47,49 +42,41 @@ function enviarCorreo($correoDestino, $nombreDestino, $codigoTemporal) {
 }
 
 // Verificar si se ha enviado el formulario y qué botón se ha presionado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["enviarCorreo"])) {
-        // Generar código temporal
-        $code_temporal = generateRandomCode(4); // Genera un código de 4 dígitos
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["enviarCorreo"])) {
+    // Generar código temporal
+    $code_temporal = generateRandomCode(4); // Genera un código de 4 dígitos
 
-        // Guardar código en la base de datos
-        $servername = "10.4.27.116";
-        $username = "stanvsdev";
-        $password = "Stanlyv00363";
-        $dbname = "dbmedios_gbm";
+    // Guardar código en la base de datos
+    $servername = "10.4.27.116";
+    $username = "stanvsdev";
+    $password = "Stanlyv00363";
+    $dbname = "dbmedios_gbm";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-        if ($conn->connect_error) {
-            die("Conexión fallida: " . $conn->connect_error);
-        }
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
 
-        $user_id = $_SESSION["id"];
+    $user_id = $_SESSION["id"];
 
-        // Preparar y ejecutar la consulta SQL para actualizar el código temporal del usuario
-        $sql = "UPDATE usuarios SET Code_Temp = ? WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $code_temporal, $user_id);
-        $stmt->execute();
+    // Preparar y ejecutar la consulta SQL para actualizar el código temporal del usuario
+    $sql = "UPDATE usuarios SET Code_Temp = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $code_temporal, $user_id);
+    $stmt->execute();
 
-        $conn->close();
+    $conn->close();
 
-        // Obtener datos del usuario logeado (suponiendo que estos datos están en la sesión)
-        $correoDestino = $_SESSION['email'] ?? '';
-        $nombreDestino = $_SESSION['username'] ?? '';
+    // Obtener datos del usuario logeado (suponiendo que estos datos están en la sesión)
+    $correoDestino = $_SESSION['email'] ?? '';
+    $nombreDestino = $_SESSION['username'] ?? '';
 
-        // Enviar correo electrónico con el código temporal
-        if (enviarCorreo($correoDestino, $nombreDestino, $code_temporal)) {
-            echo 'Se ha enviado un correo electrónico con el código temporal.';
-        } else {
-            echo 'Error al enviar el correo electrónico.';
-        }
-    } elseif (isset($_POST["verificarCodigo"])) {
-        // Aquí implementa la lógica para verificar el código ingresado por el usuario
-        $codigoIngresado = $_POST["codigo"];
-
-        // Lógica de verificación del código, puedes implementarla aquí
-        echo 'Lógica de verificación del código aquí...';
+    // Enviar correo electrónico con el código temporal
+    if (enviarCorreo($correoDestino, $nombreDestino, $code_temporal)) {
+        echo 'Se ha enviado un correo electrónico con el código temporal.';
+    } else {
+        echo 'Error al enviar el correo electrónico.';
     }
 }
 ?>
