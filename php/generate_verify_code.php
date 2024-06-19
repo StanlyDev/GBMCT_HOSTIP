@@ -69,13 +69,15 @@ try {
         // Configuración del servidor SMTP y envío de correo
         try {
             $mail->isSMTP();
-            $mail->Host = 'gbmmedios.localhost'; // Cambia esto al servidor SMTP que estás usando
-            $mail->SMTPAuth = false; // Cambia a true si tu servidor SMTP requiere autenticación
-            $mail->SMTPSecure = false; // Puedes cambiar a 'tls' o 'ssl' si tu servidor lo requiere
-            $mail->Port = 25; // Puerto SMTP, ajusta según la configuración de tu servidor
+            $mail->Host = 'localhost'; // Usa localhost porque el servidor SMTP está en la misma máquina
+            $mail->SMTPAuth = true;
+            $mail->Username = 'no-reply'; // Cambia esto a tu dirección de correo electrónico
+            $mail->Password = '960450'; // Cambia esto a tu contraseña de correo electrónico
+            $mail->SMTPSecure = 'tls'; // 'ssl' o 'tls' según lo requiera tu servidor
+            $mail->Port = 587; // Cambia esto al puerto que tu servidor utiliza (25, 465, 587, etc.)
 
             // Configuración del correo electrónico
-            $mail->setFrom('mail.gbmmedios.localhost', 'GBM Medios');
+            $mail->setFrom('no-reply@gbmmedios', 'GBM Medios');
             $mail->addAddress($correoUsuario);
             $mail->Subject = 'Código de Verificación';
             $mail->Body = 'Tu código de verificación es: ' . $codigoAleatorio;
