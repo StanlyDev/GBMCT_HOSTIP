@@ -12,10 +12,16 @@ require '/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// Función para enviar respuesta JSON
+function enviarRespuestaJSON($respuesta) {
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    exit();
+}
+
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
+    enviarRespuestaJSON(['error' => 'No se ha iniciado sesión']);
 }
 
 // Obtener el ID de usuario de la sesión
@@ -82,25 +88,24 @@ try {
             $mail->Port = 587; // Cambia esto al puerto que tu servidor utiliza (25, 465, 587, etc.)
 
             // Configuración del correo electrónico
-            $mail->setFrom('no-reply@gbmmedios', 'GBM Medios');
+            $mail->setFrom('no-reply@gbmmedios.com', 'GBM Medios');
             $mail->addAddress($correoUsuario);
             $mail->Subject = 'Código de Verificación';
             $mail->Body = 'Tu código de verificación es: ' . $codigoAleatorio;
 
             // Enviar correo electrónico
             $mail->send();
-            echo json_encode(['message' => 'Correo enviado correctamente']);
+            enviarRespuestaJSON(['message' => 'Correo enviado correctamente']);
         } catch (Exception $e) {
-            echo json_encode(['error' => "Error al enviar el correo: {$mail->ErrorInfo}"]);
+            enviarRespuestaJSON(['error' => "Error al enviar el correo: {$mail->ErrorInfo}"]);
         }
     } else {
-        echo json_encode(['error' => "No se encontró correo electrónico para el usuario con ID: $usuario_id"]);
+        enviarRespuestaJSON(['error' => "No se encontró correo electrónico para el usuario con ID: $usuario_id"]);
     }
 
     // Cerrar conexión
     $conn = null;
 } catch(PDOException $e) {
-    echo json_encode(['error' => "Error al actualizar el código en la base de datos: " . $e->getMessage()]);
-    die();
+    enviarRespuestaJSON(['error' => "Error al actualizar el código en la base de datos: " . $e->getMessage()]);
 }
 ?>
