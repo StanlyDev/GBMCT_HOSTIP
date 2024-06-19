@@ -1,12 +1,4 @@
 <?php
-session_start();
-
-// Verificar si el usuario no ha iniciado sesión, redirigirlo a la página de inicio de sesión si no está autenticado
-if (!isset($_SESSION["id"])) {
-    header("Location: /index.html");
-    exit();
-}
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
