@@ -6,6 +6,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Incluir PHPMailer a través de Composer
+require '/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
@@ -62,17 +68,11 @@ try {
         $stmt->bindParam(':id', $usuario_id);
         $stmt->execute();
 
-        // Enviar correo electrónico con PHPMailer
-        require '/vendor/autoload.php'; // Asegúrate de que esta ruta sea correcta si usas Composer
-
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
-
         // Configuración de PHPMailer
         $mail = new PHPMailer(true);
 
-        // Configuración del servidor SMTP y envío de correo
         try {
+            // Configuración del servidor SMTP
             $mail->isSMTP();
             $mail->Host = 'localhost'; // Usa localhost porque el servidor SMTP está en la misma máquina
             $mail->SMTPAuth = true;
