@@ -19,7 +19,7 @@ if (!isset($_SESSION["id"])) {
     <!-- Formulario para ingresar el código -->
     <form action="/php/code_gen.php" method="POST">
         <label for="codigo">Ingrese el código a verificar:</label><br>
-        <input type="text" id="codigo" name="codigo" required><br>
+        <input type="text" id="codigo" name="codigo" ><br>
         <button type="submit" name="enviarCorreo">Solicitar Codigo</button>
         <button type="submit" name="verificarCodigo">Verificar</button>
     </form>
