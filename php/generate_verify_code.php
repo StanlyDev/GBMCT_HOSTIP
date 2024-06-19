@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+// Habilitar el reporte de errores
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION["id"])) {
     header("Location: /index.html");
@@ -84,18 +89,18 @@ try {
 
             // Enviar correo electrónico
             $mail->send();
-            echo 'Correo enviado correctamente';
+            echo json_encode(['message' => 'Correo enviado correctamente']);
         } catch (Exception $e) {
-            echo "Error al enviar el correo: {$mail->ErrorInfo}";
+            echo json_encode(['error' => "Error al enviar el correo: {$mail->ErrorInfo}"]);
         }
     } else {
-        echo "No se encontró correo electrónico para el usuario con ID: $usuario_id";
+        echo json_encode(['error' => "No se encontró correo electrónico para el usuario con ID: $usuario_id"]);
     }
 
     // Cerrar conexión
     $conn = null;
 } catch(PDOException $e) {
-    echo "Error al actualizar el código en la base de datos: " . $e->getMessage();
+    echo json_encode(['error' => "Error al actualizar el código en la base de datos: " . $e->getMessage()]);
     die();
 }
 ?>

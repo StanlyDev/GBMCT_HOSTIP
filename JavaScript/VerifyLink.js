@@ -7,24 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
 
         // Hacer la solicitud al servidor PHP para generar y guardar el código
-        fetch('/php/generate_verify_code.php', {
+        fetch('http://10.4.27.116/php/generate_verify_code.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
-            body: '' // No se envía ningún dato adicional en el cuerpo, porque el PHP no lo necesita
+            body: JSON.stringify({
+                // Incluye cualquier dato que necesites enviar al servidor
+            })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al generar y guardar el código.');
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error:', data.error);
+                alert('Error: ' + data.error);
+            } else {
+                console.log('Success:', data.message);
+                alert('Success: ' + data.message);
             }
-            // Redirigir al usuario a la página de verificación
-            window.location.href = '/Pages/VerifyCode.php';
         })
-        .catch(error => {
+        .catch((error) => {
             console.error('Error:', error);
-            // Manejar el error como sea necesario
-            alert('Error al generar y guardar el código.');
-        });
+            alert('Error: ' + error);
+        });        
     });
 });
