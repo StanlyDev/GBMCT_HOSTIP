@@ -8,10 +8,10 @@ if (!isset($_SESSION["id"])) {
 }
 
 // Verificar si el usuario ha sido validado
-if (!isset($_SESSION['validated']) || $_SESSION['validated'] !== true) {
+/*if (!isset($_SESSION['validated']) || $_SESSION['validated'] !== true) {
     header("Location: /Pages/validate_code.php");
     exit();
-}
+}*/
 
 // Obtener el rol del usuario desde la sesión
 $usuario_rol = $_SESSION["role"] ?? '';
