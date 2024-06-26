@@ -169,8 +169,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             <input type="text" id="DNI1" name="DNI1">
                         </div>
                     </div>
-                    <canvas id="lienzoFirma1" width="300" height="150"></canvas>
-                    <center><button type="button" onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>
+                    <!--<canvas id="lienzoFirma1" width="300" height="150"></canvas>
+                    <center><button type="button" onclick="borrarFirma('lienzoFirma1')">Borrar Firma</button></center>-->
                 </div>
                 <div id="firmaContainer2" class="oculto">
                     <h3>Recibido por:</h3>
@@ -184,8 +184,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             <input type="text" id="DNI2" name="DNI2">
                         </div>
                     </div>
-                    <canvas id="lienzoFirma2" width="300" height="150"></canvas>
-                    <center><button type="button" onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>
+                    <!--<canvas id="lienzoFirma2" width="300" height="150"></canvas>
+                    <center><button type="button" onclick="borrarFirma('lienzoFirma2')">Borrar Firma</button></center>-->
                 </div>
             </div>
         </div>
