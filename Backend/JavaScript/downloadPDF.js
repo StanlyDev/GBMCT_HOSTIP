@@ -18,5 +18,9 @@ document.getElementById('download-pdf').addEventListener('click', () => {
             // Ajustar el tamaño del contenido para que quepa en una página
             pdf.internal.scaleFactor = Math.min(width / element.offsetWidth, height / element.offsetHeight);
         }
-    }).save();
+
+        // Guardar el PDF y luego redirigir a la nueva página
+        html2pdf().from(element).set(opt).save('documento.pdf');
+        window.location.href = '/Frontend/Pages/UpdateFile.php'; // Reemplaza 'tu_nueva_pagina.html' con la URL a la que quieres redirigir
+    });
 });
