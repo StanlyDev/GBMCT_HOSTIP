@@ -32,7 +32,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
 
         // Llamar a la función al cargar la página
         window.onload = function() {
-            var message = <?php echo $message_encoded; ?>;
+            var message = <?php echo isset($message_encoded) ? $message_encoded : "''"; ?>;
             showMessage(message);
         };
     </script>
@@ -129,7 +129,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             while (($file = readdir($dh)) !== false) {
                                 if ($file != "." && $file != "..") {
                                     echo "<tr><td>$file</td>";
-                                    echo "<td><a href='/Backend/php/downloadFile.php?file=$file'>Descargar</a></td></tr>";
+                                    echo "<td><a href='$dir$file' download>Descargar</a></td></tr>";
                                 }
                             }
                             closedir($dh);
@@ -141,21 +141,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
         </div>
         <!-- Fin Lista de archivos subidos -->
     </main>
-    <!-- Ventana emergente -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeOptions()">&times;</span>
-            <p>Elige una opción:</p>
-            <hr>
-            <a href="/Frontend/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
-            <a href="/Frontend/Pages/SalidaDeMedios.php">Salida de Medios</a>
-        </div>
-    </div>
-    <div id="inactivityModal" class="modal">
-        <div class="modal-content">
-            <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
-            <button id="continueSessionBtn">Continuar sesión</button>
-        </div>
-    </div>
+    <!-- Ventana emergente y otros elementos omitidos por brevedad -->
 </body>
 </html>

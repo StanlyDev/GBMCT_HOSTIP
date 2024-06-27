@@ -5,37 +5,44 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $message = ''; // Variable para almacenar el mensaje
 
-// Verifica si el archivo ya existe
-if (file_exists($target_file)) {
-    $message = "Lo siento, el archivo ya existe.";
-    $uploadOk = 0;
-}
-
-// Verifica el tamaño del archivo (máximo 5MB en este ejemplo)
-if ($_FILES["file"]["size"] > 5000000) {
-    $message = "Lo siento, el archivo es demasiado grande.";
-    $uploadOk = 0;
-}
-
-// Permitir ciertos formatos de archivo (opcional)
-$allowed_types = array("jpg", "png", "jpeg", "gif", "pdf", "docx", "xlsx", "xlsm");
-if (!in_array($imageFileType, $allowed_types)) {
-    $message = "Lo siento, solo se permiten archivos JPG, JPEG, PNG, GIF, PDF, DOCX, XLSM y XLSX.";
-    $uploadOk = 0;
-}
-
-// Verifica si $uploadOk es 0 por un error
-if ($uploadOk == 0) {
-    $message = "Lo siento, tu archivo no fue subido.";
-} else {
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        // No mostramos mensaje aquí, solo indicamos éxito
-        $message = "success";
-    } else {
-        $message = "Lo siento, hubo un error al subir tu archivo.";
+try {
+    // Verifica si se ha enviado un archivo
+    if (!isset($_FILES["file"])) {
+        throw new Exception("No se ha recibido ningún archivo.");
     }
+
+    // Verifica si hubo errores en la subida
+    if ($_FILES["file"]["error"] != UPLOAD_ERR_OK) {
+        throw new Exception("Error al subir el archivo.");
+    }
+
+    // Verifica si el archivo ya existe
+    if (file_exists($target_file)) {
+        throw new Exception("El archivo ya existe.");
+    }
+
+    // Verifica el tamaño del archivo (máximo 5MB en este ejemplo)
+    if ($_FILES["file"]["size"] > 5000000) {
+        throw new Exception("El archivo es demasiado grande.");
+    }
+
+    // Permitir ciertos formatos de archivo (opcional)
+    $allowed_types = array("jpg", "png", "jpeg", "gif", "pdf", "docx", "xlsx", "xlsm");
+    if (!in_array($imageFileType, $allowed_types)) {
+        throw new Exception("Solo se permiten archivos JPG, JPEG, PNG, GIF, PDF, DOCX, XLSM y XLSX.");
+    }
+
+    // Intenta mover el archivo subido al directorio de destino
+    if (!move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+        throw new Exception("Error al mover el archivo al directorio de destino.");
+    }
+
+    // Éxito al subir el archivo
+    $message = "success";
+} catch (Exception $e) {
+    $message = $e->getMessage(); // Captura y almacena el mensaje de error
 }
 
-// Codificamos el mensaje para JavaScript
+// Codifica el mensaje para JavaScript
 $message_encoded = json_encode($message);
 ?>
