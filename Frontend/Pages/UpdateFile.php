@@ -20,22 +20,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/Backend/JavaScript/windowsDoc.js"></script>
     <script defer src="/Backend/JavaScript/HistoAlert.js"></script>
     <script defer src="/Backend/JavaScript/logout.js"></script>
-    <script>
-        // Función para mostrar el mensaje según el resultado del PHP
-        function showMessage(message) {
-            if (message === "success") {
-                alert("El archivo ha sido subido correctamente.");
-            } else {
-                alert(message);
-            }
-        }
-
-        // Llamar a la función al cargar la página
-        window.onload = function() {
-            var message = <?php echo isset($message_encoded) ? $message_encoded : "''"; ?>;
-            showMessage(message);
-        };
-    </script>
+    <link rel="stylesheet" href="/Frontend/CSS/modal.css"> <!-- Enlace al archivo CSS separado para la modal -->
     <title>GBM | CT</title>
 </head>
 <body>
@@ -89,7 +74,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <a href="/Frontend/Pages/inventory.php"><li><img src="/Frontend/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/Frontend/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/Frontend/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
-                <a href="/Frontend/Pages/UpdateFile.php"><li><img src="/Frontend/IMG/Icon/cloud-arrow-up-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Subir Archivo</li></a>
+                <a href="#" onclick="openUploadModal()"><li><img src="/Frontend/IMG/Icon/cloud-arrow-up-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Subir Archivo</li></a>
                 <?php if ($usuario_rol === 'root' || $usuario_rol === 'admin'): ?>
                 <a href="/Frontend/Pages/create_user.php"><li><img src="/Frontend/IMG/Icon/person-circle.svg" style="margin-right: 10px; width: 20px; float: left;">Crear Usuario</li></a>
                 <?php endif; ?>            
@@ -100,16 +85,19 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <!--Fin Cabecera-->
     <main>
         <!--Inicio Main-->
-        <!-- Formulario de subida de archivos -->
-        <div class="upload-section">
-            <h2>Subir Archivos</h2>
-            <form action="/Backend/php/upload.php" method="post" enctype="multipart/form-data">
-                <label for="file">Seleccionar archivo:</label>
-                <input type="file" name="file" id="file">
-                <input type="submit" value="Subir">
-            </form>
+        <!-- Ventana emergente para subir archivos -->
+        <div id="uploadModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeUploadModal()">&times;</span>
+                <h2>Subir Archivos</h2>
+                <form action="/Backend/php/upload.php" method="post" enctype="multipart/form-data">
+                    <label for="file">Seleccionar archivo:</label>
+                    <input type="file" name="file" id="file">
+                    <input type="submit" value="Subir">
+                </form>
+            </div>
         </div>
-        <!-- Fin Formulario de subida de archivos -->
+        <!-- Fin Ventana emergente para subir archivos -->
 
         <!-- Lista de archivos subidos -->
         <div class="file-list-section">
@@ -141,6 +129,25 @@ $usuario_rol = $_SESSION["role"] ?? '';
         </div>
         <!-- Fin Lista de archivos subidos -->
     </main>
-    <!-- Ventana emergente y otros elementos omitidos por brevedad -->
+
+    <!-- Ventana emergente -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOptions()">&times;</span>
+            <p>Elige una opción:</p>
+            <hr>
+            <a href="/Frontend/Pages/IngresoDeMedios.php">Ingreso de Medios</a>
+            <a href="/Frontend/Pages/SalidaDeMedios.php">Salida de Medios</a>
+        </div>
+    </div>
+    <div id="inactivityModal" class="modal">
+        <div class="modal-content">
+            <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
+            <button id="continueSessionBtn">Continuar sesión</button>
+        </div>
+    </div>
+
+    <!-- Script para controlar la ventana emergente -->
+    <script src="/Backend/JavaScript/modal.js"></script> <!-- Enlace al archivo JavaScript que controla la modal -->
 </body>
 </html>
