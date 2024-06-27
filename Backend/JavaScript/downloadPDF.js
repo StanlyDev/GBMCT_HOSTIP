@@ -19,8 +19,12 @@ document.getElementById('download-pdf').addEventListener('click', () => {
             pdf.internal.scaleFactor = Math.min(width / element.offsetWidth, height / element.offsetHeight);
         }
 
-        // Guardar el PDF y luego redirigir a la nueva página
+        // Guardar el PDF
         html2pdf().from(element).set(opt).save('documento.pdf');
-        window.location.href = '/Frontend/Pages/UpdateFile.php'; // Reemplaza 'tu_nueva_pagina.html' con la URL a la que quieres redirigir
+
+        // Esperar 2 segundos antes de redirigir a la nueva página
+        setTimeout(function() {
+            window.location.href = '/Frontend/Pages/UpdateFile.php'; // Reemplaza con la URL correcta
+        }, 2000); // Tiempo en milisegundos (en este caso, 2 segundos)
     });
 });
