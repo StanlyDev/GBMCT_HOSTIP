@@ -29,6 +29,8 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
         echo "El archivo ". htmlspecialchars(basename($_FILES["file"]["name"])). " ha sido subido.";
+        header("Location: /Frontend/Pages/UpdateFile.php");
+        exit();
     } else {
         echo "Lo siento, hubo un error al subir tu archivo.";
     }
