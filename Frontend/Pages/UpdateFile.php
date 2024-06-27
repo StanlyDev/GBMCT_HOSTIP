@@ -86,9 +86,9 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <main>
         <!--Inicio Main-->
         <!-- Ventana emergente para subir archivos -->
-        <div id="uploadModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeUploadModal()">&times;</span>
+        <div id="uploadModal" class="modal1">
+            <div class="modal-content1">
+                <span class="close1" onclick="closeUploadModal()">&times;</span>
                 <h2>Subir Archivos</h2>
                 <form action="/Backend/php/upload.php" method="post" enctype="multipart/form-data">
                     <label for="file">Seleccionar archivo:</label>
