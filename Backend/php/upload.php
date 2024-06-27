@@ -17,9 +17,9 @@ if ($_FILES["file"]["size"] > 5000000) {
 }
 
 // Permitir ciertos formatos de archivo (opcional)
-$allowed_types = array("jpg", "png", "jpeg", "gif", "pdf", "docx", "xlsx");
+$allowed_types = array("jpg", "png", "jpeg", "gif", "pdf", "docx", "xlsx", "xlsm");
 if (!in_array($imageFileType, $allowed_types)) {
-    echo "Lo siento, solo se permiten archivos JPG, JPEG, PNG, GIF, PDF, DOCX y XLSX.";
+    echo "Lo siento, solo se permiten archivos JPG, JPEG, PNG, GIF, PDF, DOCX , XLSM y XLSX.";
     $uploadOk = 0;
 }
 
