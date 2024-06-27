@@ -1,0 +1,285 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: themillion;
+  }
+  
+  @font-face {
+    font-family: themillion;
+    src: url(/Frontend/Fonts/Chivo-ExtraLight.ttf);
+  }
+  
+  /* Estilo general del body */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Estilo de la cabecera */
+  header {
+    background-color: #02092b;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Contenedor del logo */
+  .logo img {
+    height: 60px;
+    margin-left: 40px;
+  }
+  
+  /* Botones de menú y cerrar */
+  .menu-btn, .close-btn {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    margin: 0 20px;
+  }
+  
+  .close_user, .home{
+    margin-right: 20px;
+  }
+  
+  /* Contenedor de los iconos */
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Estilo del navbar */
+  .navbar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #02092b;
+    overflow-y: auto;
+    transition: left 0.3s;
+  }
+  
+  /* Estilo de la lista del navbar */
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Estilo de los enlaces de la lista */
+  .navbar ul a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid #111540;
+  }
+  
+  /* Efecto hover en los enlaces de la lista */
+  .navbar ul a:hover {
+    background-color: #19266477;
+  }
+  
+  /* Estilo de los iconos de los enlaces */
+  .navbar ul a img {
+    margin-right: 10px;
+    width: 20px;
+    float: left;
+  }
+  
+  /* Estilo de los elementos de la lista */
+  .navbar ul a li {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Mostrar navbar cuando está activo */
+  .navbar.active {
+    left: 0;
+  }
+  
+  /* Estilo del contenido principal */
+  main {
+    padding: 60px 20px 20px;
+    padding-top: 80px;
+  }
+
+  h2 {
+    color: #333;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="file"] {
+    display: block;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+  
+  /* Ventana emergente */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  /* Contenido de la ventana modal */
+  .modal-content {
+    color: white;
+    background-color: #02092b;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  /* Enlaces en la ventana modal */
+  .modal-content a {
+    display: block;
+    padding: 10px 0;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  /* Efecto hover en los enlaces de la ventana modal */
+  .modal-content a:hover {
+    background-color: #19266477;
+  }
+  
+  /* Botón cerrar en la ventana modal */
+  .close-btn {
+    background-color: #02092b;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .close{
+    color: red;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover,
+  .close-btn:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Estilo para VMV secciones */
+  .VMV {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Títulos de VMV */
+  .VMV h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Párrafos de VMV */
+  .VMV p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Lista de valores en VMV */
+  .VMV ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .VMV ul li {
+    padding: 5px 0;
+  }
+  
+  /* Estilos para el modal de inactividad */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    color: white;
+    background-color: #02092b;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  #continueSessionBtn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  #continueSessionBtn:hover {
+    background-color: #45a049;
+  }
+  
+  
