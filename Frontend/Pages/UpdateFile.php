@@ -113,7 +113,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             while (($file = readdir($dh)) !== false) {
                                 if ($file != "." && $file != "..") {
                                     echo "<tr><td>$file</td>";
-                                    echo "<td><a href='$dir$file' download>Descargar</a></td></tr>";
+                                    echo "<td><a href='/Backend/php/downloadFile.php?file=$file'>Descargar</a></td></tr>";
                                 }
                             }
                             closedir($dh);
