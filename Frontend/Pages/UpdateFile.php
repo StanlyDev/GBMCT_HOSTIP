@@ -20,6 +20,22 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/Backend/JavaScript/windowsDoc.js"></script>
     <script defer src="/Backend/JavaScript/HistoAlert.js"></script>
     <script defer src="/Backend/JavaScript/logout.js"></script>
+    <script>
+        // Función para mostrar el mensaje según el resultado del PHP
+        function showMessage(message) {
+            if (message === "success") {
+                alert("El archivo ha sido subido correctamente.");
+            } else {
+                alert(message);
+            }
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = function() {
+            var message = <?php echo $message_encoded; ?>;
+            showMessage(message);
+        };
+    </script>
     <title>GBM | CT</title>
 </head>
 <body>
