@@ -107,7 +107,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 </thead>
                 <tbody>
                     <?php
-                    $dir = 'uploads/';
+                    $dir = '/var/www/uploads/';
                     if (is_dir($dir)) {
                         if ($dh = opendir($dir)) {
                             while (($file = readdir($dh)) !== false) {
