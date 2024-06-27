@@ -116,6 +116,10 @@
     color: #333;
 }
 
+.upload-section{
+  padding-top: 20px;
+}
+
 form {
     background: #fff;
     padding: 20px;
@@ -124,6 +128,45 @@ form {
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
+}
+
+/* Estilo para la sección de lista de archivos */
+.file-list-section {
+  margin-top: 20px;
+}
+
+.file-list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.file-list th, .file-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.file-list th {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+.file-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.file-list tr:hover {
+  background-color: #ddd;
+}
+
+.file-list a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.file-list a:hover {
+  text-decoration: underline;
 }
 
 label {

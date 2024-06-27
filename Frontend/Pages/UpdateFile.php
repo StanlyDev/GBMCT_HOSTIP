@@ -72,7 +72,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
             <ul>
                 <a href="/Frontend/Pages/inventory.php"><li><img src="/Frontend/IMG/Icon/box2-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Inventario en Cintoteca</li></a>
                 <a href="#" class="histo" onclick="histoAlert()"><li><img src="/Frontend/IMG/Icon/arrow-counterclockwise.svg" style="margin-right: 10px; width: 20px; float: left;">Historial I/O</li></a>
-                <a href="/Frontend/Pages/UpdateFile.php"><li><img src="/Frontend/IMG/Icon/cloud-arrow-up-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Subir Archivo</li></a>
                 <a href="#" class="generate-doc" onclick="showOptions()"><li><img src="/Frontend/IMG/Icon/file-earmark-text-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Generar Documento</li></a>
                 <a href="/Frontend/Pages/UpdateFile.php"><li><img src="/Frontend/IMG/Icon/cloud-arrow-up-fill.svg" style="margin-right: 10px; width: 20px; float: left;">Subir Archivo</li></a>
                 <?php if ($usuario_rol === 'root' || $usuario_rol === 'admin'): ?>
@@ -95,6 +94,36 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </form>
         </div>
         <!-- Fin Formulario de subida de archivos -->
+
+        <!-- Lista de archivos subidos -->
+        <div class="file-list-section">
+            <h2>Archivos Subidos</h2>
+            <table class="file-list">
+                <thead>
+                    <tr>
+                        <th>Nombre del archivo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $dir = 'uploads/';
+                    if (is_dir($dir)) {
+                        if ($dh = opendir($dir)) {
+                            while (($file = readdir($dh)) !== false) {
+                                if ($file != "." && $file != "..") {
+                                    echo "<tr><td>$file</td>";
+                                    echo "<td><a href='$dir$file' download>Descargar</a></td></tr>";
+                                }
+                            }
+                            closedir($dh);
+                        }
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- Fin Lista de archivos subidos -->
     </main>
     <!-- Ventana emergente -->
     <div id="myModal" class="modal">
