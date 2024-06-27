@@ -15,7 +15,7 @@ $(document).ready(function(){
             success: function(response){
                 if (response.success) {
                     // Redirigir si la autenticación es exitosa
-                    window.location.href = '/Pages/HomePage.html';
+                    window.location.href = '/Frontend/Pages/HomePage.html';
                 } else {
                     // Mostrar mensaje de error si la autenticación falla
                     $('#message').text(response.errorMsg).css('color', 'red');
