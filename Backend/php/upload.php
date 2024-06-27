@@ -8,12 +8,16 @@ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if (file_exists($target_file)) {
     echo "Lo siento, el archivo ya existe.";
     $uploadOk = 0;
+    header("Location: /Frontend/Pages/UpdateFile.php");
+    exit();
 }
 
 // Verifica el tamaño del archivo (máximo 5MB en este ejemplo)
 if ($_FILES["file"]["size"] > 5000000) {
     echo "Lo siento, el archivo es demasiado grande.";
     $uploadOk = 0;
+    header("Location: /Frontend/Pages/UpdateFile.php");
+    exit();
 }
 
 // Permitir ciertos formatos de archivo (opcional)
@@ -21,6 +25,8 @@ $allowed_types = array("jpg", "png", "jpeg", "gif", "pdf", "docx", "xlsx", "xlsm
 if (!in_array($imageFileType, $allowed_types)) {
     echo "Lo siento, solo se permiten archivos JPG, JPEG, PNG, GIF, PDF, DOCX , XLSM y XLSX.";
     $uploadOk = 0;
+    header("Location: /Frontend/Pages/UpdateFile.php");
+    exit();
 }
 
 // Verifica si $uploadOk es 0 por un error
