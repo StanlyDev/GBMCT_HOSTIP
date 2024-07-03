@@ -38,7 +38,7 @@ $email = $_SESSION["email"] ?? '';
                     style="width:30px;height:30px">
                 </lord-icon></a><p style="float: right; color: white; padding: 5px;"><?php echo $_SESSION["username"]; ?></p></div>
             <div class="home">
-                <a href="/Fronted/Pages/HomePage.php" title="Inicio">
+                <a href="/Frontend/Pages/HomePage.php" title="Inicio">
                     <script src="https://cdn.lordicon.com/lordicon.js"></script>
                     <lord-icon
                         src="https://cdn.lordicon.com/wmwqvixz.json"
