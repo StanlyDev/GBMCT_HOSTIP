@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexion.php'; // Asegúrate de que este archivo contiene la configuración de tu conexión a la base de datos
+require '/Backend/php/conexion.php'; // Asegúrate de que este archivo contiene la configuración de tu conexión a la base de datos
 
 header('Content-Type: application/json');
 
