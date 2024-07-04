@@ -33,15 +33,15 @@ function imprimirValores() {
   sessionStorage.setItem("datosCompartidos", datosCompartidosStr);
 
   // Abrir la nueva ventana (DocVison.html) y pasar los valores mediante parámetros de la URL
-  var nuevaVentana = window.open('DocVisor.html' +
-                                '?sr=' + encodeURIComponent(srValue) +
-                                '&origen=' + encodeURIComponent(origenValue) +
-                                '&destino=' + encodeURIComponent(destinoValue) +
-                                '&hrEsti=' + encodeURIComponent(hrEstiValue) +
-                                '&fechaIO=' + encodeURIComponent(fechaIOValue) +
-                                '&soliX=' + encodeURIComponent(soliXValue),
-                                '_blank');
-
+var nuevaVentana = window.open('DocVisor.html' +
+                                        '?sr=' + encodeURIComponent(srValue) +
+                                        '&origen=' + encodeURIComponent(origenValue) +
+                                        '&destino=' + encodeURIComponent(destinoValue) +
+                                        '&hrEsti=' + encodeURIComponent(hrEstiValue) +
+                                        '&fechaIO=' + encodeURIComponent(fechaIOValue) +
+                                        '&soliX=' + encodeURIComponent(soliXValue) +
+                                        '&ubiCin=' + encodeURIComponent(datosParaCompartir.cintas[0].ubicacion),
+                                        '_blank');
 }
 
 function obtenerDatosTablaCintas() {

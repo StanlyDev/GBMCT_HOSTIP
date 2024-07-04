@@ -37,15 +37,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Iterar sobre los datos compartidos y agregar filas a la tabla
   datosCompartidos.cintas.forEach(function (cinta, index) {
-      var fila = tablaDocVisor.insertRow(-1);
+    var fila = tablaDocVisor.insertRow(-1);
 
-      // Asegurarse de que estas propiedades coincidan con las que usaste en script.js
-      var propiedadesCinta = ['numero', 'cliente', 'tipo', 'descripcion', 'codigo', 'ubicacion'];
+    // Asegurarse de que estas propiedades coincidan con las que usaste en script.js
+    var propiedadesCinta = ['numero', 'cliente', 'tipo', 'descripcion', 'codigo', 'ubicacion'];
 
-      propiedadesCinta.forEach(function (propiedad) {
-          var celda = fila.insertCell();
-          celda.textContent = cinta[propiedad];
-      });
+    propiedadesCinta.forEach(function (propiedad) {
+      var celda = fila.insertCell();
+      celda.textContent = cinta[propiedad];
+    });
+
+    // Agregar la ubicación al final de cada fila
+    var ubicacionCell = fila.insertCell();
+    ubicacionCell.textContent = cinta.ubicacion;
   });
 });
 
