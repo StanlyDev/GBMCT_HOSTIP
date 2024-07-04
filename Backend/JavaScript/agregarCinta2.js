@@ -1,3 +1,4 @@
+// agregarCinta2 (parte de script.js)
 const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
 
@@ -17,7 +18,6 @@ form.addEventListener("submit", function(event) {
 
     let newTypeCellRef;
 
-    // Insertar el número secuencial en la primera celda
     newTypeCellRef = newTransactionRowRef.insertCell(0);
     newTypeCellRef.textContent = numeroSecuencial;
 
@@ -36,7 +36,6 @@ form.addEventListener("submit", function(event) {
     newTypeCellRef = newTransactionRowRef.insertCell(5);
     newTypeCellRef.textContent = document.getElementById("UbiCin").value;
 
-    // Agregar botón de eliminación
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.className = "delete-row-btn";
@@ -46,17 +45,15 @@ form.addEventListener("submit", function(event) {
 
     let deleteCellRef = newTransactionRowRef.insertCell(-1);
     deleteCellRef.appendChild(deleteButton);
-    deleteCellRef.classList.add('delete-row-btn-cell'); // Agregar la clase a la celda    
+    deleteCellRef.classList.add('delete-row-btn-cell');
 
-    // Limpiar campos del formulario
     document.getElementById("TypeCinta").value = "";
     document.getElementById("DesCin").value = "";
     document.getElementById("CCinta").value = "";
-    document.getElementById("UbiCin").value = "Cintoteca"; // Reseteamos el select al valor por defecto
+    document.getElementById("UbiCin").value = "Cintoteca";
 
     numeroSecuencial++;
 
-    // Guardar los datos en sessionStorage
     let cintas = JSON.parse(sessionStorage.getItem("datosCompartidos")) || { cintas: [] };
     cintas.cintas.push({
         numero: numeroSecuencial,
@@ -87,10 +84,8 @@ function eliminarFila(button) {
     let row = button.closest('tr');
     row.parentNode.removeChild(row);
 
-    // Reiniciar el número secuencial
     numeroSecuencial = 1;
 
-    // Actualizar el número secuencial en las filas restantes
     let table = document.getElementById("tablaCintas");
     let rows = table.rows;
 
@@ -99,7 +94,6 @@ function eliminarFila(button) {
         cell.textContent = numeroSecuencial++;
     }
 
-    // Actualizar sessionStorage
     let cintas = [];
     for (let i = 1; i < rows.length; i++) {
         let cells = rows[i].cells;
@@ -114,3 +108,5 @@ function eliminarFila(button) {
     }
     sessionStorage.setItem("datosCompartidos", JSON.stringify({ cintas: cintas }));
 }
+
+/* Developed by Brandon Ventura */
