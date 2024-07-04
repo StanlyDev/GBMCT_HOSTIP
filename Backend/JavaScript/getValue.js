@@ -55,7 +55,8 @@ function obtenerDatosTablaCintas() {
       numero: fila.cells[0].textContent,
       tipo: fila.cells[2].textContent,
       descripcion: fila.cells[3].textContent,
-      codigo: fila.cells[4].textContent
+      codigo: fila.cells[4].textContent,
+      ubicacion: fila.cells[5].textContent
       // Puedes agregar más propiedades si es necesario
     };
     datos.push(cinta);

@@ -151,6 +151,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
+                                <th>Ubicacion</th>
                             </tr>
                         </thead>
                         <tbody>
