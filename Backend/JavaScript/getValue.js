@@ -65,5 +65,4 @@ function obtenerDatosTablaCintas() {
   return datos;
 }
 
-// JavaScript functions to toggle the menu and modal
 /*Devoloped by Brandon Ventura*/

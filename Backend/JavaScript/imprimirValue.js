@@ -33,19 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
   var tablaDocVisor = document.querySelector(".Table_Cinta table");
 
   // Limpiar la tabla antes de agregar nuevos datos
-  tablaDocVisor.innerHTML = "<tr><th>#</th><th>Tipo</th><th>Descripcion</th><th>Código</th><th>Ubicacion</th></tr>";
+  tablaDocVisor.innerHTML = "<tr><th>#</th><th>Cliente</th><th>Tipo</th><th>Descripcion</th><th>Codigo</th><th>Ubicacion</th></tr>";
 
   // Iterar sobre los datos compartidos y agregar filas a la tabla
   datosCompartidos.cintas.forEach(function (cinta, index) {
-    var fila = tablaDocVisor.insertRow(-1);
+      var fila = tablaDocVisor.insertRow(-1);
 
-    // Asegurarse de que estas propiedades coincidan con las que usaste en script.js
-    var propiedadesCinta = ['numero', 'tipo', 'descripcion', 'codigo', 'ubicacion'];
+      // Asegurarse de que estas propiedades coincidan con las que usaste en script.js
+      var propiedadesCinta = ['numero', 'cliente', 'tipo', 'descripcion', 'codigo', 'ubicacion'];
 
-    propiedadesCinta.forEach(function (propiedad) {
-      var celda = fila.insertCell();
-      celda.textContent = cinta[propiedad];
-    });
+      propiedadesCinta.forEach(function (propiedad) {
+          var celda = fila.insertCell();
+          celda.textContent = cinta[propiedad];
+      });
   });
 });
 
@@ -53,5 +53,3 @@ function getParameterByName(name) {
   var urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
-
-/*Developed by Brandon Ventura*/
