@@ -16,8 +16,10 @@ form.addEventListener("submit", function(event) {
   let transactionTableRef = document.getElementById("tablaCintas");
   let newTransactionRowRef = transactionTableRef.insertRow(-1);
 
+  let newTypeCellRef;
+
   // Insertar el número secuencial en la primera celda
-  let newTypeCellRef = newTransactionRowRef.insertCell(0);
+  newTypeCellRef = newTransactionRowRef.insertCell(0);
   newTypeCellRef.textContent = numeroSecuencial;
 
   newTypeCellRef = newTransactionRowRef.insertCell(1);
@@ -33,7 +35,7 @@ form.addEventListener("submit", function(event) {
   newTypeCellRef.textContent = ccintaValue;
 
   newTypeCellRef = newTransactionRowRef.insertCell(5);
-  newTypeCellRef.textContent = document.getElementById("UbiCin").value; // Mostrar valor seleccionado del select
+  newTypeCellRef.textContent = document.getElementById("UbiCin").value;
 
   // Agregar botón de eliminación
   let deleteButton = document.createElement("button");
