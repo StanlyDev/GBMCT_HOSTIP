@@ -53,6 +53,7 @@ function obtenerDatosTablaCintas() {
     var cinta = {
       // Asegúrate de que estas propiedades coincidan con las que esperas en imprimirValue.js
       numero: fila.cells[0].textContent,
+      cliente: fila.cells[1].textContent,
       tipo: fila.cells[2].textContent,
       descripcion: fila.cells[3].textContent,
       codigo: fila.cells[4].textContent,
