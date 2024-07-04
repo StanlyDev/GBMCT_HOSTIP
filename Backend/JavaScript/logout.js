@@ -1,7 +1,7 @@
 // Función para redirigir al usuario al cerrar sesión después de cierto tiempo de inactividad
 function iniciarTemporizador() {
-    var tiempoLimite = 50 * 1000; // 50 segundos en milisegundos
-    var avisoTiempo = 25 * 1000; // Tiempo antes de que aparezca la alerta (25 segundos de inactividad)
+    var tiempoLimite = 240 * 1000; // 50 segundos en milisegundos
+    var avisoTiempo = 120 * 1000; // Tiempo antes de que aparezca la alerta (25 segundos de inactividad)
     var temporizador, temporizadorAviso;
 
     var modal = document.getElementById('inactivityModal');
@@ -16,7 +16,7 @@ function iniciarTemporizador() {
     // Función para mostrar el aviso con cuenta regresiva
     function mostrarAviso() {
         modal.style.display = 'block';
-        var contador = 25; // Tiempo para la cuenta regresiva en segundos
+        var contador = 60; // Tiempo para la cuenta regresiva en segundos
         countdownElement.textContent = contador;
         var intervalo = setInterval(function() {
             contador--;
