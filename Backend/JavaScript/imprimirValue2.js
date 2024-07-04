@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var origenDocumentoValue = getParameterByName('origen');
   var destinoDocumentoValue = getParameterByName('destino');
   var horaEstimadaValue = getParameterByName('hrEsti');
-  var nombreClienteValue = getParameterByName('origen');
+  var nombreClienteValue = getParameterByName('nombreCliente');
   var solicitadoPorValue = getParameterByName('soliX');
   var numeroTicketValue = getParameterByName('sr');
   var nombre1Value = sessionStorage.getItem("nombre1");
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var origenDocumentoElement = document.getElementById("origenDocumento");
   var destinoDocumentoElement = document.getElementById("destinoDocumento");
   var horaEstimadaElement = document.getElementById("horaEstimada");
-  var nombreClienteElement = document.getElementById("destinoDocumento");
+  var nombreClienteElement = document.getElementById("nombreCliente");
   var solicitadoPorElement = document.getElementById("solicitadoPor");
   var numeroTicketElement = document.getElementById("numeroTicket");
   var deliveredByElement = document.getElementById("delivered_by");
