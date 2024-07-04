@@ -21,10 +21,10 @@ let initialRotationY = 0;
 
 const loader = new GLTFLoader();
 loader.load(
-  '/Frontend/3D/computer_ibm_5100/scene.gltf',
+  '/Frontend/3D/ibm_1401/scene.gltf',
   function (gltf) {
     object = gltf.scene;
-    object.scale.set(40, 40, 40);
+    object.scale.set(5, 5, 5);
     initialRotationX = object.rotation.x;
     initialRotationY = object.rotation.y;
     scene.add(object);
@@ -43,7 +43,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const container = document.getElementById("container3D");
 container.appendChild(renderer.domElement);
 
-camera.position.z = 250;
+camera.position.z = 800;
 camera.position.x = 0;
 camera.position.y = 0;
 
