@@ -34,6 +34,9 @@ form.addEventListener("submit", function(event) {
     newTypeCellRef = newTransactionRowRef.insertCell(4);
     newTypeCellRef.textContent = ccintaValue;
 
+    newTypeCellRef = newTransactionRowRef.insertCell(5);
+    newTypeCellRef.textContent = document.getElementById("UbiCin").value; // Aquí obtenemos el valor del select
+
     // Agregar botón de eliminación
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "X";

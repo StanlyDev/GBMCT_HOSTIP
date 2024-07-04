@@ -127,6 +127,13 @@ $usuario_rol = $_SESSION["role"] ?? '';
                             <label for="CCinta">Codigo:</label>
                             <input type="text" id="CCinta" name="CCinta">
                         </div>
+                        <div class="form-group">
+                            <label for="UbiCin">Ubicacion:</label>
+                            <select name="UbiCin" id="UbiCin">
+                                <option value="Cintoteca">Cintoteca</option>
+                                <option value="Libreria">Libreria</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="AgreBtn">
                         <button type="submit" onclick="agregarCinta()">
