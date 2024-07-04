@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var nombre2Value = sessionStorage.getItem("nombre2");
   var dni2Value = sessionStorage.getItem("dni2");
 
-  // ... (añadir más variables según sea necesario)
-
   // Actualizar los elementos en la página con los valores
   document.getElementById("numeroHoja").textContent = numeroHojaValue;
   document.getElementById("origenDocumento").textContent = origenDocumentoValue;
@@ -28,34 +26,26 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("nombreCliente").textContent = nombreClienteValue;
   document.getElementById("solicitadoPor").textContent = solicitadoPorValue;
   document.getElementById("numeroTicket").textContent = numeroTicketValue;
-  document.getElementById("nombreCliente").textContent = destinoDocumentoValue;
   document.getElementById("delivered_by").textContent = nombre1Value + " con DNI " + dni1Value;
   document.getElementById("received_by").textContent = nombre2Value + " con DNI " + dni2Value;
-  
-  // ... (actualizar más elementos según sea necesario)
 
   // Obtener la tabla en DocVisor.html
   var tablaDocVisor = document.querySelector(".Table_Cinta table");
 
   // Limpiar la tabla antes de agregar nuevos datos
-  tablaDocVisor.innerHTML = "<tr><th>#</th><th>Tipo</th><th>Descripcion</th><th>Codigo</th><th>En Caja</th><th>En Sobre</th><th>En Bolsa</th></tr>";
+  tablaDocVisor.innerHTML = "<tr><th>#</th><th>Cliente</th><th>Tipo</th><th>Descripcion</th><th>Codigo</th><th>Ubicacion</th></tr>";
 
   // Iterar sobre los datos compartidos y agregar filas a la tabla
   datosCompartidos.cintas.forEach(function (cinta, index) {
       var fila = tablaDocVisor.insertRow(-1);
 
       // Asegurarse de que estas propiedades coincidan con las que usaste en script.js
-      var propiedadesCinta = ['numero', 'tipo', 'descripcion', 'codigo'];
+      var propiedadesCinta = ['numero', 'cliente', 'tipo', 'descripcion', 'codigo', 'ubicacion'];
 
       propiedadesCinta.forEach(function (propiedad) {
           var celda = fila.insertCell();
           celda.textContent = cinta[propiedad];
       });
-
-      // Dejar en blanco las columnas de En Caja, En Sobre y En Bolsa
-      for (var i = 0; i < 3; i++) {
-          fila.insertCell().textContent = "";
-      }
   });
 });
 
@@ -63,4 +53,3 @@ function getParameterByName(name) {
   var urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
-/*Devoloped by Brandon Ventura*/

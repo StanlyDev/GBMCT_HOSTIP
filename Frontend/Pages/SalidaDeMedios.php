@@ -27,7 +27,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <title>GBM | CT</title>
 </head>
 <body>
-<body>
     <div class="overlay"></div>
     <!--Inicio Cabecera-->
     <header>
@@ -152,6 +151,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
                                 <th>Codigo</th>
+                                <th>Ubicacion</th>
                             </tr>
                         </thead>
                         <tbody>
