@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var datosCompartidosStr = sessionStorage.getItem("datosCompartidos");
   var datosCompartidos = JSON.parse(datosCompartidosStr);
 
-  var numeroHojaValue = getParameterByName('numeroHoja');
   var origenDocumentoValue = getParameterByName('origen');
   var destinoDocumentoValue = getParameterByName('destino');
   var horaEstimadaValue = getParameterByName('hrEsti');
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
   var dni2Value = sessionStorage.getItem("dni2");
 
   // Verificar si los elementos existen antes de intentar actualizar su contenido
-  var numeroHojaElement = document.getElementById("numeroHoja");
   var origenDocumentoElement = document.getElementById("origenDocumento");
   var destinoDocumentoElement = document.getElementById("destinoDocumento");
   var horaEstimadaElement = document.getElementById("horaEstimada");
@@ -25,9 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var deliveredByElement = document.getElementById("delivered_by");
   var receivedByElement = document.getElementById("received_by");
 
-  if (numeroHojaElement && origenDocumentoElement && destinoDocumentoElement && horaEstimadaElement &&
+  if (origenDocumentoElement && destinoDocumentoElement && horaEstimadaElement &&
       nombreClienteElement && solicitadoPorElement && numeroTicketElement && deliveredByElement && receivedByElement) {
-      numeroHojaElement.textContent = numeroHojaValue;
       origenDocumentoElement.textContent = origenDocumentoValue;
       destinoDocumentoElement.textContent = destinoDocumentoValue;
       horaEstimadaElement.textContent = horaEstimadaValue;
