@@ -135,7 +135,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         </div>
                     </div>
                     <div class="AgreBtn">
-                        <button type="submit" onclick="agregarCinta()">
+                        <button type="submit" onclick="agregarCinta2()">
                             <img src="/Frontend/IMG/Icon/plus-lg.svg"> Agregar
                         </button>
                     </div>
