@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var origenDocumentoValue = getParameterByName('origen');
   var destinoDocumentoValue = getParameterByName('destino');
   var horaEstimadaValue = getParameterByName('hrEsti');
-  var nombreClienteValue = getParameterByName('nombreCliente');
+  var nombreClienteValue = getParameterByName('destino');
   var solicitadoPorValue = getParameterByName('soliX');
   var numeroTicketValue = getParameterByName('sr');
   var nombre1Value = sessionStorage.getItem("nombre1");
