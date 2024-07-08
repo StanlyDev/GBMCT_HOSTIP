@@ -9,7 +9,7 @@ body {
     background: url('/Frontend/IMG/Back/IdxBack.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    
+    background-position: center;
 }
 
 .container {
