@@ -6,6 +6,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 let object;
+let startTime = null;
+const rotationDuration = 1000;
 
 const loader = new GLTFLoader();
 loader.load(
@@ -19,6 +21,8 @@ loader.load(
     scene.add(object);
 
     controls.target.set(0, 0, 0);
+
+    startTime = performance.now();
   },
   function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
@@ -60,8 +64,17 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 controls.target.set(0, 0, 0);
 
-function animate() {
+function animate(timestamp) {
   requestAnimationFrame(animate);
+
+  if (object && startTime !== null) {
+    const elapsed = timestamp - startTime;
+    if (elapsed < rotationDuration) {
+      const rotationSpeed = Math.PI / 6;
+      object.rotation.y += rotationSpeed;
+    }
+  }
+
   controls.update();
   renderer.render(scene, camera);
 }
