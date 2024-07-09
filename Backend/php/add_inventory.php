@@ -27,7 +27,7 @@ $codigoCintaInter = $_POST['CCintaInter'];
 
 // Preparar y ejecutar la consulta SQL
 $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CdClient, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO, CdInter) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssssssssi", $nombreCliente, $tipoCinta, $descripcion, $codigoCinta, $ticketSR, $fdmEmail, $horaIngreso, $fechaIngreso, $agregadoPor, $contrato, $codigoCintaInter);
