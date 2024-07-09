@@ -8,7 +8,9 @@ function agregarCinta() {
     }
 
     let ccintaInput = document.getElementById("CCinta");
+    let ccintainterInput = document.getElementById("CCintaInter");
     let ccintaValue = ccintaInput.value;
+    let ccintainterValue = ccintainterInput.value;
 
     // Verificar si el código de cinta ya está en uso
     verificarCodigoCinta(ccintaValue).then(isDuplicate => {
@@ -34,24 +36,27 @@ function agregarCinta() {
             newTypeCellRef.textContent = ccintaValue;
 
             newTypeCellRef = newTransactionRowRef.insertCell(4);
-            newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
+            newTypeCellRef.textContent = ccintainterValue;
 
             newTypeCellRef = newTransactionRowRef.insertCell(5);
-            newTypeCellRef.textContent = document.getElementById("DesCin").value;
+            newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(6);
-            newTypeCellRef.textContent = document.getElementById("sr").value;
+            newTypeCellRef.textContent = document.getElementById("DesCin").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(7);
-            newTypeCellRef.textContent = document.getElementById("hrEsti").value;
+            newTypeCellRef.textContent = document.getElementById("sr").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(8);
-            newTypeCellRef.textContent = document.getElementById("FechaIO").value;
+            newTypeCellRef.textContent = document.getElementById("hrEsti").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(9);
-            newTypeCellRef.textContent = document.getElementById("fdm").value;
+            newTypeCellRef.textContent = document.getElementById("FechaIO").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(10);
+            newTypeCellRef.textContent = document.getElementById("fdm").value;
+
+            newTypeCellRef = newTransactionRowRef.insertCell(11);
             newTypeCellRef.textContent = document.getElementById("operator").value;
 
             // Agregar botón de eliminación
@@ -136,4 +141,5 @@ function limpiarCampos() {
     document.getElementById("TypeCinta").value = '';
     document.getElementById("DesCin").value = '';
     document.getElementById("CCinta").value = '';
+    document.getElementById("CCintaInter").value = '';
 }
