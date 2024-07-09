@@ -2,8 +2,8 @@ function GenCode() {
     // Obtener el nombre del cliente del input correspondiente
     let clientName = document.getElementById('client_name').value;
     
-    // Tomar las primeras 3 letras del nombre del cliente
-    let namePart = clientName.substring(0, 3).toUpperCase();
+    // Tomar las primeras 4 letras del nombre del cliente
+    let namePart = clientName.substring(0, 4).toUpperCase();
 
     // Generar tres letras aleatorias
     let letters = '';
