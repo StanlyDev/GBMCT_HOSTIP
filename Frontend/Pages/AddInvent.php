@@ -22,6 +22,7 @@ $email = $_SESSION["email"] ?? '';
     <script defer src="/Backend/JavaScript/HistoAlert.js"></script>
     <script defer src="/Backend/JavaScript/logout.js"></script>
     <script defer src="/Backend/JavaScript/script.js"></script>
+    <script defer src="/Backend/JavaScript/genCodeCinta.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
