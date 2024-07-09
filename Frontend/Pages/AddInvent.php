@@ -134,7 +134,7 @@ $email = $_SESSION["email"] ?? '';
                         </div>
                         <div class="form-group">
                             <label for="CCintaInter">Codigo de interno:</label>
-                            <input type="text" id="CCintaInter" name="CCintaInter" placeholder="CODE0001" required>
+                            <input type="text" id="CCintaInter" name="CCintaInter" placeholder="CODEGEN_V1" required readonly>
                             <button type="button" onclick="GenCode()">Generar Codigo</button>
                         </div>
                     </div><br>
