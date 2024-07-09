@@ -128,7 +128,11 @@ $email = $_SESSION["email"] ?? '';
                             <input type="text" id="DesCin" name="DesCin" placeholder="LTO - 1.5TB" required>
                         </div>
                         <div class="form-group">
-                            <label for="CCinta">Codigo:</label>
+                            <label for="CCinta">Codigo de cliente:</label>
+                            <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="CCinta">Codigo de interno:</label>
                             <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
                         </div>
                     </div><br>
@@ -147,7 +151,8 @@ $email = $_SESSION["email"] ?? '';
                                 <th>#</th>
                                 <th>Cliente</th>
                                 <th>Contrato</th>
-                                <th>Codigo</th>
+                                <th>Codigo Cliente</th>
+                                <th>Codigo Interno DC</th>
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
                                 <th>Ticket</th>
