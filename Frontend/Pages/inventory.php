@@ -124,6 +124,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Tipo</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Código de Cliente</th>
+                <th scope="col">Código Interno DC</th>
                 <th scope="col">Ubicacion</th>
             </tr>
         </thead>        
@@ -176,6 +177,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <td>${item.TipoCinta}</td>
           <td>${item.Descripcion}</td>
           <td>${item.CdClient}</td>
+          <td>${item.CdInter}</td>
           <td>${item.Ubicacion}</td>
         `;
         tablaBody.appendChild(row);

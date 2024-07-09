@@ -113,6 +113,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Tipo</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Código de Cliente</th>
+                <th scope="col">Código Interno DC</th>
                 <th scope="col">Ubicacion</th>
                 <th scope="col">Ticket</th>
                 <th scope="col">Field Manager Email</th>
