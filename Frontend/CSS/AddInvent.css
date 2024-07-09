@@ -158,6 +158,18 @@ header {
   border-radius: 5px;
 }
 
+.form-group button{
+  margin-top: 5px;
+  height: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #02092b;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .AgreBtn {
   display: flex;
   justify-content: center;
