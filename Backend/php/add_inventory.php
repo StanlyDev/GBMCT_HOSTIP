@@ -30,7 +30,7 @@ $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CdCli
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssssssi", $nombreCliente, $tipoCinta, $descripcion, $codigoCinta, $ticketSR, $fdmEmail, $horaIngreso, $fechaIngreso, $agregadoPor, $contrato, $codigoCintaInter);
+$stmt->bind_param("sssssssssss", $nombreCliente, $tipoCinta, $descripcion, $codigoCinta, $ticketSR, $fdmEmail, $horaIngreso, $fechaIngreso, $agregadoPor, $contrato, $codigoCintaInter);
 
 $response = [];
 if ($stmt->execute()) {
