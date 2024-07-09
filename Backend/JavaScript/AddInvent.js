@@ -69,7 +69,7 @@ function agregarCinta() {
                 }
             };
 
-            let deleteCellRef = newTransactionRowRef.insertCell(11);
+            let deleteCellRef = newTransactionRowRef.insertCell(12);
             deleteCellRef.appendChild(deleteButton);
             deleteCellRef.classList.add('delete-row-btn-cell');
 
