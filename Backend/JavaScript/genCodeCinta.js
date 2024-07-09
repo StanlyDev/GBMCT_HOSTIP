@@ -21,7 +21,7 @@ function GenCode() {
     let generatedCode = `${namePart}_${letters}_${numbers}`;
 
     // Poner el código generado en el input correspondiente
-    document.getElementById('CCinta').value = generatedCode;
+    document.getElementById('CCintaInter').value = generatedCode;
 }
 
 // Asignar el evento onclick al botón para generar el código
