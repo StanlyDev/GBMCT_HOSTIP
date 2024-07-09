@@ -100,11 +100,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
           <input id="search-codigo" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
         </div>
       </div>
-      <div class="checkend_inv">
-        <label for="">En Cintoteca: </label>
-        <input type="checkbox" id="check"><label for="check">Si</label>
-        <input type="checkbox" id="check1"><label for="check1">No</label>
-      </div>
     </div>
     <!--Fin Informacion de cinta-->
     <div class="tabla_Cont">
@@ -117,7 +112,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                 <th scope="col">Cliente</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Descripción</th>
-                <th scope="col">Código</th>
+                <th scope="col">Código de Cliente</th>
                 <th scope="col">En Cintoteca Si/No</th>
                 <th scope="col">Ticket</th>
                 <th scope="col">Field Manager Email</th>

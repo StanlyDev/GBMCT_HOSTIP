@@ -25,7 +25,7 @@ $descripcion = $_POST['DesCin'];
 $codigoCinta = $_POST['CCinta'];
 
 // Preparar y ejecutar la consulta SQL
-$sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CodigoCinta, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO) 
+$sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, CdClient, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
