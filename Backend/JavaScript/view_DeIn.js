@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function() {
               <td>${item.TipoCinta}</td>
               <td>${item.Descripcion}</td>
               <td>${item.CodigoCinta}</td>
-              <td>${item.EnCintoteca ? 'Si' : 'No'}</td>
+              <td>${item.Ubicacion}</td>
               <td>${item.TickectSR}</td>
               <td>${item.FDMEmail}</td>
               <td>${item.HrAdd}</td>

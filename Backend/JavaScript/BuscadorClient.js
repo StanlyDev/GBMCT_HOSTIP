@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function realizarBusqueda() {
         var busqueda = inputBusqueda.value.toLowerCase();
         var busquedaCodigo = inputBusquedaCodigo.value.toLowerCase();
-        var mostrarSi = checkboxes[0].checked;
-        var mostrarNo = checkboxes[1].checked;
 
         for (var i = 1; i < filas.length; i++) {
             var fila = filas[i];
@@ -30,12 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if ((busqueda && !nombreCliente.includes(busqueda)) ||
                 (busquedaCodigo && !codigoCinta.includes(busquedaCodigo))) {
-                mostrarFila = false;
-            }
-
-            if ((mostrarSi && mostrarNo && (enCintoteca !== 'Si' && enCintoteca !== 'No')) ||
-                (mostrarSi && enCintoteca !== 'Si') ||
-                (mostrarNo && enCintoteca !== 'No')) {
                 mostrarFila = false;
             }
 
