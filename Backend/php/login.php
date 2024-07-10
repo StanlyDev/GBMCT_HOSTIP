@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($row["first_login"] == 1) {
                 $_SESSION["first_login"] = true;
-                header("Location: /Frontend/Pages/change_password.php"); // Verifica la ruta a change_password.php
+                header("Location: /Frontend/Pages/change_password.php");
                 exit();
             } else {
-                header("Location: /Frontend/Pages/HomePage.php"); // Verifica la ruta a HomePage.php
+                header("Location: /Frontend/Pages/HomePage.php");
                 exit();
             }
         } else {
