@@ -23,6 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
 
+        // Verificar contraseña predeterminada y primera vez de inicio de sesión
+        if ($password == "GBM123" && $row["first_login"] == 0) {
+            // Contraseña predeterminada encontrada pero first_login no es 1
+            $_SESSION["errorMsg"] = "Contraseña predeterminada ya no es válida o contraseña ya fue cambiada";
+            header("Location: /index.html"); // Redirige a la página de inicio de sesión con el mensaje de error
+            exit();
+        }
+
         // Verificar contraseña
         if ($password == "GBM123") {
             // Contraseña predeterminada encontrada, iniciar sesión y redirigir a cambiar contraseña
