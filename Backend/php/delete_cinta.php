@@ -14,27 +14,28 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Consulta SQL para obtener los datos de la tabla
-$sql = "SELECT * FROM TableInventory";
-$result = $conn->query($sql);
+// Verificar si se ha enviado un ID de cinta para eliminar
+if (isset($_POST['id_cinta'])) {
+    $id_cinta = $_POST['id_cinta'];
 
-if ($result->num_rows > 0) {
-    $contador = 0; // Inicializamos el contador
+    // Preparar la consulta SQL con una sentencia preparada
+    $sql = "DELETE FROM TableInventory WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id_cinta); // "i" indica que el parámetro es un entero
 
-    // Salida de datos de cada fila
-    while ($row = $result->fetch_assoc()) {
-        $contador++; // Incrementamos el contador
-
-        // Agregamos el número secuencial como un campo adicional al resultado
-        $row['secuencial'] = $contador;
-
-        // Agregamos la fila al arreglo de resultados
-        $data[] = $row;
+    // Ejecutar la consulta preparada
+    if ($stmt->execute()) {
+        echo "La cinta ha sido eliminada correctamente";
+    } else {
+        echo "Error al eliminar la cinta: " . $stmt->error;
     }
-    echo json_encode($data); // Devolvemos los datos como JSON
+
+    // Cerrar la sentencia preparada
+    $stmt->close();
 } else {
-    echo "0 resultados";
+    echo "No se proporcionó un ID de cinta para eliminar";
 }
 
+// Cerrar conexión
 $conn->close();
 ?>
