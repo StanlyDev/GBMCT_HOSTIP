@@ -7,10 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var tabla = document.querySelector(".tabla_invent table");
     var filas = tabla.getElementsByTagName("tr");
 
+    if (!inputBusqueda || !inputBusquedaCodigo || !inputBusquedaCodigoInter || !tabla) {
+        console.error("No se encontraron todos los elementos necesarios en el DOM.");
+        return;
+    }
+
     // Función para asignar números secuenciales a las filas
     function asignarNumerosSecuenciales() {
+        var numero = 1;
         for (var i = 1; i < filas.length; i++) {
-            filas[i].getElementsByTagName("td")[0].innerText = i;
+            if (filas[i].style.display !== "none") {
+                filas[i].getElementsByTagName("td")[0].innerText = numero++;
+            }
         }
     }
 
@@ -34,11 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 mostrarFila = false;
             }
 
-            if (mostrarFila) {
-                fila.style.display = "";
-            } else {
-                fila.style.display = "none";
-            }
+            fila.style.display = mostrarFila ? "" : "none";
         }
 
         // Asignar números secuenciales a las filas visibles después de la búsqueda
