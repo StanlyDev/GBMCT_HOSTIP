@@ -24,24 +24,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
 
         // Verificar contraseña
-        if (password_verify($password, $row["password"])) {
+        if ($password == "GBM123") {
+            // Contraseña predeterminada encontrada, iniciar sesión y redirigir a cambiar contraseña
             $_SESSION["id"] = $row["id"];
             $_SESSION["email"] = $row["email"];
             $_SESSION["role"] = $row["role"];
             $_SESSION["username"] = $row["username"];
+            $_SESSION["first_login"] = true; // Marcar como primer inicio de sesión
 
-            if ($row["first_login"] == 1) {
-                $_SESSION["first_login"] = true;
-                header("Location: /Frontend/Pages/change_password.php");
-                exit();
+            header("Location: /Frontend/Pages/change_password.php"); // Ajusta la ruta según tu estructura de archivos
+            exit();
+        } else {
+            // Contraseña no predeterminada, verificar la contraseña almacenada
+            $stored_hash = $row["password"];
+            if (password_verify($password, $stored_hash)) {
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["role"] = $row["role"];
+                $_SESSION["username"] = $row["username"];
+
+                if ($row["first_login"] == 1) {
+                    $_SESSION["first_login"] = true;
+                    header("Location: /Frontend/Pages/change_password.php"); // Ajusta la ruta según tu estructura de archivos
+                    exit();
+                } else {
+                    header("Location: /Frontend/Pages/HomePage.php"); // Ajusta la ruta según tu estructura de archivos
+                    exit();
+                }
             } else {
-                header("Location: /Frontend/Pages/HomePage.php");
+                $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
+                header("Location: /index.html");
                 exit();
             }
-        } else {
-            $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";
-            header("Location: /index.html");
-            exit();
         }
     } else {
         $_SESSION["errorMsg"] = "Usuario o contraseña incorrectos";

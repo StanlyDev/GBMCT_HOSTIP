@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
 
+        // Verificar contraseña
         if ($password == "GBM123") {
             // Contraseña predeterminada encontrada, iniciar sesión y redirigir a cambiar contraseña
             $_SESSION["id"] = $row["id"];
@@ -31,9 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["username"] = $row["username"];
             $_SESSION["first_login"] = true; // Marcar como primer inicio de sesión
 
-            header("Location: /Pages/change_password.php");
+            header("Location: /Frontend/Pages/change_password.php"); // Ajusta la ruta según tu estructura de archivos
             exit();
         } else {
+            // Contraseña no predeterminada, verificar la contraseña almacenada
             $stored_hash = $row["password"];
             if (password_verify($password, $stored_hash)) {
                 $_SESSION["id"] = $row["id"];
@@ -43,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 if ($row["first_login"] == 1) {
                     $_SESSION["first_login"] = true;
-                    header("Location: /Frontend/Pages/change_password.php");
+                    header("Location: /Frontend/Pages/change_password.php"); // Ajusta la ruta según tu estructura de archivos
                     exit();
                 } else {
-                    header("Location: /Frontend/Pages/HomePage.php");
+                    header("Location: /Frontend/Pages/HomePage.php"); // Ajusta la ruta según tu estructura de archivos
                     exit();
                 }
             } else {
