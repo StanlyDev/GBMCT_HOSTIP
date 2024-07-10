@@ -155,37 +155,39 @@ $usuario_rol = $_SESSION["role"] ?? '';
     </div>
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', fetchData);
+  document.addEventListener('DOMContentLoaded', fetchData);
 
-    async function fetchData() {
-      try {
-        const response = await fetch('/Backend/php/fetch_data.php');
-        const data = await response.json();
-        displayData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+  async function fetchData() {
+    try {
+      const response = await fetch('/Backend/php/fetch_data.php');
+      const data = await response.json();
+      displayData(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
+  }
 
-    function displayData(data) {
-      const tablaBody = document.getElementById('tablaBody');
-      tablaBody.innerHTML = '';
+  function displayData(data) {
+    const tablaBody = document.getElementById('tablaBody');
+    tablaBody.innerHTML = '';
 
-      data.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${item.id}</td>
-          <td>${item.NombreCliente}</td>
-          <td>${item.TipoCinta}</td>
-          <td>${item.Descripcion}</td>
-          <td>${item.CdClient}</td>
-          <td>${item.CdInter}</td>
-          <td>${item.Ubicacion}</td>
-        `;
-        tablaBody.appendChild(row);
-      });
-    }
-  </script>
+    data.forEach((item, index) => {
+      const row = document.createElement('tr');
+      const seqNumber = index + 1;
+
+      row.innerHTML = `
+        <td>${seqNumber}</td>
+        <td>${item.NombreCliente}</td>
+        <td>${item.TipoCinta}</td>
+        <td>${item.Descripcion}</td>
+        <td>${item.CdClient}</td>
+        <td>${item.CdInter}</td>
+        <td>${item.Ubicacion}</td>
+      `;
+      tablaBody.appendChild(row);
+    });
+  }
+</script>
   <div id="inactivityModal" class="modal">
     <div class="modal-content">
         <p>En <span id="inactivityCountdown">25</span> segundos se cerrará la sesión.</p>
