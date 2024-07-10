@@ -24,8 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var fila = filas[i];
             var nombreCliente = fila.getElementsByTagName("td")[1].innerText.toLowerCase();
             var codigoCinta = fila.getElementsByTagName("td")[4].innerText.toLowerCase();
-            var codigoCinInter = fila-getElementsByTagName("td")[5].innerText.toLowerCase();
-
+            var codigoCinInter = fila.getElementsByTagName("td")[5].innerText.toLowerCase();
 
             var mostrarFila = true;
 
