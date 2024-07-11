@@ -131,6 +131,7 @@ header {
 
 .input_container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
 }
@@ -201,16 +202,18 @@ select{
 .tabla_Cont {
   margin-top: 20px;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .tabla_Cont table {
-  width: 100%;
+  width: auto;
+  min-width: 100%;
   border-collapse: collapse;
 }
 
 .tabla_Cont th, .tabla_Cont td {
   border: 1px solid #ccc;
-  padding: 5px;
+  padding: 8px;
   text-align: left;
 }
 
@@ -369,4 +372,61 @@ border-radius: 5px;
 
 #continueSessionBtn:hover {
 background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+
+  header {
+    padding: 5px 10px;
+  }
+
+  .menu-btn, .close-btn {
+    font-size: 20px;
+  }
+
+  .logo img {
+    height: 40px;
+    margin-left: 20px;
+  }
+
+  .icon-container {
+    margin-right: 10px;
+  }
+
+  .navbar {
+    left: -100%;
+    transition: left 0.3s;
+  }
+
+  .navbar.active {
+    left: 0;
+  }
+
+  .navbar ul a {
+    padding: 12px 20px;
+  }
+
+  .title_dcgenenator h1 {
+    font-size: 1.5em;
+    margin-left: 20px;
+  }
+
+  .doc_info {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .input_container .form-group {
+    flex: 1 1 calc(50% - 20px);
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .AgreBtn button {
+    padding: 8px 16px;
+  }
+
+  .tabla_Cont th, .tabla_Cont td {
+    padding: 8px;
+  }
 }
