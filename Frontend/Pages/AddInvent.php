@@ -139,10 +139,10 @@ $email = $_SESSION["email"] ?? '';
                         </div>
                         <div class="form-group">
                             <label for="UbiCint">Ubicacion:</label>
-                            <select name="" id="">
+                            <select name="UbiCint" id="UbiCint" required>
                                 <option value=""></option>
-                                <option value="">Libreria</option>
-                                <option value="">Cintoteca</option>
+                                <option value="Libreria">Libreria</option>
+                                <option value="Cintoteca">Cintoteca</option>
                             </select>
                         </div>
                     </div><br>
@@ -155,7 +155,7 @@ $email = $_SESSION["email"] ?? '';
             </form>
             <div class="tabla_Cont">
                 <div class="tabla_preview">
-                <table id="tablaCintas">
+                    <table id="tablaCintas">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -163,19 +163,14 @@ $email = $_SESSION["email"] ?? '';
                                 <th>Contrato</th>
                                 <th>Codigo Cliente</th>
                                 <th>Codigo Interno DC</th>
-                                <th>Tipo</th>
+                                <th>Tipo de Cinta</th>
                                 <th>Descripcion</th>
                                 <th>Ubicacion</th>
                                 <th>Ticket</th>
-                                <th>Hora de ingreso</th>
-                                <th>Fecha de ingreso</th>
-                                <th>Field Manager Email</th>
-                                <th>Agregado por</th>
-                                <th>Acción</th>
+                                <th>Operaciones</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Contenido de la tabla -->
+                        <tbody id="table-body">
                         </tbody>
                     </table>
                 </div>
