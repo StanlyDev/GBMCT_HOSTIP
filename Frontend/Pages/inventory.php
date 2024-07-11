@@ -104,8 +104,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <!--Informacion de cinta-->
     <div class="Info_Cinta">
       <div class="Buscador">
-        <p>Cliente: </p>
         <div class="autocomplete">
+          <p>Cliente: </p>
           <input id="search-input" class="autocomplete-input" type="text" placeholder="Nombre del cliente">
           <p style="margin-left: 10px;">Codigo de Cliente: </p>
           <input id="search-codigo" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
