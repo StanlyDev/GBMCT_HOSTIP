@@ -12,7 +12,6 @@ function agregarCinta() {
     let ccintaValue = ccintaInput.value;
     let ccintainterValue = ccintainterInput.value;
 
-    // Verificar si el código de cinta ya está en uso
     verificarCodigoCinta(ccintaValue).then(isDuplicate => {
         if (isDuplicate) {
             alert("El código de Cinta ya se encuentra en uso");
@@ -98,8 +97,18 @@ function verificarCodigoCinta(codigo) {
         },
         body: JSON.stringify({ codigo: codigo })
     })
-    .then(response => response.json())
-    .then(data => data.exists);
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (!data || typeof data.exists !== 'boolean') {
+            throw new Error('Invalid response format');
+        }
+        return data.exists;
+    });
 }
 
 function eliminarFila(button) {
@@ -126,7 +135,12 @@ function enviarDatos() {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             alert('Cinta agregada exitosamente');
