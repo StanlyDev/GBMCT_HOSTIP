@@ -375,7 +375,7 @@ border-radius: 5px;
 background-color: #45a049;
 }
 
-@media (max-width: 768px) {
+@media only screen and  (max-width: 768px) {
 
   header {
     padding: 5px 10px;

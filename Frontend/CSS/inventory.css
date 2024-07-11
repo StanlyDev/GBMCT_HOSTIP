@@ -321,7 +321,7 @@ footer .botones-container button {
   background-color: #45a049;
 }
 
-@media (max-width: 768px) {
+@media only screen and  (max-width: 768px) {
   .autocomplete {
     margin: 0 auto;
     display: flex;
