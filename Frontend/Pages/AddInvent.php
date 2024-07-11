@@ -158,16 +158,20 @@ $email = $_SESSION["email"] ?? '';
                     <table id="tablaCintas">
                         <thead>
                             <tr>
-                                <th>#</th>
+                            <th>#</th>
                                 <th>Cliente</th>
                                 <th>Contrato</th>
                                 <th>Codigo Cliente</th>
                                 <th>Codigo Interno DC</th>
-                                <th>Tipo de Cinta</th>
+                                <th>Tipo</th>
                                 <th>Descripcion</th>
                                 <th>Ubicacion</th>
                                 <th>Ticket</th>
-                                <th>Operaciones</th>
+                                <th>Hora de ingreso</th>
+                                <th>Fecha de ingreso</th>
+                                <th>Field Manager Email</th>
+                                <th>Agregado por</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody id="table-body">
