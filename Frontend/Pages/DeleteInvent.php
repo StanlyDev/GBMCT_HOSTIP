@@ -96,8 +96,10 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <p>Cliente: </p>
         <div class="autocomplete">
           <input id="search-input" class="autocomplete-input" type="text" placeholder="Nombre del cliente">
-          <p style="margin-left: 10px;">Codigo: </p>
+          <p style="margin-left: 10px;">Codigo de Cliente: </p>
           <input id="search-codigo" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
+          <p style="margin-left: 10px;">Codigo Interno: </p>
+          <input id="search-codigo-inter" class="autocomplete-input" type="text" placeholder="Codigo de Cinta">
         </div>
       </div>
     </div>
