@@ -1,6 +1,5 @@
 const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
-const ids = ["TypeCinta", "DesCin", "CCinta", "CCintaInter", "UbiCint"];
 
 function agregarCinta() {
     if (!form.checkValidity()) {
@@ -142,5 +141,9 @@ function enviarDatos() {
 }
 
 function limpiarCampos() {
-    ids.forEach(id => document.getElementById(id).value = '');
+    document.getElementById("TypeCinta").value = '';
+    document.getElementById("DesCin").value = '';
+    document.getElementById("CCinta").value = '';
+    document.getElementById("CCintaInter").value = '';
+    document.getElementById("UbiCint").value = '';
 }
