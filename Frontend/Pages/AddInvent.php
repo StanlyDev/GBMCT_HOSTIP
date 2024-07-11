@@ -137,6 +137,14 @@ $email = $_SESSION["email"] ?? '';
                             <input type="text" id="CCintaInter" name="CCintaInter" placeholder="CODEGEN_V1" required readonly>
                             <button type="button" onclick="GenCode()">Generar Codigo</button>
                         </div>
+                        <div class="form-group">
+                            <label for="UbiCint">Ubicacion:</label>
+                            <select name="" id="">
+                                <option value=""></option>
+                                <option value="">Libreria</option>
+                                <option value="">Cintoteca</option>
+                            </select>
+                        </div>
                     </div><br>
                     <div class="AgreBtn">
                         <button type="button" onclick="agregarCinta()">
@@ -157,6 +165,7 @@ $email = $_SESSION["email"] ?? '';
                                 <th>Codigo Interno DC</th>
                                 <th>Tipo</th>
                                 <th>Descripcion</th>
+                                <th>Ubicacion</th>
                                 <th>Ticket</th>
                                 <th>Hora de ingreso</th>
                                 <th>Fecha de ingreso</th>

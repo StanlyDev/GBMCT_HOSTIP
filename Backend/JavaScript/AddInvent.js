@@ -1,5 +1,6 @@
 const form = document.getElementById("FrmCinta");
 let numeroSecuencial = 1;
+const ids = ["TypeCinta", "DesCin", "CCinta", "CCintaInter", "UbiCint"];
 
 function agregarCinta() {
     if (!form.checkValidity()) {
@@ -45,18 +46,21 @@ function agregarCinta() {
             newTypeCellRef.textContent = document.getElementById("DesCin").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(7);
-            newTypeCellRef.textContent = document.getElementById("sr").value;
+            newTypeCellRef.textContent = document.getElementById("UbiCint").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(8);
-            newTypeCellRef.textContent = document.getElementById("hrEsti").value;
+            newTypeCellRef.textContent = document.getElementById("sr").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(9);
-            newTypeCellRef.textContent = document.getElementById("FechaIO").value;
+            newTypeCellRef.textContent = document.getElementById("hrEsti").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(10);
-            newTypeCellRef.textContent = document.getElementById("fdm").value;
+            newTypeCellRef.textContent = document.getElementById("FechaIO").value;
 
             newTypeCellRef = newTransactionRowRef.insertCell(11);
+            newTypeCellRef.textContent = document.getElementById("fdm").value;
+
+            newTypeCellRef = newTransactionRowRef.insertCell(12);
             newTypeCellRef.textContent = document.getElementById("operator").value;
 
             // Agregar botón de eliminación
@@ -69,7 +73,7 @@ function agregarCinta() {
                 }
             };
 
-            let deleteCellRef = newTransactionRowRef.insertCell(12);
+            let deleteCellRef = newTransactionRowRef.insertCell(13);
             deleteCellRef.appendChild(deleteButton);
             deleteCellRef.classList.add('delete-row-btn-cell');
 
@@ -138,8 +142,5 @@ function enviarDatos() {
 }
 
 function limpiarCampos() {
-    document.getElementById("TypeCinta").value = '';
-    document.getElementById("DesCin").value = '';
-    document.getElementById("CCinta").value = '';
-    document.getElementById("CCintaInter").value = '';
+    ids.forEach(id => document.getElementById(id).value = '');
 }
