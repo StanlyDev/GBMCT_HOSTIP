@@ -129,6 +129,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         <div class="form-group">
                             <label for="UbiCin">Ubicacion:</label>
                             <select name="UbiCin" id="UbiCin">
+                                <option value=""></option>
                                 <option value="Cintoteca">Cintoteca</option>
                                 <option value="Libreria">Libreria</option>
                             </select>
