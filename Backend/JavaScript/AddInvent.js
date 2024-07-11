@@ -115,16 +115,13 @@ function eliminarFila(button) {
     let row = button.closest('tr');
     row.parentNode.removeChild(row);
 
-    // Reiniciar el número secuencial
-    numeroSecuencial = 1;
-
     // Actualizar el número secuencial en las filas restantes
     let table = document.getElementById("tablaCintas");
     let rows = table.rows;
 
     for (let i = 1; i < rows.length; i++) { // Comenzar desde 1 para omitir el encabezado
         let cell = rows[i].cells[0];
-        cell.textContent = numeroSecuencial++;
+        cell.textContent = i; // Asignar el número secuencial correcto
     }
 }
 

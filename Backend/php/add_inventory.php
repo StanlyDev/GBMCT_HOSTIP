@@ -24,7 +24,7 @@ $tipoCinta = filter_input(INPUT_POST, 'TypeCinta', FILTER_SANITIZE_STRING);
 $descripcion = filter_input(INPUT_POST, 'DesCin', FILTER_SANITIZE_STRING);
 $codigoCinta = filter_input(INPUT_POST, 'CCinta', FILTER_SANITIZE_STRING);
 $codigoCintaInter = filter_input(INPUT_POST, 'CCintaInter', FILTER_SANITIZE_STRING);
-$ubicacion = filter_input(INPUT_POST, 'ubicacion', FILTER_SANITIZE_STRING);
+$ubicacion = filter_input(INPUT_POST, 'UbiCint', FILTER_SANITIZE_STRING);
 
 // Preparar y ejecutar la consulta SQL
 $sql = "INSERT INTO TableInventory (NombreCliente, TipoCinta, Descripcion, Ubicacion, CdClient, TickectSR, FDMEmail, HrAdd, DateAdd, OperatorName, CO, CdInter) 
