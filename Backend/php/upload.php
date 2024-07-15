@@ -10,8 +10,8 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 
-// Verifica el tamaño del archivo (máximo 5MB en este ejemplo)
-if ($_FILES["file"]["size"] > 5000000) {
+// Verifica el tamaño del archivo (máximo 500MB)
+if ($_FILES["file"]["size"] > 500000000) {
     echo "Lo siento, el archivo es demasiado grande.";
     $uploadOk = 0;
 }
