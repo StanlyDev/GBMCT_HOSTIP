@@ -126,4 +126,5 @@ function limpiarCampos() {
     document.getElementById("CCinta").value = '';
     document.getElementById("CCintaInter").value = '';
     document.getElementById("UbiCint").value = '';
+    document.getElementById("btnAgregar").disabled = true;
 }
