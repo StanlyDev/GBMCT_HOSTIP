@@ -35,6 +35,7 @@ $conn->close();
     <link rel="stylesheet" href="/Frontend/CSS/create_user.css">
     <link rel="shortcut icon" href="/Frontend/IMG/Icon/GBM-logo-1.ico">
     <script defer src="/Backend/JavaScript/logout.js"></script>
+    <script defer src="/Backend/JavaScript/secure.js"></script>
     <title>Editar Usuario</title>
 </head>
 <body>

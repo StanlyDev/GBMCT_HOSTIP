@@ -13,6 +13,7 @@ if (!isset($_SESSION["id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificar Código</title>
     <link rel="stylesheet" href="/Frontend/CSS/validate_code.css">
+    <script defer src="/Backend/JavaScript/secure.js"></script>
 </head>
 <body>
     <h1>Verificar Código</h1>

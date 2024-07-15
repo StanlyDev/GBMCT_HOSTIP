@@ -50,6 +50,7 @@ $conn->close();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <script defer src="/Backend/JavaScript/secure.js"></script>
     <title>Cambiar contraseña</title>
     <style>
         body {

@@ -23,6 +23,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
   <script defer src="/Backend/JavaScript/windowsDoc.js"></script>
   <script defer src="/Backend/JavaScript/HistoAlert.js"></script>
   <script defer src="/Backend/JavaScript/logout.js"></script>
+  <script defer src="/Backend/JavaScript/secure.js"></script>
   <title>GBM | CT</title>
 </head>
 <body>
