@@ -12,103 +12,72 @@ function agregarCinta() {
     let ccintaValue = ccintaInput.value;
     let ccintainterValue = ccintainterInput.value;
 
-    verificarCodigoCinta(ccintaValue).then(isDuplicate => {
-        if (isDuplicate) {
-            alert("El código de Cinta ya se encuentra en uso");
-        } else {
-            let transactionTableRef = document.getElementById("tablaCintas").getElementsByTagName('tbody')[0];
-            let newTransactionRowRef = transactionTableRef.insertRow();
+    let transactionTableRef = document.getElementById("tablaCintas").getElementsByTagName('tbody')[0];
+    let newTransactionRowRef = transactionTableRef.insertRow();
 
-            let newTypeCellRef;
+    let newTypeCellRef;
 
-            // Insertar el número secuencial en la primera celda
-            newTypeCellRef = newTransactionRowRef.insertCell(0);
-            newTypeCellRef.textContent = numeroSecuencial;
+    // Insertar el número secuencial en la primera celda
+    newTypeCellRef = newTransactionRowRef.insertCell(0);
+    newTypeCellRef.textContent = numeroSecuencial;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(1);
-            newTypeCellRef.textContent = document.getElementById("client_name").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(1);
+    newTypeCellRef.textContent = document.getElementById("client_name").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(2);
-            newTypeCellRef.textContent = document.getElementById("co").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(2);
+    newTypeCellRef.textContent = document.getElementById("co").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(3);
-            newTypeCellRef.textContent = ccintaValue;
+    newTypeCellRef = newTransactionRowRef.insertCell(3);
+    newTypeCellRef.textContent = ccintaValue;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(4);
-            newTypeCellRef.textContent = ccintainterValue;
+    newTypeCellRef = newTransactionRowRef.insertCell(4);
+    newTypeCellRef.textContent = ccintainterValue;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(5);
-            newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(5);
+    newTypeCellRef.textContent = document.getElementById("TypeCinta").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(6);
-            newTypeCellRef.textContent = document.getElementById("DesCin").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(6);
+    newTypeCellRef.textContent = document.getElementById("DesCin").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(7);
-            newTypeCellRef.textContent = document.getElementById("UbiCint").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(7);
+    newTypeCellRef.textContent = document.getElementById("UbiCint").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(8);
-            newTypeCellRef.textContent = document.getElementById("sr").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(8);
+    newTypeCellRef.textContent = document.getElementById("sr").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(9);
-            newTypeCellRef.textContent = document.getElementById("hrEsti").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(9);
+    newTypeCellRef.textContent = document.getElementById("hrEsti").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(10);
-            newTypeCellRef.textContent = document.getElementById("FechaIO").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(10);
+    newTypeCellRef.textContent = document.getElementById("FechaIO").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(11);
-            newTypeCellRef.textContent = document.getElementById("fdm").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(11);
+    newTypeCellRef.textContent = document.getElementById("fdm").value;
 
-            newTypeCellRef = newTransactionRowRef.insertCell(12);
-            newTypeCellRef.textContent = document.getElementById("operator").value;
+    newTypeCellRef = newTransactionRowRef.insertCell(12);
+    newTypeCellRef.textContent = document.getElementById("operator").value;
 
-            // Agregar botón de eliminación
-            let deleteButton = document.createElement("button");
-            deleteButton.textContent = "X";
-            deleteButton.className = "delete-row-btn";
-            deleteButton.onclick = function() {
-                if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
-                    eliminarFila(this);
-                }
-            };
-
-            let deleteCellRef = newTransactionRowRef.insertCell(13);
-            deleteCellRef.appendChild(deleteButton);
-            deleteCellRef.classList.add('delete-row-btn-cell');
-
-            numeroSecuencial++;
-
-            // Enviar los datos a través de AJAX
-            enviarDatos();
-
-            // Limpiar campos después de agregar
-            limpiarCampos();
+    // Agregar botón de eliminación
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.className = "delete-row-btn";
+    deleteButton.onclick = function() {
+        if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+            eliminarFila(this);
         }
-    }).catch(error => {
-        console.error('Error al verificar el código de cinta:', error);
-        alert('Error al verificar el código de cinta');
-    });
-}
+    };
 
-function verificarCodigoCinta(codigo) {
-    return fetch('/Backend/php/valide_code.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ codigo: codigo })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (!data || typeof data.exists !== 'boolean') {
-            throw new Error('Invalid response format');
-        }
-        return data.exists;
-    });
+    let deleteCellRef = newTransactionRowRef.insertCell(13);
+    deleteCellRef.appendChild(deleteButton);
+    deleteCellRef.classList.add('delete-row-btn-cell');
+
+    numeroSecuencial++;
+
+    // Enviar los datos a través de AJAX
+    enviarDatos();
+
+    // Limpiar campos después de agregar
+    limpiarCampos();
 }
 
 function eliminarFila(button) {
@@ -158,44 +127,3 @@ function limpiarCampos() {
     document.getElementById("CCintaInter").value = '';
     document.getElementById("UbiCint").value = '';
 }
-
-function ValidCode() {
-    const codigoInput = document.getElementById('CCinta');
-    const codigo = codigoInput.value;
-    
-    // Limpiar mensaje previo
-    const mensaje = document.getElementById('codigo-mensaje');
-    if (mensaje) {
-        mensaje.remove();
-    }
-
-    fetch('/Backend/php/valide_code.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ CdClient: codigo })
-    })
-    .then(response => response.json())
-    .then(data => {
-        const nuevoMensaje = document.createElement('p');
-        nuevoMensaje.id = 'codigo-mensaje';
-        if (data.exists) {
-            nuevoMensaje.textContent = 'Código existente';
-            nuevoMensaje.style.color = 'red';
-        } else {
-            nuevoMensaje.textContent = 'Código disponible';
-            nuevoMensaje.style.color = 'green';
-        }
-        codigoInput.parentNode.appendChild(nuevoMensaje);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
-
-// Asignar el evento onclick al botón para generar el código
-document.querySelector('button[onclick="GenCode()"]').addEventListener('click', GenCode);
-
-// Asignar el evento onclick al botón para validar el código
-document.querySelector('button[onclick="ValidCode()"]').addEventListener('click', ValidCode);
