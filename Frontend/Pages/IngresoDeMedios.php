@@ -226,5 +226,5 @@ $usuario_rol = $_SESSION["role"] ?? '';
     </div>
 </div>
 </body>
-<!--Devoloped by Brandon Ventura-->
+<!--Develop By Brandon Ventura | StanlyDev -->
 </html>

@@ -24,4 +24,5 @@ if (!isset($_SESSION["id"])) {
         <button type="submit" name="verificarCodigo">Verificar</button>
     </form>
 </body>
+<!--Develop By Brandon Ventura | StanlyDev -->
 </html>

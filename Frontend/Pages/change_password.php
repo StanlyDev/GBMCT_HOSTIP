@@ -97,4 +97,5 @@ $conn->close();
         <input type="submit" value="Cambiar contraseña">
     </form>
 </body>
+<!--Develop By Brandon Ventura | StanlyDev -->
 </html>
