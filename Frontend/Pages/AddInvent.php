@@ -129,8 +129,9 @@ $email = $_SESSION["email"] ?? '';
                             <input type="text" id="DesCin" name="DesCin" placeholder="LTO - 1.5TB" required>
                         </div>
                         <div class="form-group">
-                            <label for="CCinta">Codigo de cliente:</label>
+                            <label for="CCinta">Código de cliente:</label>
                             <input type="text" id="CCinta" name="CCinta" placeholder="CODE0001" required>
+                            <button type="button" onclick="ValidCode()">Validar Código</button>
                         </div>
                         <div class="form-group">
                             <label for="CCintaInter">Codigo interno:</label>
