@@ -150,7 +150,7 @@ $email = $_SESSION["email"] ?? '';
                         </div>
                     </div><br>
                     <div class="AgreBtn">
-                    <button type="button" id="btnAgregar" onclick="agregarCinta()"><img src="/Frontend/IMG/Icon/plus-lg.svg" alt="Agregar">Agregar Cinta</button>
+                    <button type="button" id="btnAgregar" onclick="agregarCinta()" disabled><img src="/Frontend/IMG/Icon/plus-lg.svg" alt="Agregar">Agregar Cinta</button>
                     </div>
                 </div>
             </form>
