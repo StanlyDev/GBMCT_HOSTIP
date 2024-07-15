@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const validarBtn = document.querySelector('button[onclick="ValidCode()"]');
+    if (validarBtn) {
+        validarBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            ValidCode();
+        });
+    }
+});
+
 function ValidCode() {
     const codigoInput = document.getElementById('CCinta');
     const codigo = codigoInput.value;
@@ -22,9 +32,15 @@ function ValidCode() {
         if (data.exists) {
             nuevoMensaje.textContent = 'Código existente';
             nuevoMensaje.style.color = 'red';
+
+            // Código está en uso, deshabilitar el botón de agregar
+            disableAgregarButton(true);
         } else {
             nuevoMensaje.textContent = 'Código disponible';
             nuevoMensaje.style.color = 'green';
+
+            // Código disponible, habilitar el botón de agregar
+            disableAgregarButton(false);
         }
         codigoInput.parentNode.appendChild(nuevoMensaje);
     })
@@ -33,5 +49,9 @@ function ValidCode() {
     });
 }
 
-// Asignar el evento onclick al botón para validar el código
-document.querySelector('button[onclick="ValidCode()"]').addEventListener('click', ValidCode);
+function disableAgregarButton(disable) {
+    const agregarBtn = document.getElementById('btnAgregar');
+    if (agregarBtn) {
+        agregarBtn.disabled = disable;
+    }
+}
