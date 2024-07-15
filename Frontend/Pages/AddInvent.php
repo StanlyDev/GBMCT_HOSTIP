@@ -101,8 +101,8 @@ $email = $_SESSION["email"] ?? '';
                         <input type="text" placeholder="SR" id="sr" class="sr" name="sr" required>
                     </div>
                     <div class="form-group">
-                        <label for="enc">Email Field Manager Email:</label>
-                        <input type="email" placeholder="Field-Manager" id="fdm" name="enc" required>
+                        <label for="enc">Email del Cliente:</label>
+                        <input type="email" placeholder="Client Mail" id="fdm" name="enc" required>
                     </div>
                 </div>
                 <div class="input_container">
@@ -170,7 +170,7 @@ $email = $_SESSION["email"] ?? '';
                                 <th>Ticket</th>
                                 <th>Hora de ingreso</th>
                                 <th>Fecha de ingreso</th>
-                                <th>Field Manager Email</th>
+                                <th>Email del Cliente:</th>
                                 <th>Agregado por</th>
                                 <th>Acción</th>
                             </tr>
