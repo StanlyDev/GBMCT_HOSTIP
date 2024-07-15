@@ -20,7 +20,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/Backend/JavaScript/windowsDoc.js"></script>
     <script defer src="/Backend/JavaScript/HistoAlert.js"></script>
     <script defer src="/Backend/JavaScript/logout.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>GBM | CT</title>
 </head>
 <body>
@@ -94,9 +93,6 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     <li><b>Transparencia:</b> Ser claro, evidente, sin duda ni ambigüedad.</li>
                 </ul>
             </p>
-        </div>
-        <div class="VMV">
-            <canvas style="width: 80%; margin: auto;" id="cintasPorClienteChart"></canvas>
         </div>
         <!--Fin Main-->
     </main>
