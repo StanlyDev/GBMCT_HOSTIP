@@ -96,7 +96,7 @@ $usuario_rol = $_SESSION["role"] ?? '';
             </p>
         </div>
         <div class="VMV">
-            <canvas id="graficoClientesCintas"></canvas>
+            <canvas style="width: 80%; margin: auto;" id="cintasPorClienteChart"></canvas>
         </div>
         <!--Fin Main-->
     </main>
@@ -116,52 +116,5 @@ $usuario_rol = $_SESSION["role"] ?? '';
         <button id="continueSessionBtn">Continuar sesión</button>
     </div>
 </div>
-<script>
-  // Datos iniciales del gráfico
-  var datosClientesCintas = {
-    labels: ['Clientes', 'Cintas'],
-    datasets: [{
-      label: 'Cantidad',
-      data: [0, 0], // Inicialmente no hay clientes ni cintas
-      backgroundColor: [
-        'rgba(54, 162, 235, 0.2)', // Color para clientes
-        'rgba(255, 99, 132, 0.2)' // Color para cintas
-      ],
-      borderColor: [
-        'rgba(54, 162, 235, 1)', // Borde para clientes
-        'rgba(255, 99, 132, 1)' // Borde para cintas
-      ],
-      borderWidth: 1
-    }]
-  };
-
-  // Opciones del gráfico
-  var opcionesClientesCintas = {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  };
-
-  // Obtener contexto del canvas
-  var ctx = document.getElementById('graficoClientesCintas').getContext('2d');
-
-  // Crear el gráfico de barras
-  var graficoClientesCintas = new Chart(ctx, {
-    type: 'bar',
-    data: datosClientesCintas,
-    options: opcionesClientesCintas
-  });
-
-  // Función para actualizar el gráfico
-  function actualizarGraficoClientesCintas(clientes, cintas) {
-    graficoClientesCintas.data.datasets[0].data = [clientes, cintas];
-    graficoClientesCintas.update();
-  }
-
-  // Ejemplo de uso: llamar a actualizarGraficoClientesCintas() con los nuevos datos
-  actualizarGraficoClientesCintas(10, 5); // Ejemplo: 10 clientes y 5 cintas
-</script>
 </body>
 </html>
