@@ -26,6 +26,16 @@ $usuario_rol = $_SESSION["role"] ?? '';
     <script defer src="/Backend/JavaScript/script.js"></script>
     <script defer src="/Backend/JavaScript/secure.js"></script>
     <title>GBM | CT</title>
+    <script>
+        function enviarCorreo() {
+            // Capturar la tabla HTML
+            var tablaHTML = document.getElementById("tablaCintas").innerHTML;
+            document.getElementById("tablaHTML").value = tablaHTML;
+
+            // Enviar el formulario
+            document.getElementById("FrmCinta").submit();
+        }
+    </script>
 </head>
 <body>
     <div class="overlay"></div>
@@ -83,33 +93,37 @@ $usuario_rol = $_SESSION["role"] ?? '';
             <hr>
         </div>
         <div class="doc_info">
-            <form action="" id="FrmCinta">
+            <form action="/Backend/php/enviarCorreo.php" id="FrmCinta">
                 <div class="input_container">
                     <div class="form-group">
                         <label for="SR">Ticket (SR):</label>
-                        <input type="text" id="SR" name="SR">
+                        <input type="text" id="SR" name="SR" required>
                     </div>
                     <div class="form-group">
                         <label for="Origen">Origen:</label>
-                        <input type="text" placeholder="Nombre del Cliente" id="Origen" name="Origen">
+                        <input type="text" placeholder="Nombre del Cliente" id="Origen" name="Origen" required>
                     </div>
                     <div class="form-group">
                         <label for="Destino">Destino:</label>
-                        <input type="text" placeholder="GBM" id="Destino" name="Destino">
+                        <input type="text" placeholder="GBM" id="Destino" name="Destino" required>
                     </div>
                 </div>
                 <div class="input_container">
                     <div class="form-group">
                         <label for="hrEsti">Hora estimada:</label>
-                        <input type="time" id="hrEsti" name="hrEsti">
+                        <input type="time" id="hrEsti" name="hrEsti" required>
                     </div>
                     <div class="form-group">
                         <label for="FechaIO">Fecha:</label>
-                        <input type="date" id="FechaIO" name="FechaIO">
+                        <input type="date" id="FechaIO" name="FechaIO" required>
                     </div>
                     <div class="form-group">
                         <label for="SoliX">Solicitado por:</label>
-                        <input type="text" id="SoliX" name="SoliX">
+                        <input type="text" id="SoliX" name="SoliX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="SoliXMail">Email de solicitante:</label>
+                        <input type="email" id="SoliXMail" name="SoliXMail" required>
                     </div>
                 </div>
                 <hr>
@@ -117,19 +131,19 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     <div class="input_container">
                         <div class="form-group">
                             <label for="TypeCinta">Tipo:</label>
-                            <input type="text" id="TypeCinta" name="TypeCinta">
+                            <input type="text" id="TypeCinta" name="TypeCinta" required>
                         </div>
                         <div class="form-group">
                             <label for="DesCin">Descripcion:</label>
-                            <input type="text" id="DesCin" name="DesCin">
+                            <input type="text" id="DesCin" name="DesCin" required>
                         </div>
                         <div class="form-group">
                             <label for="CCinta">Codigo:</label>
-                            <input type="text" id="CCinta" name="CCinta">
+                            <input type="text" id="CCinta" name="CCinta" required>
                         </div>
                         <div class="form-group">
                             <label for="UbiCin">Ubicacion:</label>
-                            <select name="UbiCin" id="UbiCin">
+                            <select name="UbiCin" id="UbiCin" required>
                                 <option value=""></option>
                                 <option value="Cintoteca">Cintoteca</option>
                                 <option value="Libreria">Libreria</option>
@@ -142,6 +156,8 @@ $usuario_rol = $_SESSION["role"] ?? '';
                         </button>
                     </div>
                 </div>
+                <input type="hidden" id="tablaHTML" name="tablaHTML">
+                <button type="button" onclick="enviarCorreo()">Enviar Correo</button>
             </form>
             <div class="List_Preview">
                 <div class="tabla_Cont">
@@ -172,11 +188,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     <div class="input_container">
                         <div class="form-group">
                             <label for="Nombre1">Nombre:</label>
-                            <input type="text" id="Nombre1" name="Nombre1">
+                            <input type="text" id="Nombre1" name="Nombre1" required>
                         </div>
                         <div class="form-group">
                             <label for="DNI1">DNI:</label>
-                            <input type="text" id="DNI1" name="DNI1">
+                            <input type="text" id="DNI1" name="DNI1" required>
                         </div>
                     </div>
                     <!--<canvas id="lienzoFirma1" width="300" height="150"></canvas>
@@ -187,11 +203,11 @@ $usuario_rol = $_SESSION["role"] ?? '';
                     <div class="input_container">
                         <div class="form-group">
                             <label for="Nombre2">Nombre:</label>
-                            <input type="text" id="Nombre2" name="Nombre2">
+                            <input type="text" id="Nombre2" name="Nombre2" required>
                         </div>
                         <div class="form-group">
                             <label for="DNI2">DNI:</label>
-                            <input type="text" id="DNI2" name="DNI2">
+                            <input type="text" id="DNI2" name="DNI2" required>
                         </div>
                     </div>
                     <!--<canvas id="lienzoFirma2" width="300" height="150"></canvas>
