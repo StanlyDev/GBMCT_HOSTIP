@@ -31,8 +31,28 @@ $usuario_rol = $_SESSION["role"] ?? '';
             var tablaHTML = document.getElementById("tablaCintas").innerHTML;
             document.getElementById("tablaHTML").value = tablaHTML;
 
-            // Enviar el formulario
-            document.getElementById("FrmCinta").submit();
+            // Crear una instancia de XMLHttpRequest o usar fetch para enviar datos
+            var xhr = new XMLHttpRequest();
+            var url = "/Backend/php/enviarCorreo.php"; // Asegúrate de que la ruta sea correcta
+
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log("Correo enviado exitosamente");
+                        // Aquí puedes mostrar un mensaje de éxito o realizar otras acciones
+                    } else {
+                        console.error("Error al enviar el correo");
+                        // Aquí puedes manejar el error y mostrar un mensaje adecuado al usuario
+                    }
+                }
+            };
+
+            // Serializar los datos del formulario
+            var formData = new FormData(document.getElementById("FrmCinta"));
+            xhr.send(formData);
         }
     </script>
 </head>
