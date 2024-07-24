@@ -1,9 +1,9 @@
+## English
+
 # GBM_CT
 Web to test the GBM_CT project before its release to production.
 
 # GBM Media
-
-## English
 
 ## Project Description
 
@@ -49,12 +49,12 @@ For any questions or comments, you can contact the developer:
 - **Email**: [stanvsdev@gmail.com](mailto:stanvsdev@gmail.com)
 - **GitHub**: [https://github.com/StanlyDev](https://github.com/StanlyDev)
 
+## Español
+
 # GBM_CT
 Web para probar el proyecto GBM_CT antes de su lanzamiento a producción.
 
 # GBM Medios
-
-## Español
 
 ## Descripción del Proyecto
 
